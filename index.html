@@ -54,10 +54,11 @@ const stars = n => "★".repeat(n)+"☆".repeat(5-n);
 
 const TABS = [
   {id:"tongquan", ten:"1 · Tổng quan", icon:"📊"},
-  {id:"content",  ten:"2 · Content theo lô", icon:"🎬"},
-  {id:"seo",      ten:"3 · SEO", icon:"🔍"},
-  {id:"chiso",    ten:"4 · Chỉ số đề xuất", icon:"📈"},
-  {id:"danhgia",  ten:"5 · Đánh giá nội dung", icon:"✅"},
+  {id:"trang",    ten:"2 · Trang theo dõi", icon:"📄"},
+  {id:"content",  ten:"3 · Content theo lô", icon:"🎬"},
+  {id:"seo",      ten:"4 · SEO", icon:"🔍"},
+  {id:"chiso",    ten:"5 · Chỉ số đề xuất", icon:"📈"},
+  {id:"danhgia",  ten:"6 · Đánh giá nội dung", icon:"✅"},
 ];
 
 /* ---------- RENDERERS ---------- */
@@ -210,7 +211,32 @@ function rDanhGia(){
 }
 
 /* ---------- ROUTER ---------- */
-const RENDER = {tongquan:rTongQuan, content:rContent, seo:rSeo, chiso:rChiSo, danhgia:rDanhGia};
+function rTrang(){
+  const pages = D.trangTheoDoi||[];
+  const duLuan = pages.filter(p=>p.loai==='Dư luận').length;
+  const filled = pages.filter(p=>p.follower!=null).length;
+  const head = card(`
+    <div class="grid grid-cols-3 gap-3 text-center">
+      <div><div class="text-2xl font-bold">${pages.length}</div><div class="text-xs text-slate-400">Trang theo dõi</div></div>
+      <div><div class="text-2xl font-bold text-cyan-400">${duLuan}</div><div class="text-xs text-slate-400">Trang dư luận</div></div>
+      <div><div class="text-2xl font-bold ${filled===pages.length?'text-emerald-400':'text-amber-400'}">${filled}/${pages.length}</div><div class="text-xs text-slate-400">Đã có số liệu</div></div>
+    </div>`,"mb-4");
+  const num = v => v==null?'<span class="text-slate-600">—</span>':fmt(v);
+  const rows = pages.map(p=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3 font-medium"><a href="${p.url}" target="_blank" class="hover:text-cyan-400">${p.ten} ↗</a></td>
+    <td class="py-2 pr-3">${chip(p.loai, p.loai==='Chính'?'bg-cyan-500/20 text-cyan-300':'bg-slate-600/30 text-slate-300')}</td>
+    <td class="py-2 pr-3 text-right">${num(p.follower)}</td>
+    <td class="py-2 pr-3 text-right">${num(p.reach)}</td>
+    <td class="py-2 pr-3 text-right">${p.engagement==null?'<span class="text-slate-600">—</span>':p.engagement+'%'}</td>
+    <td class="py-2 text-right">${num(p.post)}</td></tr>`).join("");
+  const tbl = card(`<h3 class="font-semibold mb-3">6 trang Facebook đang chạy (5 dư luận + trang chính)</h3>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
+      <th class="text-left pb-2 pr-3">Trang</th><th class="text-left pb-2 pr-3">Loại</th><th class="text-right pb-2 pr-3">Follower</th><th class="text-right pb-2 pr-3">Reach (kỳ)</th><th class="text-right pb-2 pr-3">Engagement</th><th class="text-right pb-2">Post</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="mt-3 text-[11px] text-slate-400">Số liệu follower/reach/engagement: điền tay qua <b>INPUT_HANGNGAY.md → mục 7</b> mỗi sáng (FB ẩn số sau login), hoặc nối facebook_organic để pull tự động.</div>`);
+  return head + tbl;
+}
+
+const RENDER = {tongquan:rTongQuan, trang:rTrang, content:rContent, seo:rSeo, chiso:rChiSo, danhgia:rDanhGia};
 let chartRef=null;
 function show(id){
   document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.id===id));

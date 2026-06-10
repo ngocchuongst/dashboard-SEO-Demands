@@ -12,6 +12,17 @@ window.DASHBOARD_DATA = {
     ghiChu: "Mục tiêu & demand lấy từ PLAN EARNED MEDIA THÁNG 6. Ads = Meta API live (1–10/6). Traffic = GA4 live. Ô '—' = chưa có actual.",
   },
 
+  /* ---------- 0. TRANG ĐANG THEO DÕI ---------- */
+  /* Số liệu FB ẩn sau login → điền tay qua INPUT_HANGNGAY.md (mục 7) hoặc nối facebook_organic. */
+  trangTheoDoi: [
+    { ten: "30Shine Official", loai: "Chính", url: "https://www.facebook.com/30shineofficial/", id: "30shineofficial", follower: null, reach: null, engagement: null, post: null },
+    { ten: "Đàn Ông Bụi", loai: "Dư luận", url: "https://www.facebook.com/profile.php?id=61564289031316", id: "61564289031316", follower: null, reach: null, engagement: null, post: null },
+    { ten: "Tạp Chí Kinh Doanh Thời Đại", loai: "Dư luận", url: "https://www.facebook.com/profile.php?id=61563276163931", id: "61563276163931", follower: null, reach: null, engagement: null, post: null },
+    { ten: "Bản Lĩnh Đàn Ông", loai: "Dư luận", url: "https://www.facebook.com/profile.php?id=61563496486162", id: "61563496486162", follower: null, reach: null, engagement: null, post: null },
+    { ten: "Kinh Doanh Châu Á", loai: "Dư luận", url: "https://www.facebook.com/profile.php?id=61563416021934", id: "61563416021934", follower: null, reach: null, engagement: null, post: null },
+    { ten: "Kiến Thức Tinh Hoa", loai: "Dư luận", url: "https://www.facebook.com/profile.php?id=61563812254323", id: "61563812254323", follower: null, reach: null, engagement: null, post: null },
+  ],
+
   /* ---------- 1. TỔNG QUAN — MỤC TIÊU & % ĐẠT ---------- */
   tongQuan: [
     { ten: "Tổng số earned media", target: 23, actual: 0, donVi: "bài", note: "Có gắn CTA link booking/dịch vụ + seeding. Flow: đăng theo demand → ads test 2 ngày → bài cắn tiền giữ, không cắn thay ngay.", nguon: "Mục tiêu" },

@@ -62,7 +62,22 @@
 
 ---
 
-## 6. GHI CHÚ TỰ DO (gì cũng được — Claude đọc để hiểu bối cảnh)
+## 7. SỐ LIỆU TRANG FACEBOOK (6 trang đang theo dõi)
+`tên trang | follower | reach (trong kỳ) | post (số bài) | engagement (%)`
+
+# tên trang khớp tab "Trang theo dõi", ví dụ:
+# 30Shine Official | 250000 | 1200000 | 45 | 3.2
+# Đàn Ông Bụi | 32000 | 180000 | 12 | 5.1
+# Tạp Chí Kinh Doanh Thời Đại |  |  |  |
+# Bản Lĩnh Đàn Ông |  |  |  |
+# Kinh Doanh Châu Á |  |  |  |
+# Kiến Thức Tinh Hoa |  |  |  |
+
+
+
+---
+
+## 8. GHI CHÚ TỰ DO (gì cũng được — Claude đọc để hiểu bối cảnh)
 
 
 
