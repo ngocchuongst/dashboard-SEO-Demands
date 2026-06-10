@@ -50,6 +50,14 @@ window.DASHBOARD_DATA = {
     ],
   },
 
+  /* Snapshot theo ngày để SO SÁNH. Mỗi lần "lưu snapshot" → thêm 1 dòng.
+     key trong metrics = đúng 'ten' của thẻ Tổng quan. So sánh = actual hiện tại − snapshot. */
+  snapshots: [
+    { date: "2026-06-11", note: "khởi tạo", metrics: {
+      "Tổng số earned media": 0, "Post kênh dư luận": 0,
+      "SEO sessions /discovers": 0, "Bài SEO live": 4, "CPA (post gắn ads)": 18.8 } },
+  ],
+
   /* ---------- 1. TỔNG QUAN — MỤC TIÊU & % ĐẠT ---------- */
   tongQuan: [
     { ten: "Tổng số earned media", target: 23, actual: 0, donVi: "bài", note: "Có gắn CTA link booking/dịch vụ + seeding. Flow: đăng theo demand → ads test 2 ngày → bài cắn tiền giữ, không cắn thay ngay.", nguon: "Mục tiêu" },
