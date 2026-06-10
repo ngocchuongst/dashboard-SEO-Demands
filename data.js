@@ -23,6 +23,21 @@ window.DASHBOARD_DATA = {
     { ten: "Kiến Thức Tinh Hoa", loai: "Dư luận", url: "https://www.facebook.com/profile.php?id=61563812254323", id: "61563812254323", follower: null, reach: null, engagement: null, post: null },
   ],
 
+  /* Lịch sử theo ngày để vẽ biểu đồ tăng trưởng (đổ vào sau khi nối facebook_organic).
+     dates = mốc ngày; series = mỗi page 1 đường (data khớp index với dates). metric = chỉ số đang vẽ. */
+  pageHistory: {
+    metric: "Follower",
+    dates: [],
+    series: [
+      { ten: "30Shine Official", data: [] },
+      { ten: "Đàn Ông Bụi", data: [] },
+      { ten: "Tạp Chí Kinh Doanh Thời Đại", data: [] },
+      { ten: "Bản Lĩnh Đàn Ông", data: [] },
+      { ten: "Kinh Doanh Châu Á", data: [] },
+      { ten: "Kiến Thức Tinh Hoa", data: [] },
+    ],
+  },
+
   /* ---------- 1. TỔNG QUAN — MỤC TIÊU & % ĐẠT ---------- */
   tongQuan: [
     { ten: "Tổng số earned media", target: 23, actual: 0, donVi: "bài", note: "Có gắn CTA link booking/dịch vụ + seeding. Flow: đăng theo demand → ads test 2 ngày → bài cắn tiền giữ, không cắn thay ngay.", nguon: "Mục tiêu" },

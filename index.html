@@ -233,7 +233,14 @@ function rTrang(){
     <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
       <th class="text-left pb-2 pr-3">Trang</th><th class="text-left pb-2 pr-3">Loại</th><th class="text-right pb-2 pr-3">Follower</th><th class="text-right pb-2 pr-3">Reach (kỳ)</th><th class="text-right pb-2 pr-3">Engagement</th><th class="text-right pb-2">Post</th></tr></thead><tbody>${rows}</tbody></table></div>
     <div class="mt-3 text-[11px] text-slate-400">Số liệu follower/reach/engagement: điền tay qua <b>INPUT_HANGNGAY.md → mục 7</b> mỗi sáng (FB ẩn số sau login), hoặc nối facebook_organic để pull tự động.</div>`);
-  return head + tbl;
+
+  const ph = D.pageHistory;
+  const hasHist = ph && ph.dates && ph.dates.length;
+  const chartCard = card(`<div class="flex items-center justify-between mb-3"><h3 class="font-semibold">Tăng trưởng theo ngày — ${ph?ph.metric:''}</h3></div>`
+    + (hasHist
+        ? `<div class="relative h-72"><canvas id="trangChart"></canvas></div>`
+        : `<div class="h-32 grid place-items-center text-center text-sm text-slate-500">Chưa có dữ liệu lịch sử.<br>Nối <b class="text-slate-300">facebook_organic</b> (hoặc điền nhiều ngày qua INPUT) → biểu đồ tăng trưởng hiện ở đây.</div>`),"mt-4");
+  return head + tbl + chartCard;
 }
 
 const RENDER = {tongquan:rTongQuan, trang:rTrang, content:rContent, seo:rSeo, chiso:rChiSo, danhgia:rDanhGia};
@@ -245,7 +252,21 @@ function show(id){
   const c = document.getElementById("content");
   c.className="p-6 fade"; c.innerHTML = RENDER[id]();
   if(id==="seo") drawSeoChart();
+  if(id==="trang") drawTrangChart();
   location.hash = id;
+}
+let trangChartRef=null;
+function drawTrangChart(){
+  const ph=D.pageHistory; const ctx=document.getElementById("trangChart");
+  if(!ctx||!ph||!ph.dates||!ph.dates.length)return;
+  if(trangChartRef) trangChartRef.destroy();
+  const colors=["#06b6d4","#f43f5e","#14b8a6","#f59e0b","#a855f7","#64748b"];
+  trangChartRef=new Chart(ctx,{type:"line",data:{
+    labels:ph.dates,
+    datasets:ph.series.map((s,i)=>({label:s.ten,data:s.data,borderColor:colors[i%colors.length],backgroundColor:"transparent",borderWidth:2,tension:.3,pointRadius:2}))
+  },options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+    plugins:{legend:{position:"bottom",labels:{color:"#cbd5e1",font:{size:11},boxWidth:12}}},
+    scales:{x:{ticks:{color:"#94a3b8",font:{size:10}},grid:{color:"#1e293b"}},y:{ticks:{color:"#94a3b8"},grid:{color:"#1e293b"}}}}});
 }
 function drawSeoChart(){
   const ctx=document.getElementById("seoChart"); if(!ctx)return;
