@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dashboard Marketing 30Shine</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .nav-btn.active { background: linear-gradient(90deg,#06b6d4,#0891b2); color:#fff; }
+  ::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:#334155;border-radius:4px}
+  .fade{animation:f .3s ease}@keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body class="bg-slate-950 text-slate-100">
+
+<div class="flex min-h-screen">
+  <!-- SIDEBAR -->
+  <aside class="w-60 shrink-0 bg-slate-900 border-r border-slate-800 p-4 flex flex-col gap-1 sticky top-0 h-screen">
+    <div class="flex items-center gap-2 mb-5 px-2">
+      <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-teal-600 grid place-items-center font-black text-slate-950">30</div>
+      <div><div class="font-bold leading-tight">30Shine</div><div class="text-[11px] text-slate-400 leading-tight">Marketing Dashboard</div></div>
+    </div>
+    <nav id="nav" class="flex flex-col gap-1 text-sm"></nav>
+    <div class="mt-auto text-[11px] text-slate-500 px-2 pt-4 border-t border-slate-800">
+      <div id="metaKy"></div><div id="metaCapNhat" class="mt-0.5"></div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 min-w-0">
+    <header class="sticky top-0 z-10 bg-slate-950/80 backdrop-blur border-b border-slate-800 px-6 py-3 flex items-center justify-between">
+      <h1 id="pageTitle" class="text-lg font-bold">Tổng quan</h1>
+      <div id="metaNote" class="text-[11px] text-slate-400 max-w-md text-right hidden md:block"></div>
+    </header>
+    <div id="content" class="p-6"><div class="text-slate-400">Đang tải dữ liệu…</div></div>
+  </main>
+</div>
+
+<script>
+const D = window.DASHBOARD_DATA;
+const fmt = n => n==null ? "—" : n.toLocaleString("vi-VN");
+const pct = (a,t) => (a==null||!t) ? null : Math.round(a/t*100);
+const barColor = p => p==null?"bg-slate-600":p>=90?"bg-emerald-500":p>=50?"bg-amber-500":"bg-rose-500";
+const chip = (txt,cls)=>`<span class="text-[11px] px-2 py-0.5 rounded-full ${cls}">${txt}</span>`;
+const statusChip = s => {
+  const m={WIN:"bg-emerald-500/20 text-emerald-300",LOCK:"bg-sky-500/20 text-sky-300",TEST:"bg-amber-500/20 text-amber-300",FAIL:"bg-rose-500/20 text-rose-300"};
+  return chip(s, m[s]||"bg-slate-600/30 text-slate-300");
+};
+const card = (inner,extra="") => `<div class="bg-slate-900 border border-slate-800 rounded-xl p-4 ${extra}">${inner}</div>`;
+const stars = n => "★".repeat(n)+"☆".repeat(5-n);
+
+const TABS = [
+  {id:"tongquan", ten:"1 · Tổng quan", icon:"📊"},
+  {id:"content",  ten:"2 · Content theo lô", icon:"🎬"},
+  {id:"seo",      ten:"3 · SEO", icon:"🔍"},
+  {id:"chiso",    ten:"4 · Chỉ số đề xuất", icon:"📈"},
+  {id:"danhgia",  ten:"5 · Đánh giá nội dung", icon:"✅"},
+];
+
+/* ---------- RENDERERS ---------- */
+function rTongQuan(){
+  const cards = D.tongQuan.map(m=>{
+    const p = pct(m.actual,m.target);
+    return card(`
+      <div class="flex items-start justify-between gap-2">
+        <div class="text-sm text-slate-300 font-medium">${m.ten}</div>
+        <div class="text-right shrink-0"><span class="text-2xl font-bold">${m.actual==null?'<span class="text-slate-500 text-base">chưa có</span>':fmt(m.actual)}</span><span class="text-slate-500 text-xs"> / ${fmt(m.target)} ${m.donVi}</span></div>
+      </div>
+      <div class="mt-3 h-2 rounded-full bg-slate-800 overflow-hidden"><div class="h-full ${barColor(p)}" style="width:${p==null?0:Math.min(p,100)}%"></div></div>
+      <div class="mt-1.5 flex items-center justify-between">
+        <span class="text-[11px] ${p==null?'text-slate-500':p>=90?'text-emerald-400':p>=50?'text-amber-400':'text-rose-400'}">${p==null?'Cần cập nhật':p+'% đạt'}</span>
+        <span class="text-[11px] text-slate-500">${m.nguon}</span>
+      </div>
+      <div class="mt-2 text-[11px] text-slate-400 leading-snug">${m.note}</div>
+    `);
+  }).join("");
+  return `<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">${cards}</div>`;
+}
+
+function rContent(){
+  const demandRows = D.demands.map(d=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3 font-mono text-cyan-400">${d.id}</td>
+    <td class="py-2 pr-3 font-medium">${d.ten}</td>
+    <td class="py-2 pr-3 text-slate-400">${d.vanDe}</td>
+    <td class="py-2">${statusChip(d.trangThai)}</td></tr>`).join("");
+
+  const conceptRows = D.concepts.map(c=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3 font-mono text-teal-400">${c.id}</td>
+    <td class="py-2 pr-3 font-medium">${c.ten}</td>
+    <td class="py-2 pr-3 font-mono text-cyan-400">${c.demand}</td>
+    <td class="py-2 pr-3">${chip(c.chang,"bg-slate-700/50 text-slate-300")}</td>
+    <td class="py-2 pr-3">${chip(c.uuTien, c.uuTien==='TOP'?'bg-rose-500/20 text-rose-300':'bg-slate-600/30 text-slate-300')}</td>
+    <td class="py-2 text-slate-400">${c.targetCPA}</td></tr>`).join("");
+
+  const loRows = D.loContent.map(l=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3 font-medium">${l.lo}</td>
+    <td class="py-2 pr-3 text-center">${l.soND}</td>
+    <td class="py-2 pr-3">${l.concept}</td>
+    <td class="py-2 pr-3 font-mono text-cyan-400">${l.demand}</td>
+    <td class="py-2 pr-3">${chip(l.trangThai,"bg-slate-700/50 text-slate-300")}</td>
+    <td class="py-2 text-slate-400">${l.kenh}</td></tr>`).join("");
+
+  const emRows = D.earnedMedia.map(e=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3"><span class="font-medium">#${e.uuTien} ${e.tru}</span></td>
+    <td class="py-2 pr-3 text-slate-300">${e.concept}</td>
+    <td class="py-2 pr-3 text-slate-400">${e.viDu}</td>
+    <td class="py-2 text-slate-400">${e.nguoiLam}</td></tr>`).join("");
+
+  const tbl = (title,head,rows)=>card(`<h3 class="font-semibold mb-3">${title}</h3>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`,"mb-4");
+
+  return tbl("Demand đang chạy — giải vấn đề gì",
+      `<th class="text-left pb-2 pr-3">ID</th><th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Vấn đề giải quyết</th><th class="text-left pb-2">Trạng thái</th>`, demandRows)
+    + tbl("Concept test/chạy cho demand nào",
+      `<th class="text-left pb-2 pr-3">ID</th><th class="text-left pb-2 pr-3">Concept</th><th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Chặng</th><th class="text-left pb-2 pr-3">Ưu tiên</th><th class="text-left pb-2">Target CPA</th>`, conceptRows)
+    + tbl("Lô content (đang chạy / kế hoạch)",
+      `<th class="text-left pb-2 pr-3">Lô</th><th class="pb-2 pr-3">Số ND</th><th class="text-left pb-2 pr-3">Concept</th><th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Trạng thái</th><th class="text-left pb-2">Kênh</th>`, loRows)
+    + tbl("Dư luận / Earned media — build cho concept nào",
+      `<th class="text-left pb-2 pr-3">Trụ</th><th class="text-left pb-2 pr-3">Concept</th><th class="text-left pb-2 pr-3">Ví dụ</th><th class="text-left pb-2">Người làm</th>`, emRows);
+}
+
+function rSeo(){
+  const t = D.seoTargets;
+  const top = card(`
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div><div class="text-2xl font-bold text-rose-400">${fmt(t.t5Actual)}</div><div class="text-xs text-slate-400">T5 actual (ss/tháng)</div></div>
+      <div><div class="text-2xl font-bold text-cyan-400">${t.t6Target}</div><div class="text-xs text-slate-400">T6 target</div></div>
+      <div><div class="text-2xl font-bold text-slate-300">${t.q3Target}</div><div class="text-xs text-slate-400">Mốc Q3</div></div>
+      <div><div class="text-2xl font-bold text-emerald-400">${t.engagementRate}%</div><div class="text-xs text-slate-400">Engagement (target ${t.engagementTarget}%)</div></div>
+    </div>`,"mb-4");
+
+  const kwRows = D.seoKeywords.map(k=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3">${k.kw}</td>
+    <td class="py-2 pr-3 text-center">${k.rank?`<span class="font-bold ${k.rank<=5?'text-emerald-400':'text-amber-400'}">#${k.rank}</span>`:'<span class="text-rose-400">—</span>'}</td>
+    <td class="py-2 pr-3 text-slate-400">${k.cluster}</td>
+    <td class="py-2">${chip(k.trangThai, k.rank?'bg-emerald-500/20 text-emerald-300':'bg-rose-500/20 text-rose-300')}</td></tr>`).join("");
+  const kwTbl = card(`<h3 class="font-semibold mb-3">Keyword & rank hiện tại vs mục tiêu</h3>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
+      <th class="text-left pb-2 pr-3">Keyword</th><th class="pb-2 pr-3">Rank</th><th class="text-left pb-2 pr-3">Cluster</th><th class="text-left pb-2">Trạng thái</th></tr></thead><tbody>${kwRows}</tbody></table></div>`,"mb-4");
+
+  const artRows = D.seoArticles.map(a=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3 font-medium">${a.ten}</td>
+    <td class="py-2 pr-3 text-slate-400">${a.ngay||'—'}</td>
+    <td class="py-2 pr-3">${chip(a.pillar,"bg-slate-700/50 text-slate-300")}</td>
+    <td class="py-2">${chip(a.trangThai, a.trangThai==='Publish'?'bg-emerald-500/20 text-emerald-300':a.trangThai==='Chưa viết'?'bg-rose-500/20 text-rose-300':'bg-amber-500/20 text-amber-300')}</td></tr>`).join("");
+  const artTbl = card(`<h3 class="font-semibold mb-3">Bài viết — đã / đang / chưa</h3>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
+      <th class="text-left pb-2 pr-3">Bài</th><th class="text-left pb-2 pr-3">Ngày</th><th class="text-left pb-2 pr-3">Pillar</th><th class="text-left pb-2">Trạng thái</th></tr></thead><tbody>${artRows}</tbody></table></div>`);
+
+  const clusterCard = card(`<h3 class="font-semibold mb-3">Phân bổ cluster (24 bài T5–T10)</h3><div class="relative h-56"><canvas id="seoChart"></canvas></div>`,"mb-4");
+  return top + `<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4"><div class="lg:col-span-2">${kwTbl}</div>${clusterCard}</div>` + artTbl;
+}
+
+function rChiSo(){
+  // LIVE block
+  const la = D.liveAds, lt = D.liveTraffic;
+  const liveAdsCard = la ? card(`
+    <div class="flex items-center justify-between mb-3"><h3 class="font-semibold">🔴 Ads LIVE (Meta API)</h3><span class="text-[11px] text-slate-400">${la.ky}</span></div>
+    <div class="grid grid-cols-3 gap-3 text-center mb-3">
+      <div><div class="text-xl font-bold">${la.tongChi}tr</div><div class="text-xs text-slate-400">Tổng chi</div></div>
+      <div><div class="text-xl font-bold ${la.cpmTong<=18000?'text-amber-400':'text-rose-400'}">${fmt(la.cpmTong)}đ</div><div class="text-xs text-slate-400">CPM tổng</div></div>
+      <div><div class="text-xl font-bold">${fmt(la.tongReach)}</div><div class="text-xs text-slate-400">Reach</div></div>
+    </div>
+    <table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr><th class="text-left pb-2 pr-3">Tài khoản</th><th class="text-right pb-2 pr-3">Chi</th><th class="text-right pb-2 pr-3">CPM</th><th class="text-right pb-2">CTR</th></tr></thead><tbody>
+    ${la.accounts.map(a=>`<tr class="border-t border-slate-800"><td class="py-2 pr-3">${a.ten}</td><td class="py-2 pr-3 text-right">${a.chi}tr</td><td class="py-2 pr-3 text-right ${a.cpm<=9000?'text-emerald-400':a.cpm<=15000?'text-teal-400':a.cpm<=18000?'text-amber-400':'text-rose-400'}">${fmt(a.cpm)}đ</td><td class="py-2 text-right">${a.ctr}%</td></tr>`).join("")}
+    </tbody></table>
+    <div class="mt-2 text-[11px] text-slate-400">${la.note}</div>`,"mb-4") : "";
+
+  const liveTrafficCard = lt ? card(`
+    <div class="flex items-center justify-between mb-3"><h3 class="font-semibold">🔴 Traffic LIVE (GA4 · 30shine.com)</h3><span class="text-[11px] text-slate-400">${lt.ky}</span></div>
+    <div class="text-center mb-3"><span class="text-2xl font-bold">${fmt(lt.tong)}</span><span class="text-xs text-slate-400"> ss tổng</span></div>
+    ${lt.channels.map(c=>{const p=Math.round(c.ss/lt.tong*100);return `<div class="mb-1.5"><div class="flex justify-between text-xs mb-0.5"><span class="${c.canhBao?'text-rose-400 font-medium':'text-slate-300'}">${c.ten}${c.canhBao?' ⚠':''}</span><span class="text-slate-400">${fmt(c.ss)} (${p}%)</span></div><div class="h-1.5 rounded-full bg-slate-800 overflow-hidden"><div class="h-full ${c.canhBao?'bg-rose-500':'bg-cyan-500'}" style="width:${p}%"></div></div></div>`;}).join("")}
+    <div class="mt-2 text-[11px] text-slate-400">${lt.note}</div>`,"mb-4") : "";
+
+  const liveRow = (liveAdsCard||liveTrafficCard) ? `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">${liveAdsCard}${liveTrafficCard}</div>` : "";
+
+  const tierTbl = (title,arr)=>card(`<h3 class="font-semibold mb-3">${title}</h3>
+    <table class="w-full text-sm"><tbody>${arr.map(t=>`<tr class="border-t border-slate-800">
+      <td class="py-2 pr-3 font-medium whitespace-nowrap">${t.tier}</td>
+      <td class="py-2 pr-3 text-slate-400">${t.dieuKien}</td>
+      <td class="py-2 text-slate-300">${t.action}</td></tr>`).join("")}</tbody></table>`);
+
+  const adsRows = D.adsTop.map(a=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3">${a.ten}</td>
+    <td class="py-2 pr-3">${chip(a.tuyen,"bg-slate-700/50 text-slate-300")}</td>
+    <td class="py-2 pr-3 text-right">${a.chi}tr</td>
+    <td class="py-2 text-right ${a.cpm<=9000?'text-emerald-400':a.cpm<=15000?'text-teal-400':a.cpm<=18000?'text-amber-400':'text-rose-400'}">${fmt(a.cpm)}đ</td></tr>`).join("");
+  const adsTbl = card(`<h3 class="font-semibold mb-3">Top ads theo chi tiêu (màu = tier CPM)</h3>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
+      <th class="text-left pb-2 pr-3">Quảng cáo</th><th class="text-left pb-2 pr-3">Tuyến</th><th class="text-right pb-2 pr-3">Chi</th><th class="text-right pb-2">CPM</th></tr></thead><tbody>${adsRows}</tbody></table></div>`,"mb-4");
+
+  const tb = D.trafficBaseline;
+  const baseCard = card(`<h3 class="font-semibold mb-3">Baseline traffic (Cty 1 · T4/2026)</h3>
+    <div class="grid grid-cols-2 gap-3 text-center">
+      <div><div class="text-xl font-bold">${tb.cty1Chi}tr</div><div class="text-xs text-slate-400">Chi tiêu</div></div>
+      <div><div class="text-xl font-bold ${tb.cty1CPM<=18000?'text-amber-400':'text-rose-400'}">${fmt(tb.cty1CPM)}đ</div><div class="text-xs text-slate-400">CPM TB</div></div>
+      <div><div class="text-xl font-bold">${fmt(tb.cty1Reach)}</div><div class="text-xs text-slate-400">Reach</div></div>
+      <div><div class="text-xl font-bold">${fmt(tb.cty1VideoView)}</div><div class="text-xs text-slate-400">Video view</div></div>
+    </div><div class="mt-3 text-[11px] text-slate-400">${tb.note}</div>`,"mb-4");
+
+  const dxRows = D.deXuat.map(d=>`<div class="flex gap-3 py-2 border-t border-slate-800">
+    <div>${chip(d.uuTien, d.uuTien==='Cao'?'bg-rose-500/20 text-rose-300':'bg-amber-500/20 text-amber-300')}</div>
+    <div class="flex-1"><div class="text-sm">${d.noiDung}</div><div class="text-[11px] text-slate-500 mt-0.5">Căn cứ: ${d.canCu}</div></div></div>`).join("");
+  const dxCard = card(`<h3 class="font-semibold mb-2">Đề xuất thực tế (dựa trên số ads + traffic)</h3>${dxRows}`);
+
+  return liveRow + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">${tierTbl("Tier Facebook",D.adsTiers.facebook)}${tierTbl("Tier TikTok",D.adsTiers.tiktok)}</div>`
+    + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4"><div>${adsTbl}</div><div>${baseCard}</div></div>`
+    + dxCard;
+}
+
+function rDanhGia(){
+  return `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">` + D.danhGia.map(d=>card(`
+    <div class="flex items-start justify-between gap-2">
+      <div class="font-semibold">${d.nd}</div>
+      <span class="font-mono text-cyan-400 text-sm shrink-0">${d.demand}</span>
+    </div>
+    <div class="text-amber-400 text-sm mt-1">${stars(d.sao)}</div>
+    <div class="mt-2 text-sm text-slate-300"><span class="text-slate-500">Đánh giá:</span> ${d.danhGia}</div>
+    <div class="mt-2 text-sm text-emerald-300/90"><span class="text-slate-500">Đề xuất:</span> ${d.deXuat}</div>
+  `)).join("") + `</div>`;
+}
+
+/* ---------- ROUTER ---------- */
+const RENDER = {tongquan:rTongQuan, content:rContent, seo:rSeo, chiso:rChiSo, danhgia:rDanhGia};
+let chartRef=null;
+function show(id){
+  document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.id===id));
+  const tab = TABS.find(t=>t.id===id);
+  document.getElementById("pageTitle").textContent = tab.ten.replace(/^\d+ · /,"");
+  const c = document.getElementById("content");
+  c.className="p-6 fade"; c.innerHTML = RENDER[id]();
+  if(id==="seo") drawSeoChart();
+  location.hash = id;
+}
+function drawSeoChart(){
+  const ctx=document.getElementById("seoChart"); if(!ctx)return;
+  if(chartRef) chartRef.destroy();
+  chartRef=new Chart(ctx,{type:"doughnut",data:{
+    labels:D.seoClusters.map(c=>c.ten.split(" (")[0]),
+    datasets:[{data:D.seoClusters.map(c=>c.tyTrong),backgroundColor:["#f43f5e","#06b6d4","#14b8a6","#64748b"],borderColor:"#0f172a",borderWidth:2}]
+  },options:{plugins:{legend:{position:"bottom",labels:{color:"#cbd5e1",font:{size:11},boxWidth:12}}},cutout:"58%"}});
+}
+
+/* ---------- INIT ---------- */
+function init(){
+  if(!D){document.getElementById("content").innerHTML='<div class="text-rose-400">Lỗi: không tải được data.js</div>';return;}
+  document.getElementById("metaKy").textContent = D.meta.ky;
+  document.getElementById("metaCapNhat").textContent = "Cập nhật: "+D.meta.capNhat;
+  document.getElementById("metaNote").textContent = D.meta.ghiChu;
+  const nav=document.getElementById("nav");
+  nav.innerHTML = TABS.map(t=>`<button data-id="${t.id}" class="nav-btn text-left px-3 py-2 rounded-lg hover:bg-slate-800 transition flex items-center gap-2"><span>${t.icon}</span><span>${t.ten}</span></button>`).join("");
+  nav.querySelectorAll(".nav-btn").forEach(b=>b.onclick=()=>show(b.dataset.id));
+  const start = (location.hash||"#tongquan").slice(1);
+  show(TABS.find(t=>t.id===start)?start:"tongquan");
+}
+init();
+</script>
+</body>
+</html>
