@@ -158,35 +158,55 @@ function rContent(){
 }
 
 function rSeo(){
-  const t = D.seoTargets;
-  const top = card(`
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-      <div><div class="text-2xl font-bold text-rose-400">${fmt(t.t5Actual)}</div><div class="text-xs text-slate-400">T5 actual (ss/tháng)</div></div>
-      <div><div class="text-2xl font-bold text-cyan-400">${t.t6Target}</div><div class="text-xs text-slate-400">T6 target</div></div>
-      <div><div class="text-2xl font-bold text-slate-300">${t.q3Target}</div><div class="text-xs text-slate-400">Mốc Q3</div></div>
-      <div><div class="text-2xl font-bold text-emerald-400">${t.engagementRate}%</div><div class="text-xs text-slate-400">Engagement (target ${t.engagementTarget}%)</div></div>
-    </div>`,"mb-4");
+  const t=D.seoTargets;
+  const top = card(`<div class="grid grid-cols-3 gap-4 text-center">
+      <div><div class="text-2xl font-bold text-cyan-400">${fmt(t.sessions)}</div><div class="text-xs text-slate-400">Sessions /discovers (baseline ${t.baseline})</div></div>
+      <div><div class="text-2xl font-bold">${t.baiLive}</div><div class="text-xs text-slate-400">Bài live cuối T6</div></div>
+      <div><div class="text-2xl font-bold text-emerald-400">≥${t.er}%</div><div class="text-xs text-slate-400">Engagement Rate</div></div>
+    </div><div class="mt-2 text-[11px] text-slate-400">${t.note}</div>`,"mb-4");
 
-  const kwRows = D.seoKeywords.map(k=>`<tr class="border-t border-slate-800">
-    <td class="py-2 pr-3">${k.kw}</td>
-    <td class="py-2 pr-3 text-center">${k.rank?`<span class="font-bold ${k.rank<=5?'text-emerald-400':'text-amber-400'}">#${k.rank}</span>`:'<span class="text-rose-400">—</span>'}</td>
-    <td class="py-2 pr-3 text-slate-400">${k.cluster}</td>
-    <td class="py-2">${chip(k.trangThai, k.rank?'bg-emerald-500/20 text-emerald-300':'bg-rose-500/20 text-rose-300')}</td></tr>`).join("");
-  const kwTbl = card(`<h3 class="font-semibold mb-3">Keyword & rank hiện tại vs mục tiêu</h3>
+  const wRows = D.seoWeekly.map(w=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3 font-medium">${w.tuan}</td><td class="py-2 pr-3 text-slate-400 whitespace-nowrap">${w.period}</td>
+    <td class="py-2 pr-3 text-right">${fmt(w.target)}</td>
+    <td class="py-2 pr-3 text-right">${w.actual==null?'<span class="text-slate-600">—</span>':fmt(w.actual)}</td>
+    <td class="py-2 text-slate-400">${w.ghiChu}</td></tr>`).join("");
+  const wTbl = card(`<h3 class="font-semibold mb-3">Tiến độ tuần (sessions target → actual)</h3>
     <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
-      <th class="text-left pb-2 pr-3">Keyword</th><th class="pb-2 pr-3">Rank</th><th class="text-left pb-2 pr-3">Cluster</th><th class="text-left pb-2">Trạng thái</th></tr></thead><tbody>${kwRows}</tbody></table></div>`,"mb-4");
+      <th class="text-left pb-2 pr-3">Tuần</th><th class="text-left pb-2 pr-3">Kỳ</th><th class="text-right pb-2 pr-3">Target</th><th class="text-right pb-2 pr-3">Actual</th><th class="text-left pb-2">Ghi chú</th></tr></thead><tbody>${wRows}</tbody></table></div>`,"mb-4");
+  const chartCard = card(`<h3 class="font-semibold mb-3">Sessions: target tuần vs actual</h3><div class="relative h-56"><canvas id="seoChart"></canvas></div>`,"mb-4");
 
-  const artRows = D.seoArticles.map(a=>`<tr class="border-t border-slate-800">
-    <td class="py-2 pr-3 font-medium">${a.ten}</td>
-    <td class="py-2 pr-3 text-slate-400">${a.ngay||'—'}</td>
-    <td class="py-2 pr-3">${chip(a.pillar,"bg-slate-700/50 text-slate-300")}</td>
-    <td class="py-2">${chip(a.trangThai, a.trangThai==='Publish'?'bg-emerald-500/20 text-emerald-300':a.trangThai==='Chưa viết'?'bg-rose-500/20 text-rose-300':'bg-amber-500/20 text-amber-300')}</td></tr>`).join("");
-  const artTbl = card(`<h3 class="font-semibold mb-3">Bài viết — đã / đang / chưa</h3>
+  const hsRows = D.seoHieuSuat.map(h=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3 font-medium">${h.ten}</td><td class="py-2 pr-3 text-slate-400">${h.do}</td>
+    <td class="py-2 pr-3 text-center text-slate-400">${h.baseline}</td>
+    <td class="py-2 pr-3 text-cyan-300">${h.target}</td>
+    <td class="py-2 text-right">${h.actual==null?'<span class="text-slate-600">—</span>':fmt(h.actual)}</td></tr>`).join("");
+  const hsTbl = card(`<h3 class="font-semibold mb-3">Hiệu suất — chỉ số ngoài sessions</h3>
     <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
-      <th class="text-left pb-2 pr-3">Bài</th><th class="text-left pb-2 pr-3">Ngày</th><th class="text-left pb-2 pr-3">Pillar</th><th class="text-left pb-2">Trạng thái</th></tr></thead><tbody>${artRows}</tbody></table></div>`);
+      <th class="text-left pb-2 pr-3">Chỉ số</th><th class="text-left pb-2 pr-3">Đo bằng</th><th class="pb-2 pr-3">Baseline</th><th class="text-left pb-2 pr-3">Target</th><th class="text-right pb-2">Actual</th></tr></thead><tbody>${hsRows}</tbody></table></div>`,"mb-4");
 
-  const clusterCard = card(`<h3 class="font-semibold mb-3">Phân bổ cluster (24 bài T5–T10)</h3><div class="relative h-56"><canvas id="seoChart"></canvas></div>`,"mb-4");
-  return top + `<div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4"><div class="lg:col-span-2">${kwTbl}</div>${clusterCard}</div>` + artTbl;
+  const stColor = s => s==='published'?'bg-emerald-500/20 text-emerald-300':s==='in_progress'?'bg-amber-500/20 text-amber-300':s==='scheduled'?'bg-cyan-500/20 text-cyan-300':'bg-slate-600/30 text-slate-300';
+  const aRows = D.seoArticles.map(a=>`<tr class="border-t border-slate-800 align-top" style="border-left:3px solid ${demandColor(a.demand)}">
+    <td class="py-2 pr-3 text-slate-500">${a.n}</td>
+    <td class="py-2 pr-3 whitespace-nowrap">${a.tuan}</td>
+    <td class="py-2 pr-3 font-medium">${a.wc?'⚽ ':''}${a.ten}${a.note?`<div class="text-[11px] text-amber-400">${a.note}</div>`:''}</td>
+    <td class="py-2 pr-3 whitespace-nowrap"><span class="text-[11px]" style="color:${demandColor(a.demand)}">${demandDot(a.demand)}${a.demand}</span></td>
+    <td class="py-2 pr-3 text-slate-400">${a.kw} <span class="text-slate-600">(${a.vol})</span></td>
+    <td class="py-2 pr-3 text-slate-500">${a.loai}</td>
+    <td class="py-2">${chip(a.status, stColor(a.status))}</td></tr>`).join("");
+  const aTbl = card(`<h3 class="font-semibold mb-3">9 bài SEO T6 — keyword · demand · status</h3>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
+      <th class="pb-2 pr-3">#</th><th class="text-left pb-2 pr-3">Tuần</th><th class="text-left pb-2 pr-3">Tiêu đề</th><th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Keyword (vol)</th><th class="text-left pb-2 pr-3">Loại</th><th class="text-left pb-2">Status</th></tr></thead><tbody>${aRows}</tbody></table></div>`,"mb-4");
+
+  const pColor = p => p==='P0'?'bg-rose-500/20 text-rose-300':p==='P1'?'bg-amber-500/20 text-amber-300':'bg-slate-600/30 text-slate-300';
+  const techRows = D.seoTechnical.map(x=>`<tr class="border-t border-slate-800">
+    <td class="py-2 pr-3">${chip(x.p,pColor(x.p))}</td>
+    <td class="py-2 pr-3">${x.viec}</td><td class="py-2 pr-3 text-slate-400 whitespace-nowrap">${x.owner}</td>
+    <td class="py-2 text-slate-400 whitespace-nowrap">${x.deadline}</td></tr>`).join("");
+  const techTbl = card(`<h3 class="font-semibold mb-3">Technical checklist (P0 phải xong trước 7/6 = điều kiện tracking)</h3>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
+      <th class="text-left pb-2 pr-3">Ưu tiên</th><th class="text-left pb-2 pr-3">Việc</th><th class="text-left pb-2 pr-3">Owner</th><th class="text-left pb-2">Deadline</th></tr></thead><tbody>${techRows}</tbody></table></div>`);
+
+  return top + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">${wTbl}${chartCard}</div>` + hsTbl + aTbl + techTbl;
 }
 
 function rChiSo(){
@@ -341,9 +361,11 @@ function drawTrangChart(){
     scales:{x:{grid:{color:"#1e293b"}},y:{grid:{color:"#1e293b"}}}}});
 }
 function drawSeoChart(){
-  mkChart("seoChart",{type:"doughnut",data:{labels:D.seoClusters.map(c=>c.ten.split(" (")[0]),
-    datasets:[{data:D.seoClusters.map(c=>c.tyTrong),backgroundColor:["#f43f5e","#06b6d4","#14b8a6","#64748b"],borderColor:"#0f172a",borderWidth:2}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom",labels:{color:"#cbd5e1",boxWidth:12}}},cutout:"58%"}});
+  const w=D.seoWeekly||[];
+  mkChart("seoChart",{type:"bar",data:{labels:w.map(x=>x.tuan),
+    datasets:[{label:"Target",data:w.map(x=>x.target),backgroundColor:"#0e7490",borderRadius:4},
+              {label:"Actual",data:w.map(x=>x.actual),backgroundColor:"#06b6d4",borderRadius:4}]},
+    options:{...axisOpts,plugins:{legend:{display:true,labels:{color:"#cbd5e1",boxWidth:12}}},scales:{x:{grid:{display:false}},y:{grid:{color:"#1e293b"}}}}});
 }
 
 /* ---------- INIT ---------- */

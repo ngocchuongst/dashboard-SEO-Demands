@@ -55,9 +55,9 @@ window.DASHBOARD_DATA = {
     { ten: "Post kênh dư luận", target: 18, actual: 0, donVi: "bài", note: "Threads 5 + TikTok 3 + Facebook 10. Người làm: Chương.", nguon: "Mục tiêu" },
     { ten: "Engagement rate", target: 1, actual: null, donVi: "%", note: "Mục tiêu tỷ lệ tương tác ≥1%.", nguon: "Mục tiêu" },
     { ten: "CPA (post gắn ads)", target: 21, actual: 18.8, donVi: "K (đạt khi ≤)", note: "Mục tiêu <21K. Campaign purchase chính đang chạy CPA 18.8K (8.212 đơn) → ĐẠT.", nguon: "Mục tiêu + Meta live", thapTotHon: true },
-    { ten: "SEO traffic /discover", target: 500, actual: 155, donVi: "ss/tháng", note: "T5 actual 155. Target T6 400–600.", nguon: "SEO_FINAL_REPORT_T5" },
-    { ten: "SEO Entity Score", target: 20, actual: 0, donVi: "điểm", note: "Schema chưa deploy.", nguon: "SEO_FINAL_REPORT_T5" },
-    { ten: "Bài Pillar Insecurity", target: 4, actual: 0, donVi: "bài", note: "Chưa có bài nào.", nguon: "SEO_MASTER_PLAN" },
+    { ten: "SEO sessions /discovers", target: 510, actual: 0, donVi: "ss/tháng", note: "Baseline 0 (blog mới từ 5/2026). Lộ trình tuần: W23=30 → W24=80 → W25=150 → W26=250.", nguon: "SEO PLAN T6" },
+    { ten: "Bài SEO live", target: 9, actual: 4, donVi: "bài", note: "4 bài W22 đã publish; còn 5 bài W23–W26 (1 in-progress, 1 scheduled, 3 pending).", nguon: "SEO PLAN T6" },
+    { ten: "SEO Engagement Rate", target: 65, actual: null, donVi: "%", note: "Đo trong GA4. Lộ trình ER tuần: 60 → 62 → 65 → 65%.", nguon: "SEO PLAN T6" },
   ],
 
   /* ---------- 2. CONTENT THEO LÔ ---------- */
@@ -93,31 +93,42 @@ window.DASHBOARD_DATA = {
     { ngay: "26/6", postGoc: "Tan tầm tắc đường: về thẳng nhà hay 'trốn' 1 tiếng? Vợ nghĩ gì?", demand: "Tan làm", kenh: "FB", trangThai: "Cần làm" },
   ],
 
-  /* ---------- 3. SEO ---------- */
-  seoKeywords: [
-    { kw: "dịch vụ ráy tai an toàn", rank: 6, cluster: "USP (lấy ráy tai)", trangThai: "Quick win" },
-    { kw: "lấy ráy tai nam giới tốt nhất", rank: null, cluster: "USP", trangThai: "Chưa top 10" },
-    { kw: "nam công sở giờ trưa đi đâu relax", rank: null, cluster: "Escape/Relax", trangThai: "Chưa top 10" },
-    { kw: "trốn áp lực công việc 45 phút", rank: null, cluster: "Escape/Relax", trangThai: "Chưa top 10" },
-    { kw: "kiểu tóc nam văn phòng", rank: null, cluster: "Transition", trangThai: "Chưa top 10" },
-    { kw: "giải pháp cho nam bị hói", rank: null, cluster: "Insecurity", trangThai: "Chưa top 10" },
-    { kw: "nam 35 tuổi trông trẻ ra", rank: null, cluster: "Insecurity", trangThai: "Chưa top 10" },
-    { kw: "cắt tóc nam Hà Nội", rank: null, cluster: "Transactional", trangThai: "Chưa top 10" },
-    { kw: "salon tóc nam tốt nhất", rank: null, cluster: "Transactional", trangThai: "Chưa top 10" },
+  /* ---------- 3. SEO (SEO PLAN T6/2026) ---------- */
+  seoTargets: {
+    sessions: 510, baseline: 0, baiLive: 9, er: 65,
+    note: "Blog /discovers/ bắt đầu từ 0 (5/2026) — chưa authority/backlink. Target 510 là moderate-optimistic.",
+  },
+  seoWeekly: [
+    { tuan: "W23", period: "1–7/6", target: 30, actual: null, ghiChu: "5 bài · ER 60% · bài vừa index, GSC chưa setup" },
+    { tuan: "W24", period: "8–14/6", target: 80, actual: null, ghiChu: "6 bài · ER 62% · WC khai mạc 11/6 boost keyword" },
+    { tuan: "W25", period: "15–21/6", target: 150, actual: null, ghiChu: "7 bài · ER 65% · bài bắt đầu rank" },
+    { tuan: "W26", period: "22–28/6", target: 250, actual: null, ghiChu: "9 bài · ER 65% · footprint đầy đủ" },
   ],
-  seoClusters: [
-    { ten: "Insecurity (rụng tóc + trẻ hóa)", tyTrong: 33, soBai: 8, note: "Pillar lớn nhất — CHƯA có bài" },
-    { ten: "Hybrid (tai ngứa + self-care)", tyTrong: 25, soBai: 6, note: "" },
-    { ten: "Escape / Relax", tyTrong: 21, soBai: 5, note: "" },
-    { ten: "Transition sự nghiệp", tyTrong: 21, soBai: 5, note: "" },
+  seoHieuSuat: [
+    { ten: "Branded search 30Shine", do: "GSC: kw chứa '30shine'", baseline: "0", target: "≥ 25 clicks", actual: null },
+    { ten: "Engagement time/session", do: "GA4: avg engagement time", baseline: "—", target: "≥ 2 phút", actual: null },
+    { ten: "GSC impression /discovers/", do: "GSC: impressions total", baseline: "0", target: "≥ 5.000", actual: null },
   ],
   seoArticles: [
-    { ten: "Thera Studio: Gội Dưỡng Sinh & Massage CVG cho nam", ngay: "2026-05-31", trangThai: "Publish", pillar: "Escape" },
-    { ten: "Du Lịch 45 Phút — Shine Combo 125K", ngay: "2026-06-01", trangThai: "Schema sẵn, chưa đủ nội dung", pillar: "Escape" },
-    { ten: "Hack 7 tuổi với 1 lần cắt tóc (nam 35–45)", ngay: null, trangThai: "Chưa viết", pillar: "Insecurity" },
-    { ten: "Rụng tóc nam tuổi 30 — nguyên nhân + giải pháp", ngay: null, trangThai: "Chưa viết", pillar: "Insecurity" },
+    { n: 1, tuan: "W22", loai: "Pillar", ten: "Kiểu tóc nam đẹp 2026 — 20 kiểu hot nhất", demand: "Lên Phong Độ", kw: "kiểu tóc nam đẹp 2026", vol: "3.000+", wc: false, status: "published" },
+    { n: 2, tuan: "W22", loai: "Pillar", ten: "Gội đầu massage thư giãn — trải nghiệm 30Shine", demand: "Trạm Sạc", kw: "gội đầu massage thư giãn nam", vol: "1.500", wc: false, status: "published" },
+    { n: 3, tuan: "W22", loai: "Supporting", ten: "Review 30Shine giá bao nhiêu — có đáng tiền?", demand: "Đáng Đồng Tiền", kw: "30shine giá bao nhiêu", vol: "2.000", wc: false, status: "published" },
+    { n: 4, tuan: "W22", loai: "Supporting", ten: "Thera Studio — massage cổ vai gáy dân VP", demand: "Trạm Phục Hồi", kw: "massage cổ vai gáy dân văn phòng", vol: "800", wc: false, status: "published" },
+    { n: 5, tuan: "W23", loai: "Supporting", ten: "Đau cổ vai gáy dân VP — 45 phút không cần thuốc", demand: "Trạm Phục Hồi", kw: "đau cổ vai gáy dân văn phòng", vol: "2.500", wc: false, status: "in_progress" },
+    { n: 6, tuan: "W24", loai: "Pillar", ten: "Kiểu tóc Spiky Mullet nam 2026 (angle WC)", demand: "Lên Phong Độ", kw: "kiểu tóc spiky mullet nam", vol: "3.000+", wc: true, status: "scheduled", note: "Publish TRƯỚC 9/6" },
+    { n: 7, tuan: "W25", loai: "Supporting WC", ten: "Thức đêm xem WC mệt — cách lấy lại phong độ", demand: "Trạm Sạc", kw: "mệt mỏi sau thức đêm xem bóng đá", vol: "1.000+", wc: true, status: "pending" },
+    { n: 8, tuan: "W26", loai: "Supporting", ten: "Tóc mỏng rụng nhiều — phục hồi nang tóc 8 tuần", demand: "Cứu Tóc Mỏng", kw: "tóc mỏng rụng nhiều nam phải làm sao", vol: "1.200", wc: false, status: "pending" },
+    { n: 9, tuan: "W26", loai: "Supporting·Local", ten: "Cắt tóc nam gần đây uy tín — top HCM & HN", demand: "Đáng Đồng Tiền", kw: "cắt tóc nam gần đây", vol: "4.000+", wc: false, status: "pending", note: "Gắn Google Maps + schema LocalBusiness" },
   ],
-  seoTargets: { t5Actual: 155, t6Target: "400–600", q3Target: "2.000", t10Target: "4.000–8.000", engagementRate: 67.1, engagementTarget: 60 },
+  seoTechnical: [
+    { id: "T1", p: "P0", viec: "Submit sitemap blog lên GSC + verify property", owner: "Chương + IT", deadline: "2/6" },
+    { id: "T2", p: "P0", viec: "Fix GA4 conversion event ga4_dat_lich_hen", owner: "Chương → IT", deadline: "2/6" },
+    { id: "T3", p: "P0", viec: "Verify GA4 tag fire đúng cho /discovers/*", owner: "Chương + IT", deadline: "2/6" },
+    { id: "T4", p: "P1", viec: "Gắn UTM cho tất cả link push app/zalo/sms", owner: "Chương → Dev", deadline: "5/6" },
+    { id: "T5", p: "P1", viec: "Setup custom event GA4 (click_dat_lich + scroll_75)", owner: "Chương", deadline: "7/6" },
+    { id: "T6", p: "P1", viec: "Setup UTM Builder template + test đo booking", owner: "Chương", deadline: "7/6" },
+    { id: "T7", p: "P2", viec: "Backend log seo_ref vào booking DB", owner: "Backend dev", deadline: "14/6" },
+  ],
 
   /* ---------- 4. CHỈ SỐ ĐỀ XUẤT (ADS + TRAFFIC) ---------- */
   adsTiers: {
