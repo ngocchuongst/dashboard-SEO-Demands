@@ -121,13 +121,13 @@ window.DASHBOARD_DATA = {
     { n: 9, tuan: "W26", loai: "Supporting·Local", ten: "Cắt tóc nam gần đây uy tín — top HCM & HN", demand: "Đáng Đồng Tiền", kw: "cắt tóc nam gần đây", vol: "4.000+", wc: false, status: "pending", note: "Gắn Google Maps + schema LocalBusiness" },
   ],
   seoTechnical: [
-    { id: "T1", p: "P0", viec: "Submit sitemap blog lên GSC + verify property", owner: "Chương + IT", deadline: "2/6" },
-    { id: "T2", p: "P0", viec: "Fix GA4 conversion event ga4_dat_lich_hen", owner: "Chương → IT", deadline: "2/6" },
-    { id: "T3", p: "P0", viec: "Verify GA4 tag fire đúng cho /discovers/*", owner: "Chương + IT", deadline: "2/6" },
-    { id: "T4", p: "P1", viec: "Gắn UTM cho tất cả link push app/zalo/sms", owner: "Chương → Dev", deadline: "5/6" },
-    { id: "T5", p: "P1", viec: "Setup custom event GA4 (click_dat_lich + scroll_75)", owner: "Chương", deadline: "7/6" },
-    { id: "T6", p: "P1", viec: "Setup UTM Builder template + test đo booking", owner: "Chương", deadline: "7/6" },
-    { id: "T7", p: "P2", viec: "Backend log seo_ref vào booking DB", owner: "Backend dev", deadline: "14/6" },
+    { id: "T1", p: "P0", viec: "Submit sitemap blog lên GSC + verify property", owner: "Chương + IT", deadline: "2/6", status: null },
+    { id: "T2", p: "P0", viec: "Fix GA4 conversion event ga4_dat_lich_hen", owner: "Chương → IT", deadline: "2/6", status: null },
+    { id: "T3", p: "P0", viec: "Verify GA4 tag fire đúng cho /discovers/*", owner: "Chương + IT", deadline: "2/6", status: null },
+    { id: "T4", p: "P1", viec: "Gắn UTM cho tất cả link push app/zalo/sms", owner: "Chương → Dev", deadline: "5/6", status: null },
+    { id: "T5", p: "P1", viec: "Setup custom event GA4 (click_dat_lich + scroll_75)", owner: "Chương", deadline: "7/6", status: null },
+    { id: "T6", p: "P1", viec: "Setup UTM Builder template + test đo booking", owner: "Chương", deadline: "7/6", status: null },
+    { id: "T7", p: "P2", viec: "Backend log seo_ref vào booking DB", owner: "Backend dev", deadline: "14/6", status: null },
   ],
 
   /* ---------- 4. CHỈ SỐ ĐỀ XUẤT (ADS + TRAFFIC) ---------- */

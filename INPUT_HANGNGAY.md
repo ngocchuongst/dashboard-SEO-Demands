@@ -1,57 +1,96 @@
-# 📝 NHẬP LIỆU HÀNG NGÀY — DASHBOARD 30SHINE
+# 📝 NHẬP LIỆU & CẬP NHẬT HIỆN TRẠNG — DASHBOARD 30SHINE
 
-> **Cách dùng:** Mỗi sáng điền vào các mục dưới → lưu file → nhắn Claude **"cập nhật dashboard"**.
-> Claude sẽ đọc file này, cập nhật `data.js`, m chỉ cần **F5** trình duyệt.
+> **Cách dùng:** điền vào các mục dưới → lưu file → nhắn Claude **"cập nhật dashboard"**.
+> Claude đọc file này, ghi vào `data.js`, m chỉ cần **F5** trình duyệt.
 >
-> - Dòng bắt đầu bằng `#` là ghi chú/hướng dẫn — **KHÔNG cần xoá**, Claude bỏ qua.
-> - Điền mỗi mục 1 dòng, các cột cách nhau bằng dấu `|` (đúng thứ tự ghi ở tiêu đề).
-> - Không có gì mới thì để trống mục đó cũng được.
+> - Dòng bắt đầu bằng `#` là hướng dẫn/ví dụ — **KHÔNG cần xoá**, Claude bỏ qua.
+> - Mỗi dòng = 1 mục, các cột cách nhau bằng `|` (đúng thứ tự tiêu đề).
+> - Mục nào không có gì mới thì để trống.
+> - **Đây là nơi ghi HIỆN TRẠNG** — làm tới đâu cập nhật tới đó (status/actual).
 
 ---
 
-## 1. BÀI VIẾT MỚI (SEO)
-`tiêu đề | link | pillar (Insecurity/Hybrid/Escape/Transition) | trạng thái (Publish/Đang viết/Chưa viết) | ngày (YYYY-MM-DD)`
-
-# ví dụ (xoá dòng này khi điền thật):
-# Rụng tóc nam tuổi 30 — nguyên nhân & giải pháp | https://30shine.com/discover/rung-toc-nam-30 | Insecurity | Publish | 2026-06-10
-
-
-
----
-
-## 2. RANK KEYWORD CẬP NHẬT
-`keyword | rank (số, để trống nếu rớt top 10)`
+## 1. SEO — SESSIONS ACTUAL THEO TUẦN
+`tuần (W23/W24/W25/W26) | sessions actual | engagement rate % (nếu có)`
 
 # ví dụ:
-# dịch vụ ráy tai an toàn | 4
+# W23 | 28 | 61
 
 
 
 ---
 
-## 3. SỐ LIỆU MỤC TIÊU (điền số ĐÃ ĐẠT)
-`tên chỉ tiêu | số đạt`
+## 2. SEO — TRẠNG THÁI BÀI VIẾT (cập nhật khi đổi)
+`số bài (1-9) hoặc tên bài | trạng thái (published/in_progress/scheduled/pending) | link (nếu có)`
 
-# tên chỉ tiêu phải khớp tab Tổng quan, ví dụ:
+# ví dụ:
+# 5 | published | https://30shine.com/discovers/dau-co-vai-gay-dan-van-phong
+# 6 | scheduled |
+
+
+
+---
+
+## 3. SEO — TRẠNG THÁI TECHNICAL (T1–T7)
+`mã (T1..T7) | trạng thái (Xong / Đang làm / Chưa làm) | ghi chú`
+
+# ví dụ:
+# T1 | Xong | đã verify GSC 6/6
+# T2 | Đang làm | chờ IT
+
+
+
+---
+
+## 4. SEO — HIỆU SUẤT (branded search / eng time / impression)
+`chỉ số (branded/engtime/impression) | giá trị actual`
+
+# ví dụ:
+# branded | 12
+# impression | 3200
+
+
+
+---
+
+## 5. SỐ LIỆU MỤC TIÊU TỔNG QUAN (điền actual)
+`tên chỉ tiêu (khớp tab Tổng quan) | số đạt`
+
+# ví dụ:
+# Tổng số earned media | 5
+# Post kênh dư luận | 6
 # Video sản xuất (tổng tuyến) | 18
-# SEO traffic /discover | 240
-# Bài Pillar Insecurity | 1
 
 
 
 ---
 
-## 4. LÔ CONTENT CẬP NHẬT
-`tên lô | trạng thái mới (Plan/Đang quay/Đang chạy/Xong)`
+## 6. NỘI DUNG — TRẠNG THÁI & LINK BÀI
+`loại (tuyến/dư luận) | tên hoặc ngày | trạng thái mới | link bài`
 
 # ví dụ:
-# T6 — W1 (1–7/6) | Đang chạy
+# dư luận | 8/6 | Done | https://www.facebook.com/...
+# tuyến | Kênh Dư Luận | Đang chạy | https://...
 
 
 
 ---
 
-## 5. SỐ ADS / TRAFFIC (nếu m tự lấy từ Meta/GA4)
+## 7. SỐ LIỆU TRANG FACEBOOK (6 trang theo dõi)
+`tên trang | follower | reach (trong kỳ) | post (số bài) | engagement (%)`
+
+# 30Shine Official | 250000 | 1200000 | 45 | 3.2
+# Đàn Ông Bụi |  |  |  |
+# Tạp Chí Kinh Doanh Thời Đại |  |  |  |
+# Bản Lĩnh Đàn Ông |  |  |  |
+# Kinh Doanh Châu Á |  |  |  |
+# Kiến Thức Tinh Hoa |  |  |  |
+
+
+
+---
+
+## 8. SỐ ADS / TRAFFIC (nếu tự lấy từ Meta/GA4)
 `nguồn | chỉ số | giá trị`
 
 # ví dụ:
@@ -62,22 +101,7 @@
 
 ---
 
-## 7. SỐ LIỆU TRANG FACEBOOK (6 trang đang theo dõi)
-`tên trang | follower | reach (trong kỳ) | post (số bài) | engagement (%)`
-
-# tên trang khớp tab "Trang theo dõi", ví dụ:
-# 30Shine Official | 250000 | 1200000 | 45 | 3.2
-# Đàn Ông Bụi | 32000 | 180000 | 12 | 5.1
-# Tạp Chí Kinh Doanh Thời Đại |  |  |  |
-# Bản Lĩnh Đàn Ông |  |  |  |
-# Kinh Doanh Châu Á |  |  |  |
-# Kiến Thức Tinh Hoa |  |  |  |
-
-
-
----
-
-## 8. GHI CHÚ TỰ DO (gì cũng được — Claude đọc để hiểu bối cảnh)
+## 9. GHI CHÚ TỰ DO (gì cũng được — Claude đọc để hiểu bối cảnh)
 
 
 

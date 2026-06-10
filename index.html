@@ -198,13 +198,16 @@ function rSeo(){
       <th class="pb-2 pr-3">#</th><th class="text-left pb-2 pr-3">Tuần</th><th class="text-left pb-2 pr-3">Tiêu đề</th><th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Keyword (vol)</th><th class="text-left pb-2 pr-3">Loại</th><th class="text-left pb-2">Status</th></tr></thead><tbody>${aRows}</tbody></table></div>`,"mb-4");
 
   const pColor = p => p==='P0'?'bg-rose-500/20 text-rose-300':p==='P1'?'bg-amber-500/20 text-amber-300':'bg-slate-600/30 text-slate-300';
+  const stTask = s => !s?chip("Cần cập nhật","bg-slate-700/40 text-slate-400")
+    : chip(s, /xong|done|ok/i.test(s)?'bg-emerald-500/20 text-emerald-300':/đang/i.test(s)?'bg-amber-500/20 text-amber-300':'bg-rose-500/20 text-rose-300');
   const techRows = D.seoTechnical.map(x=>`<tr class="border-t border-slate-800">
     <td class="py-2 pr-3">${chip(x.p,pColor(x.p))}</td>
     <td class="py-2 pr-3">${x.viec}</td><td class="py-2 pr-3 text-slate-400 whitespace-nowrap">${x.owner}</td>
-    <td class="py-2 text-slate-400 whitespace-nowrap">${x.deadline}</td></tr>`).join("");
+    <td class="py-2 pr-3 text-slate-400 whitespace-nowrap">${x.deadline}</td>
+    <td class="py-2">${stTask(x.status)}</td></tr>`).join("");
   const techTbl = card(`<h3 class="font-semibold mb-3">Technical checklist (P0 phải xong trước 7/6 = điều kiện tracking)</h3>
     <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
-      <th class="text-left pb-2 pr-3">Ưu tiên</th><th class="text-left pb-2 pr-3">Việc</th><th class="text-left pb-2 pr-3">Owner</th><th class="text-left pb-2">Deadline</th></tr></thead><tbody>${techRows}</tbody></table></div>`);
+      <th class="text-left pb-2 pr-3">Ưu tiên</th><th class="text-left pb-2 pr-3">Việc</th><th class="text-left pb-2 pr-3">Owner</th><th class="text-left pb-2 pr-3">Deadline</th><th class="text-left pb-2">Trạng thái</th></tr></thead><tbody>${techRows}</tbody></table></div>`);
 
   return top + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">${wTbl}${chartCard}</div>` + hsTbl + aTbl + techTbl;
 }
