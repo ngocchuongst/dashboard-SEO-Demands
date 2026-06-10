@@ -17,7 +17,7 @@
 
 <div class="flex min-h-screen">
   <!-- SIDEBAR -->
-  <aside class="w-60 shrink-0 bg-slate-900 border-r border-slate-800 p-4 flex flex-col gap-1 sticky top-0 h-screen">
+  <aside id="sidebar" class="w-60 shrink-0 bg-slate-900 border-r border-slate-800 p-4 flex-col gap-1 top-0 h-screen z-30 hidden md:flex fixed md:sticky">
     <div class="flex items-center gap-2 mb-5 px-2">
       <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-400 to-teal-600 grid place-items-center font-black text-slate-950">30</div>
       <div><div class="font-bold leading-tight">30Shine</div><div class="text-[11px] text-slate-400 leading-tight">Marketing Dashboard</div></div>
@@ -30,8 +30,9 @@
 
   <!-- MAIN -->
   <main class="flex-1 min-w-0">
-    <header class="sticky top-0 z-10 bg-slate-950/80 backdrop-blur border-b border-slate-800 px-6 py-3 flex items-center justify-between gap-4">
-      <div class="min-w-0"><h1 id="pageTitle" class="text-lg font-bold leading-tight">Tổng quan</h1><div id="pageDesc" class="text-[12px] text-slate-400 leading-tight"></div></div>
+    <header class="sticky top-0 z-10 bg-slate-950/80 backdrop-blur border-b border-slate-800 px-4 md:px-6 py-3 flex items-center justify-between gap-3">
+      <button onclick="document.getElementById('sidebar').classList.toggle('hidden')" class="md:hidden text-slate-300 text-xl leading-none px-1" aria-label="Menu">☰</button>
+      <div class="min-w-0 flex-1"><h1 id="pageTitle" class="text-lg font-bold leading-tight">Tổng quan</h1><div id="pageDesc" class="text-[12px] text-slate-400 leading-tight"></div></div>
       <div id="metaNote" class="text-[11px] text-slate-400 max-w-xs text-right hidden lg:block shrink-0"></div>
     </header>
     <div id="content" class="p-6"><div class="text-slate-400">Đang tải dữ liệu…</div></div>
@@ -55,10 +56,21 @@ const statusChip = s => {
 const card = (inner,extra="") => `<div class="bg-slate-900 border border-slate-800 rounded-xl p-4 ${extra}">${inner}</div>`;
 const stars = n => "★".repeat(n)+"☆".repeat(5-n);
 
+/* màu theo demand — dùng xuyên các bảng/biểu đồ để truy vết */
+const DEMAND_COLORS = [["tour","#06b6d4"],["trưa","#f59e0b"],["thera","#a855f7"],["phục hồi","#a855f7"],["tan làm","#14b8a6"],["tóc","#f43f5e"],["level","#f43f5e"],["coder","#f43f5e"],["vp","#f43f5e"],["cross","#38bdf8"],["world cup","#38bdf8"]];
+function demandColor(s){ s=(s||"").toLowerCase(); for(const [k,c] of DEMAND_COLORS){ if(s.includes(k)) return c; } return "#64748b"; }
+function demandDot(s){ return `<span class="inline-block w-2 h-2 rounded-full mr-1.5 align-middle" style="background:${demandColor(s)}"></span>`; }
+
+/* chart registry — tạo/huỷ an toàn theo id canvas */
+const CHARTS = {};
+function mkChart(id,cfg){ const ctx=document.getElementById(id); if(!ctx||typeof Chart==="undefined")return; if(CHARTS[id])CHARTS[id].destroy(); CHARTS[id]=new Chart(ctx,cfg); }
+if(typeof Chart!=="undefined"){ Chart.defaults.color="#94a3b8"; Chart.defaults.font.family="system-ui,Segoe UI,Roboto,sans-serif"; Chart.defaults.font.size=11; }
+const axisOpts = {responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{color:"#94a3b8"},grid:{color:"#1e293b"}},y:{ticks:{color:"#94a3b8"},grid:{color:"#1e293b"}}}};
+
 const TABS = [
   {id:"tongquan", ten:"1 · Tổng quan", icon:"📊", mota:"Mục tiêu tháng & % đạt — Earned media, Ads, SEO"},
   {id:"trang",    ten:"2 · Trang theo dõi", icon:"📄", mota:"6 trang Facebook đang chạy — follower, reach, tăng trưởng theo ngày"},
-  {id:"content",  ten:"3 · Content theo lô", icon:"🎬", mota:"6 tuyến demand · tuyến sản xuất earned media · dư luận seeding"},
+  {id:"content",  ten:"3 · Nội dung theo Demand", icon:"🎬", mota:"6 tuyến demand · tuyến sản xuất earned media · dư luận seeding"},
   {id:"seo",      ten:"4 · SEO", icon:"🔍", mota:"Keyword & rank vs mục tiêu · cluster · bài viết"},
   {id:"chiso",    ten:"5 · Chỉ số đề xuất", icon:"📈", mota:"Số ads + traffic LIVE · tier CPM · đề xuất hành động"},
   {id:"danhgia",  ten:"6 · Đánh giá nội dung", icon:"✅", mota:"Đánh giá sơ bộ + đề xuất cho từng tuyến nội dung"},
@@ -86,7 +98,8 @@ function rTongQuan(){
   const isSeo = m => /SEO/i.test(m.nguon);
   const grid = arr => `<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">${arr.map(mkCard).join("")}</div>`;
   const head = t => `<div class="flex items-center gap-2 mb-3"><div class="w-1 h-4 rounded bg-cyan-400"></div><h2 class="text-xs font-semibold uppercase tracking-wide text-slate-300">${t}</h2></div>`;
-  return head("Earned Media & Ads") + grid(D.tongQuan.filter(m=>!isSeo(m)))
+  const chart = card(`<h3 class="font-semibold mb-3">% đạt mục tiêu (tổng quan)</h3><div class="relative h-72"><canvas id="tqChart"></canvas></div>`,"mb-6");
+  return chart + head("Earned Media & Ads") + grid(D.tongQuan.filter(m=>!isSeo(m)))
     + `<div class="mt-6">` + head("SEO") + grid(D.tongQuan.filter(isSeo)) + `</div>`;
 }
 
@@ -95,8 +108,8 @@ function rContent(){
     <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`,"mb-4");
   const uuChip = u => chip(u, /CAO/.test(u)?'bg-rose-500/20 text-rose-300':'bg-slate-600/30 text-slate-300');
 
-  const demandRows = D.demands.map(d=>`<tr class="border-t border-slate-800 align-top">
-    <td class="py-2 pr-3 font-medium">${d.ten}</td>
+  const demandRows = D.demands.map(d=>`<tr class="border-t border-slate-800 align-top ${/CAO/.test(d.uuTien)?'bg-slate-800/40':''}" style="border-left:3px solid ${demandColor(d.ten)}">
+    <td class="py-2 pr-3 font-medium">${demandDot(d.ten)}${d.ten}</td>
     <td class="py-2 pr-3 text-slate-400">${d.noiDau}</td>
     <td class="py-2 pr-3 text-teal-300">${d.concept}</td>
     <td class="py-2 pr-3 text-slate-400">${d.giaiPhap}</td>
@@ -113,7 +126,7 @@ function rContent(){
   const dlRows = D.duLuan.map(p=>`<tr class="border-t border-slate-800">
     <td class="py-2 pr-3 whitespace-nowrap">${p.ngay}</td>
     <td class="py-2 pr-3">${p.postGoc}</td>
-    <td class="py-2 pr-3">${chip(p.demand,"bg-cyan-500/20 text-cyan-300")}</td>
+    <td class="py-2 pr-3"><span class="text-[11px] px-2 py-0.5 rounded-full font-medium" style="background:${demandColor(p.demand)}22;color:${demandColor(p.demand)}">${p.demand}</span></td>
     <td class="py-2 pr-3 text-slate-400">${p.kenh}</td>
     <td class="py-2">${chip(p.trangThai, p.trangThai==='Done'?'bg-emerald-500/20 text-emerald-300':'bg-amber-500/20 text-amber-300')}</td></tr>`).join("");
 
@@ -122,7 +135,11 @@ function rContent(){
     + tbl("Tuyến sản xuất earned media (W2–W4)",
       `<th class="text-left pb-2 pr-3">Tuyến</th><th class="pb-2 pr-3">Số bài</th><th class="text-right pb-2 pr-3">Reach dự kiến</th><th class="text-left pb-2 pr-3">Concept</th><th class="text-left pb-2 pr-3">Người làm</th><th class="text-left pb-2">Ghi chú</th>`, sxRows)
     + tbl("Dư luận seeding (Chương) — bridge cho demand nào",
-      `<th class="text-left pb-2 pr-3">Ngày</th><th class="text-left pb-2 pr-3">Post gốc</th><th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Kênh</th><th class="text-left pb-2">Trạng thái</th>`, dlRows);
+      `<th class="text-left pb-2 pr-3">Ngày</th><th class="text-left pb-2 pr-3">Post gốc</th><th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Kênh</th><th class="text-left pb-2">Trạng thái</th>`, dlRows)
+    + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        ${card(`<h3 class="font-semibold mb-3">Reach dự kiến theo tuyến</h3><div class="relative h-56"><canvas id="reachChart"></canvas></div>`)}
+        ${card(`<h3 class="font-semibold mb-3">Dư luận seeding theo demand (số post)</h3><div class="relative h-56"><canvas id="dlChart"></canvas></div>`)}
+       </div>`;
 }
 
 function rSeo(){
@@ -200,22 +217,36 @@ function rChiSo(){
     <div>${chip(d.uuTien, d.uuTien==='Cao'?'bg-rose-500/20 text-rose-300':'bg-amber-500/20 text-amber-300')}</div>
     <div class="flex-1"><div class="text-sm">${d.noiDung}</div><div class="text-[11px] text-slate-500 mt-0.5">Căn cứ: ${d.canCu}</div></div></div>`).join("");
   const dxCard = card(`<h3 class="font-semibold mb-2">Đề xuất thực tế (dựa trên số ads + traffic)</h3>${dxRows}`);
+  const cpmChartCard = (la.campaigns&&la.campaigns.length)
+    ? card(`<h3 class="font-semibold mb-3">CPM campaign vs ngưỡng tier (xanh tốt → đỏ CUT)</h3><div class="relative h-48"><canvas id="cpmChart"></canvas></div>`,"mb-4") : "";
 
-  return liveRow + campTbl
+  return liveRow + campTbl + cpmChartCard
     + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">${tierTbl("Tier Facebook",D.adsTiers.facebook)}${tierTbl("Tier TikTok",D.adsTiers.tiktok)}</div>`
     + dxCard;
 }
 
+const VERDICT = s => s>=5?["SCALE / Ưu tiên cao","bg-emerald-500/20 text-emerald-300"]:s>=4?["DUY TRÌ","bg-cyan-500/20 text-cyan-300"]:["THEO DÕI","bg-amber-500/20 text-amber-300"];
 function rDanhGia(){
-  return `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">` + D.danhGia.map(d=>card(`
+  const items=[...D.danhGia].sort((a,b)=>b.sao-a.sao);
+  const demands=[...new Set(items.map(d=>d.demand))];
+  const filterBtns = `<div class="flex flex-wrap gap-2 mb-4">
+    <button onclick="filterDG('all')" data-f="all" class="dg-f text-xs px-3 py-1 rounded-full bg-cyan-600 text-white">Tất cả</button>
+    ${demands.map(dm=>`<button onclick="filterDG('${dm}')" data-f="${dm}" class="dg-f text-xs px-3 py-1 rounded-full bg-slate-800 text-slate-300 hover:bg-slate-700"><span class="inline-block w-2 h-2 rounded-full mr-1" style="background:${demandColor(dm)}"></span>${dm}</button>`).join("")}
+  </div>`;
+  const cards = items.map(d=>{ const [vTxt,vCls]=VERDICT(d.sao); return `<div class="dg-card bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-slate-700 transition" data-demand="${d.demand}" style="border-left:3px solid ${demandColor(d.demand)}">
     <div class="flex items-start justify-between gap-2">
       <div class="font-semibold">${d.nd}</div>
-      <span class="font-mono text-cyan-400 text-sm shrink-0">${d.demand}</span>
+      ${chip(vTxt,vCls)}
     </div>
-    <div class="text-amber-400 text-sm mt-1">${stars(d.sao)}</div>
+    <div class="flex items-center gap-2 mt-1"><span class="text-amber-400 text-sm">${stars(d.sao)}</span><span class="text-[11px] px-2 py-0.5 rounded-full font-medium" style="background:${demandColor(d.demand)}22;color:${demandColor(d.demand)}">${d.demand}</span></div>
     <div class="mt-2 text-sm text-slate-300"><span class="text-slate-500">Đánh giá:</span> ${d.danhGia}</div>
     <div class="mt-2 text-sm text-emerald-300/90"><span class="text-slate-500">Đề xuất:</span> ${d.deXuat}</div>
-  `)).join("") + `</div>`;
+  </div>`; }).join("");
+  return filterBtns + `<div id="dgGrid" class="grid grid-cols-1 lg:grid-cols-2 gap-4">${cards}</div>`;
+}
+function filterDG(f){
+  document.querySelectorAll(".dg-f").forEach(b=>{const on=b.dataset.f===f;b.className="dg-f text-xs px-3 py-1 rounded-full "+(on?"bg-cyan-600 text-white":"bg-slate-800 text-slate-300 hover:bg-slate-700");});
+  document.querySelectorAll(".dg-card").forEach(c=>{c.style.display=(f==="all"||c.dataset.demand===f)?"":"none";});
 }
 
 /* ---------- ROUTER ---------- */
@@ -252,7 +283,7 @@ function rTrang(){
 }
 
 const RENDER = {tongquan:rTongQuan, trang:rTrang, content:rContent, seo:rSeo, chiso:rChiSo, danhgia:rDanhGia};
-let chartRef=null;
+const DRAW = {tongquan:drawTongQuan, trang:drawTrangChart, content:drawContent, seo:drawSeoChart, chiso:drawChiSo};
 function show(id){
   document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.id===id));
   const tab = TABS.find(t=>t.id===id);
@@ -260,30 +291,44 @@ function show(id){
   document.getElementById("pageDesc").textContent = tab.mota || "";
   const c = document.getElementById("content");
   c.className="p-6 fade"; c.innerHTML = RENDER[id]();
-  if(id==="seo") drawSeoChart();
-  if(id==="trang") drawTrangChart();
+  if(DRAW[id]) DRAW[id]();
+  if(window.innerWidth<768) document.getElementById("sidebar").classList.add("hidden");
   location.hash = id;
 }
-let trangChartRef=null;
+function drawTongQuan(){
+  const items=D.tongQuan.map(m=>{ let p=pct(m.actual,m.target); if(m.thapTotHon&&m.actual!=null&&m.target)p=m.actual<=m.target?100:Math.round(m.target/m.actual*100); return {ten:m.ten,p}; });
+  mkChart("tqChart",{type:"bar",data:{labels:items.map(i=>i.ten),
+    datasets:[{data:items.map(i=>i.p==null?0:Math.min(i.p,100)),backgroundColor:items.map(i=>i.p==null?"#475569":i.p>=90?"#10b981":i.p>=50?"#f59e0b":"#f43f5e"),borderRadius:4}]},
+    options:{...axisOpts,indexAxis:"y",scales:{x:{max:100,ticks:{callback:v=>v+"%"},grid:{color:"#1e293b"}},y:{ticks:{color:"#cbd5e1"},grid:{display:false}}}}});
+}
+function drawContent(){
+  const ts=D.tuyenSanXuat||[];
+  mkChart("reachChart",{type:"bar",data:{labels:ts.map(t=>t.tuyen),datasets:[{data:ts.map(t=>t.reach),backgroundColor:"#06b6d4",borderRadius:4}]},
+    options:{...axisOpts,scales:{x:{grid:{display:false}},y:{ticks:{callback:v=>v>=1e6?(v/1e6)+"M":(v/1e3)+"K"},grid:{color:"#1e293b"}}}}});
+  const cnt={}; (D.duLuan||[]).forEach(p=>cnt[p.demand]=(cnt[p.demand]||0)+1);
+  const labels=Object.keys(cnt);
+  mkChart("dlChart",{type:"bar",data:{labels,datasets:[{data:labels.map(l=>cnt[l]),backgroundColor:labels.map(demandColor),borderRadius:4}]},
+    options:{...axisOpts,scales:{x:{grid:{display:false}},y:{ticks:{stepSize:1},grid:{color:"#1e293b"}}}}});
+}
+function drawChiSo(){
+  const c=(D.liveAds&&D.liveAds.campaigns)||[];
+  mkChart("cpmChart",{type:"bar",data:{labels:c.map(x=>x.ten.length>24?x.ten.slice(0,24)+"…":x.ten),
+    datasets:[{data:c.map(x=>x.cpm),backgroundColor:c.map(x=>x.cpm<=9000?"#10b981":x.cpm<=15000?"#14b8a6":x.cpm<=18000?"#f59e0b":"#f43f5e"),borderRadius:4}]},
+    options:{...axisOpts,indexAxis:"y",scales:{x:{ticks:{callback:v=>(v/1000)+"K"},grid:{color:"#1e293b"}},y:{ticks:{color:"#cbd5e1"},grid:{display:false}}}}});
+}
 function drawTrangChart(){
-  const ph=D.pageHistory; const ctx=document.getElementById("trangChart");
-  if(!ctx||!ph||!ph.dates||!ph.dates.length)return;
-  if(trangChartRef) trangChartRef.destroy();
+  const ph=D.pageHistory; if(!ph||!ph.dates||!ph.dates.length)return;
   const colors=["#06b6d4","#f43f5e","#14b8a6","#f59e0b","#a855f7","#64748b"];
-  trangChartRef=new Chart(ctx,{type:"line",data:{
-    labels:ph.dates,
-    datasets:ph.series.map((s,i)=>({label:s.ten,data:s.data,borderColor:colors[i%colors.length],backgroundColor:"transparent",borderWidth:2,tension:.3,pointRadius:2}))
-  },options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
-    plugins:{legend:{position:"bottom",labels:{color:"#cbd5e1",font:{size:11},boxWidth:12}}},
-    scales:{x:{ticks:{color:"#94a3b8",font:{size:10}},grid:{color:"#1e293b"}},y:{ticks:{color:"#94a3b8"},grid:{color:"#1e293b"}}}}});
+  mkChart("trangChart",{type:"line",data:{labels:ph.dates,
+    datasets:ph.series.map((s,i)=>({label:s.ten,data:s.data,borderColor:colors[i%colors.length],backgroundColor:"transparent",borderWidth:2,tension:.3,pointRadius:2}))},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},
+    plugins:{legend:{position:"bottom",labels:{color:"#cbd5e1",boxWidth:12}}},
+    scales:{x:{grid:{color:"#1e293b"}},y:{grid:{color:"#1e293b"}}}}});
 }
 function drawSeoChart(){
-  const ctx=document.getElementById("seoChart"); if(!ctx)return;
-  if(chartRef) chartRef.destroy();
-  chartRef=new Chart(ctx,{type:"doughnut",data:{
-    labels:D.seoClusters.map(c=>c.ten.split(" (")[0]),
-    datasets:[{data:D.seoClusters.map(c=>c.tyTrong),backgroundColor:["#f43f5e","#06b6d4","#14b8a6","#64748b"],borderColor:"#0f172a",borderWidth:2}]
-  },options:{plugins:{legend:{position:"bottom",labels:{color:"#cbd5e1",font:{size:11},boxWidth:12}}},cutout:"58%"}});
+  mkChart("seoChart",{type:"doughnut",data:{labels:D.seoClusters.map(c=>c.ten.split(" (")[0]),
+    datasets:[{data:D.seoClusters.map(c=>c.tyTrong),backgroundColor:["#f43f5e","#06b6d4","#14b8a6","#64748b"],borderColor:"#0f172a",borderWidth:2}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:"bottom",labels:{color:"#cbd5e1",boxWidth:12}}},cutout:"58%"}});
 }
 
 /* ---------- INIT ---------- */
