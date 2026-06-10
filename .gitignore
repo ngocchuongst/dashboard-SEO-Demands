@@ -6,3 +6,7 @@ Thumbs.db
 
 # Không commit bundle deploy
 *.zip
+
+# File nguồn (data thô) — không commit vào repo app
+*.xlsx
+*.docx
