@@ -8,7 +8,9 @@ window.DASHBOARD_DATA = {
   meta: {
     ten: "Dashboard Marketing 30Shine",
     ky: "Tháng 6/2026 — Earned Media + Demand",
-    capNhat: "2026-06-10",
+    capNhat: "2026-06-11",
+    periodStart: "2026-06-01",
+    periodEnd: "2026-06-30",
     ghiChu: "Mục tiêu & demand lấy từ PLAN EARNED MEDIA THÁNG 6. Ads = Meta API live (1–10/6). Traffic = GA4 live. Ô '—' = chưa có actual.",
   },
 

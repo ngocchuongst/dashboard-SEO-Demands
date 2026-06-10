@@ -47,6 +47,16 @@ const fmtC = n => { if(n==null) return "—"; const a=Math.abs(n);
   if(a>=1e6) return (n/1e6).toFixed(n%1e6?2:0).replace(/\.?0+$/,"")+"M";
   if(a>=1e3) return (n/1e3).toFixed(n%1e3?1:0).replace(/\.?0+$/,"")+"K"; return fmt(n); };
 const pct = (a,t) => (a==null||!t) ? null : Math.round(a/t*100);
+function periodInfo(){
+  const m=(window.DASHBOARD_DATA||{}).meta||{};
+  if(!m.periodStart||!m.periodEnd) return null;
+  const s=new Date(m.periodStart+"T00:00:00"), e=new Date(m.periodEnd+"T23:59:59"), now=new Date();
+  const total=Math.round((e-s)/86400000)+1;
+  let day=Math.floor((now-s)/86400000)+1; day=Math.max(0,Math.min(day,total));
+  const ptime=Math.max(0,Math.min(100,Math.round((now-s)/(e-s)*100)));
+  const dd=String(now.getDate()).padStart(2,'0'), mm=String(now.getMonth()+1).padStart(2,'0');
+  return {day,total,ptime,today:`${dd}/${mm}/${now.getFullYear()}`};
+}
 const barColor = p => p==null?"bg-slate-600":p>=90?"bg-emerald-500":p>=50?"bg-amber-500":"bg-rose-500";
 const chip = (txt,cls)=>`<span class="text-[11px] px-2 py-0.5 rounded-full ${cls}">${txt}</span>`;
 const statusChip = s => {
@@ -84,28 +94,42 @@ const TABS = [
 
 /* ---------- RENDERERS ---------- */
 function rTongQuan(){
+  const PI = periodInfo();
   const mkCard = m => {
     let p = pct(m.actual,m.target);
     if(m.thapTotHon && m.actual!=null && m.target) p = m.actual<=m.target ? 100 : Math.round(m.target/m.actual*100);
+    const isRate = m.thapTotHon || /%/.test(m.donVi||"");
     const actEl = m.actual==null ? '<span class="text-slate-500 text-base">chưa có</span>' : fmtC(m.actual);
+    let paceTag="";
+    if(PI && p!=null && !isRate){ const diff=p-PI.ptime;
+      const [tx,cl]= diff>=5?["Vượt pace","text-emerald-400"]:diff>=-8?["Đúng pace","text-cyan-400"]:["Chậm pace","text-rose-400"];
+      paceTag=` <span class="${cl}">• ${tx}</span>`; }
+    const marker = (PI && !isRate) ? `<div class="absolute top-0 bottom-0 w-0.5 bg-slate-200/80" style="left:${PI.ptime}%" title="Mốc thời gian ${PI.ptime}%"></div>` : "";
     return card(`
       <div class="flex items-start justify-between gap-2">
         <div class="text-sm text-slate-300 font-medium">${m.ten}</div>
         <div class="text-right shrink-0"><span class="text-2xl font-bold">${actEl}</span><span class="text-slate-500 text-xs"> / ${fmtC(m.target)} ${m.donVi}</span></div>
       </div>
-      <div class="mt-3 h-2 rounded-full bg-slate-800 overflow-hidden"><div class="h-full ${barColor(p)}" style="width:${p==null?0:Math.min(p,100)}%"></div></div>
+      <div class="mt-3 h-2 rounded-full bg-slate-800 overflow-hidden relative"><div class="h-full ${barColor(p)}" style="width:${p==null?0:Math.min(p,100)}%"></div>${marker}</div>
       <div class="mt-1.5 flex items-center justify-between">
-        <span class="text-[11px] font-medium ${p==null?'text-slate-500':p>=90?'text-emerald-400':p>=50?'text-amber-400':'text-rose-400'}">${p==null?'Cần cập nhật':p+'% đạt'}</span>
+        <span class="text-[11px] font-medium ${p==null?'text-slate-500':p>=90?'text-emerald-400':p>=50?'text-amber-400':'text-rose-400'}">${p==null?'Cần cập nhật':p+'% đạt'}${paceTag}</span>
         <span class="text-[11px] text-slate-500">${m.nguon}</span>
       </div>
       <div class="mt-2 text-[11px] text-slate-400 leading-snug">${m.note}</div>
     `,"hover:border-slate-700 transition");
   };
+  const banner = PI ? card(`
+    <div class="flex items-center justify-between flex-wrap gap-2">
+      <div><span class="text-lg font-bold">📅 ${PI.today}</span><span class="text-slate-400 text-sm"> · Ngày ${PI.day}/${PI.total} của tháng</span></div>
+      <div class="text-sm"><span class="font-semibold text-cyan-400">${PI.ptime}%</span> <span class="text-slate-400">thời gian đã trôi</span></div>
+    </div>
+    <div class="mt-2 h-2 rounded-full bg-slate-800 overflow-hidden"><div class="h-full bg-cyan-500" style="width:${PI.ptime}%"></div></div>
+    <div class="mt-1.5 text-[11px] text-slate-500">Vạch trắng trên mỗi thẻ = mốc thời gian hiện tại. % đạt nằm phải vạch = vượt pace, trái vạch = chậm.</div>`,"mb-6") : "";
   const isSeo = m => /SEO/i.test(m.nguon);
   const grid = arr => `<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">${arr.map(mkCard).join("")}</div>`;
   const head = t => `<div class="flex items-center gap-2 mb-3"><div class="w-1 h-4 rounded bg-cyan-400"></div><h2 class="text-xs font-semibold uppercase tracking-wide text-slate-300">${t}</h2></div>`;
   const chart = card(`<h3 class="font-semibold mb-3">% đạt mục tiêu (tổng quan)</h3><div class="relative h-72"><canvas id="tqChart"></canvas></div>`,"mb-6");
-  return chart + head("Earned Media & Ads") + grid(D.tongQuan.filter(m=>!isSeo(m)))
+  return banner + chart + head("Earned Media & Ads") + grid(D.tongQuan.filter(m=>!isSeo(m)))
     + `<div class="mt-6">` + head("SEO") + grid(D.tongQuan.filter(isSeo)) + `</div>`;
 }
 
@@ -375,7 +399,7 @@ function drawSeoChart(){
 function init(){
   if(!D){document.getElementById("content").innerHTML='<div class="text-rose-400">Lỗi: không tải được data.js</div>';return;}
   document.getElementById("metaKy").textContent = D.meta.ky;
-  document.getElementById("metaCapNhat").textContent = "Cập nhật: "+D.meta.capNhat;
+  { const pi=periodInfo(); document.getElementById("metaCapNhat").innerHTML = "Cập nhật: "+D.meta.capNhat + (pi?`<br>📅 Hôm nay ${pi.today} · ngày ${pi.day}/${pi.total} (${pi.ptime}%)`:""); }
   document.getElementById("metaNote").textContent = D.meta.ghiChu;
   const nav=document.getElementById("nav");
   nav.innerHTML = TABS.map(t=>`<button data-id="${t.id}" class="nav-btn text-left px-3 py-2 rounded-lg hover:bg-slate-800 transition flex items-center gap-2"><span>${t.icon}</span><span>${t.ten}</span></button>`).join("");
