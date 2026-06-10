@@ -12,6 +12,16 @@ window.DASHBOARD_DATA = {
     ghiChu: "Mục tiêu & demand lấy từ PLAN EARNED MEDIA THÁNG 6. Ads = Meta API live (1–10/6). Traffic = GA4 live. Ô '—' = chưa có actual.",
   },
 
+  /* Link CTA chuẩn 30Shine (từ file plan) — content gắn về đây */
+  ctaLinks: {
+    homepage: "https://30shine.com/",
+    booking: "https://30shine.com/booking?phone=0&salonId=0&step=0",
+    salon: "https://30shine.com/system-salon",
+    catToc: "https://30shine.com/dich-vu-cat-toc",
+    spaRelax: "https://30shine.com/dich-vu-goi-massage-spa-relax",
+    uon: "https://30shine.com/dich-vu-uon-nhuom-duong-toc",
+  },
+
   /* ---------- 0. TRANG ĐANG THEO DÕI ---------- */
   /* Số liệu FB ẩn sau login → điền tay qua INPUT_HANGNGAY.md (mục 7) hoặc nối facebook_organic. */
   trangTheoDoi: [

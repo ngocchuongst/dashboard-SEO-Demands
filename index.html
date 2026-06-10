@@ -60,6 +60,12 @@ const stars = n => "★".repeat(n)+"☆".repeat(5-n);
 const DEMAND_COLORS = [["tour","#06b6d4"],["trưa","#f59e0b"],["thera","#a855f7"],["phục hồi","#a855f7"],["tan làm","#14b8a6"],["tóc","#f43f5e"],["level","#f43f5e"],["coder","#f43f5e"],["vp","#f43f5e"],["cross","#38bdf8"],["world cup","#38bdf8"]];
 function demandColor(s){ s=(s||"").toLowerCase(); for(const [k,c] of DEMAND_COLORS){ if(s.includes(k)) return c; } return "#64748b"; }
 function demandDot(s){ return `<span class="inline-block w-2 h-2 rounded-full mr-1.5 align-middle" style="background:${demandColor(s)}"></span>`; }
+/* demand -> trang CTA phù hợp */
+function ctaFor(s){ const L=(window.DASHBOARD_DATA||{}).ctaLinks||{}; s=(s||"").toLowerCase();
+  if(/tóc|level|coder|vp|mỏng/.test(s)) return {url:L.uon,ten:"Uốn/dưỡng"};
+  if(/tour|trưa|thera|phục hồi|tan làm|nghỉ/.test(s)) return {url:L.spaRelax,ten:"Spa-relax"};
+  return {url:L.booking,ten:"Đặt lịch"}; }
+const linkCell = (url,txt) => url ? `<a href="${url}" target="_blank" class="text-cyan-400 hover:underline">${txt||'Mở'} ↗</a>` : '<span class="text-slate-600">—</span>';
 
 /* chart registry — tạo/huỷ an toàn theo id canvas */
 const CHARTS = {};
@@ -113,7 +119,8 @@ function rContent(){
     <td class="py-2 pr-3 text-slate-400">${d.noiDau}</td>
     <td class="py-2 pr-3 text-teal-300">${d.concept}</td>
     <td class="py-2 pr-3 text-slate-400">${d.giaiPhap}</td>
-    <td class="py-2">${uuChip(d.uuTien)}</td></tr>`).join("");
+    <td class="py-2 pr-3">${uuChip(d.uuTien)}</td>
+    <td class="py-2 whitespace-nowrap">${linkCell(ctaFor(d.ten).url, ctaFor(d.ten).ten)}</td></tr>`).join("");
 
   const sxRows = D.tuyenSanXuat.map(t=>`<tr class="border-t border-slate-800 align-top">
     <td class="py-2 pr-3 font-medium">${t.tuyen}</td>
@@ -121,21 +128,29 @@ function rContent(){
     <td class="py-2 pr-3 text-right">${fmtC(t.reach)}</td>
     <td class="py-2 pr-3 text-teal-300">${t.concept}</td>
     <td class="py-2 pr-3">${t.nguoiLam}</td>
-    <td class="py-2 text-slate-400">${t.note}</td></tr>`).join("");
+    <td class="py-2 pr-3 text-slate-400">${t.note}</td>
+    <td class="py-2 whitespace-nowrap">${linkCell(t.link)}</td></tr>`).join("");
 
   const dlRows = D.duLuan.map(p=>`<tr class="border-t border-slate-800">
     <td class="py-2 pr-3 whitespace-nowrap">${p.ngay}</td>
     <td class="py-2 pr-3">${p.postGoc}</td>
     <td class="py-2 pr-3"><span class="text-[11px] px-2 py-0.5 rounded-full font-medium" style="background:${demandColor(p.demand)}22;color:${demandColor(p.demand)}">${p.demand}</span></td>
     <td class="py-2 pr-3 text-slate-400">${p.kenh}</td>
-    <td class="py-2">${chip(p.trangThai, p.trangThai==='Done'?'bg-emerald-500/20 text-emerald-300':'bg-amber-500/20 text-amber-300')}</td></tr>`).join("");
+    <td class="py-2 pr-3">${chip(p.trangThai, p.trangThai==='Done'?'bg-emerald-500/20 text-emerald-300':'bg-amber-500/20 text-amber-300')}</td>
+    <td class="py-2 whitespace-nowrap">${linkCell(p.link)}</td></tr>`).join("");
 
-  return tbl("6 tuyến demand đang chạy — nỗi đau / concept / giải pháp",
-      `<th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Nỗi đau</th><th class="text-left pb-2 pr-3">Concept</th><th class="text-left pb-2 pr-3">Giải pháp/dịch vụ</th><th class="text-left pb-2">Ưu tiên</th>`, demandRows)
+  const L=D.ctaLinks||{};
+  const ctaCard = card(`<h3 class="font-semibold mb-2">Link CTA chuẩn (gắn vào content)</h3>
+    <div class="flex flex-wrap gap-2 text-xs">
+      ${[["Homepage",L.homepage],["Đặt lịch",L.booking],["Hệ thống salon",L.salon],["Cắt tóc",L.catToc],["Spa-relax",L.spaRelax],["Uốn/dưỡng",L.uon]].map(([t,u])=>u?`<a href="${u}" target="_blank" class="px-2.5 py-1 rounded-full bg-slate-800 text-cyan-400 hover:bg-slate-700">${t} ↗</a>`:'').join("")}
+    </div>
+    <div class="mt-2 text-[11px] text-slate-500">Hashtag: #30Shine #cattocnam</div>`,"mb-4");
+  return ctaCard + tbl("6 tuyến demand đang chạy — nỗi đau / concept / giải pháp",
+      `<th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Nỗi đau</th><th class="text-left pb-2 pr-3">Concept</th><th class="text-left pb-2 pr-3">Giải pháp/dịch vụ</th><th class="text-left pb-2 pr-3">Ưu tiên</th><th class="text-left pb-2">CTA</th>`, demandRows)
     + tbl("Tuyến sản xuất earned media (W2–W4)",
-      `<th class="text-left pb-2 pr-3">Tuyến</th><th class="pb-2 pr-3">Số bài</th><th class="text-right pb-2 pr-3">Reach dự kiến</th><th class="text-left pb-2 pr-3">Concept</th><th class="text-left pb-2 pr-3">Người làm</th><th class="text-left pb-2">Ghi chú</th>`, sxRows)
+      `<th class="text-left pb-2 pr-3">Tuyến</th><th class="pb-2 pr-3">Số bài</th><th class="text-right pb-2 pr-3">Reach dự kiến</th><th class="text-left pb-2 pr-3">Concept</th><th class="text-left pb-2 pr-3">Người làm</th><th class="text-left pb-2 pr-3">Ghi chú</th><th class="text-left pb-2">Link bài</th>`, sxRows)
     + tbl("Dư luận seeding (Chương) — bridge cho demand nào",
-      `<th class="text-left pb-2 pr-3">Ngày</th><th class="text-left pb-2 pr-3">Post gốc</th><th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Kênh</th><th class="text-left pb-2">Trạng thái</th>`, dlRows)
+      `<th class="text-left pb-2 pr-3">Ngày</th><th class="text-left pb-2 pr-3">Post gốc</th><th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Kênh</th><th class="text-left pb-2 pr-3">Trạng thái</th><th class="text-left pb-2">Link bài</th>`, dlRows)
     + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         ${card(`<h3 class="font-semibold mb-3">Reach dự kiến theo tuyến</h3><div class="relative h-56"><canvas id="reachChart"></canvas></div>`)}
         ${card(`<h3 class="font-semibold mb-3">Dư luận seeding theo demand (số post)</h3><div class="relative h-56"><canvas id="dlChart"></canvas></div>`)}
