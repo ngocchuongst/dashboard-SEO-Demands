@@ -61,8 +61,8 @@ window.DASHBOARD_DATA = {
   /* ---------- 1. TỔNG QUAN — MỤC TIÊU & % ĐẠT ---------- */
   tongQuan: [
     { ten: "Tổng số earned media", target: 23, actual: 0, donVi: "bài", note: "Có gắn CTA link booking/dịch vụ + seeding. Flow: đăng theo demand → ads test 2 ngày → bài cắn tiền giữ, không cắn thay ngay.", nguon: "Mục tiêu" },
-    { ten: "Tổng reach thu về", target: 2025000, actual: null, donVi: "reach", note: "Cộng dồn các kênh KOC + UGC + Dư luận + Lan toả.", nguon: "Mục tiêu" },
-    { ten: "Post kênh dư luận", target: 18, actual: 0, donVi: "bài", note: "Threads 5 + TikTok 3 + Facebook 10. Người làm: Chương.", nguon: "Mục tiêu" },
+    { ten: "Tổng reach thu về", target: 2025000, actual: 313181, donVi: "reach", note: "Tạm tính (partial): Dư luận Threads 27.971 + Ads dư luận 17.387 + KOC Hoàng TikTok 267.823. Chưa gồm 4 TikTok dư luận (thiếu link) + UGC. Lưu ý: TikTok = view (proxy), không phải reach Analytics.", nguon: "Live đa kênh" },
+    { ten: "Post kênh dư luận", target: 18, actual: 6, donVi: "bài", note: "Đã lên 6/18 (tới 15/6): Threads 2 + TikTok 4. Người làm: Chương. (4 link TikTok cần Chương gửi để lấy view).", nguon: "Mục tiêu" },
     { ten: "Engagement rate", target: 1, actual: null, donVi: "%", note: "Mục tiêu tỷ lệ tương tác ≥1%.", nguon: "Mục tiêu" },
     { ten: "CPA (post gắn ads)", target: 21, actual: 18.8, donVi: "K (đạt khi ≤)", note: "Mục tiêu <21K. Campaign purchase chính đang chạy CPA 18.8K (8.212 đơn) → ĐẠT.", nguon: "Mục tiêu + Meta live", thapTotHon: true },
     { ten: "SEO sessions /discovers", target: 510, actual: 0, donVi: "ss/tháng", note: "Baseline 0 (blog mới từ 5/2026). Lộ trình tuần: W23=30 → W24=80 → W25=150 → W26=250.", nguon: "SEO PLAN T6" },
@@ -135,6 +135,22 @@ window.DASHBOARD_DATA = {
       { ten: "Trạm tiếp phong độ WC — 45′ trưa / 30′ chiều / 90′ tối", demand: "Nghỉ trưa", react: 12, cmt: 4, share: 1, url: "https://www.facebook.com/share/1D4GPQubyE/" },
       { ten: "Thức khuya xem WC — gội/massage hồi sức 45′", demand: "Nghỉ trưa", react: 22, cmt: 16, share: 3, url: "https://www.facebook.com/share/p/14ixGifgi3g/" },
       { ten: "Stíp Jobs VN gội đầu sau tan làm — xoá hói, tóc bồng", demand: "Tan làm", react: 4, cmt: null, share: 1, url: "https://www.facebook.com/share/p/1JQmWKnd7v/" },
+    ],
+  },
+
+  /* Dư luận organic của Chương — 6 bài đã lên (2 Threads + 4 TikTok) tới 15/6.
+     Threads = số THẬT (view/tương tác công khai). 4 TikTok chờ link để lấy view. */
+  duLuanOrganic: {
+    ky: "Tới 15/6/2026",
+    reachThreads: 27971,
+    note: "Threads = view + tương tác công khai thật. 4 bài TikTok dư luận chưa có link → chưa lấy được view (Chương gửi link/tài khoản TikTok seeding để cập nhật nốt).",
+    list: [
+      { ten: "Khách quen 8h tối T6 — 'chỗ duy nhất không ai gọi là sếp'", kenh: "Threads @trag.ngyen", view: 27900, like: 623, cmt: 76, share: 19, url: "https://www.threads.com/@trag.ngyen/post/DZjv7M9FCny" },
+      { ten: "Kiểm tra độ mệt đàn ông qua 5 phút nằm ghế gội", kenh: "Threads @trag.ngyen", view: 71, like: 1, cmt: 1, share: 1, url: "https://www.threads.com/@trag.ngyen/post/DZjxA-MlHqU" },
+      { ten: "TikTok dư luận #1", kenh: "TikTok", view: null, like: null, cmt: null, share: null, url: null },
+      { ten: "TikTok dư luận #2", kenh: "TikTok", view: null, like: null, cmt: null, share: null, url: null },
+      { ten: "TikTok dư luận #3", kenh: "TikTok", view: null, like: null, cmt: null, share: null, url: null },
+      { ten: "TikTok dư luận #4", kenh: "TikTok", view: null, like: null, cmt: null, share: null, url: null },
     ],
   },
 
