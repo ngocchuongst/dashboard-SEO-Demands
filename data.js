@@ -60,10 +60,10 @@ window.DASHBOARD_DATA = {
 
   /* ---------- 1. TỔNG QUAN — MỤC TIÊU & % ĐẠT ---------- */
   tongQuan: [
-    { ten: "Tổng số earned media", target: 23, actual: 0, donVi: "bài", note: "Có gắn CTA link booking/dịch vụ + seeding. Flow: đăng theo demand → ads test 2 ngày → bài cắn tiền giữ, không cắn thay ngay.", nguon: "Mục tiêu" },
-    { ten: "Tổng reach thu về", target: 1625000, actual: 313181, donVi: "reach", note: "Tạm tính: Dư luận Threads 27.971 (view) + Ads dư luận 17.387 (reach) + KOC Hoàng TikTok 267.823 (view). 5 bài daily 30Shine là ảnh tĩnh → FB ẩn reach organic, chỉ đếm được 206 react/36 cmt/11 share (chưa cộng vào reach — cần Page Insights). Lưu ý: TikTok/Threads = view (proxy).", nguon: "Live đa kênh" },
+    { ten: "Tổng số earned media", target: 23, actual: 10, donVi: "bài", note: "Cộng tổng: Dư luận 6 (2 Threads + 4 FB page) + KOC Hoàng Không Sao 4 clip TikTok T6 = 10/23. (Daily 30Shine tách theo dõi riêng ở tab Daily, không tính vào đây).", nguon: "Live đa kênh" },
+    { ten: "Tổng reach thu về", target: 1625000, actual: 347457, donVi: "reach", note: "Tạm tính: Daily 30Shine 34.276 (reach Business Suite, 4/5 bài) + Dư luận Threads 27.971 (view) + Ads dư luận 17.387 (reach) + KOC Hoàng TikTok 267.823 (view). Chưa gồm: bài daily 'Trạm tiếp phong độ', reach organic 4 FB dư luận (ẩn), UGC. Lưu ý: TikTok/Threads = view (proxy).", nguon: "Live đa kênh" },
     { ten: "Post kênh dư luận", target: 18, actual: 6, donVi: "bài", note: "Đã lên 6/18 (tới 15/6): Threads 2 + TikTok 4. Người làm: Chương. (4 link TikTok cần Chương gửi để lấy view).", nguon: "Mục tiêu" },
-    { ten: "Engagement rate", target: 1, actual: null, donVi: "%", note: "Mục tiêu tỷ lệ tương tác ≥1%.", nguon: "Mục tiêu" },
+    { ten: "Engagement rate", target: 1, actual: 4.1, donVi: "%", note: "Daily 30Shine (4 bài có số): Lượt tương tác FB 1.405 / reach 34.276 = 4,1% (FB tính cả lượt click). Nếu chỉ react+cmt+share = 237/34.276 = 0,69%. Nguồn: Business Suite.", nguon: "Business Suite" },
     { ten: "CPA (post gắn ads)", target: 21, actual: 18.8, donVi: "K (đạt khi ≤)", note: "Mục tiêu <21K. Campaign purchase chính đang chạy CPA 18.8K (8.212 đơn) → ĐẠT.", nguon: "Mục tiêu + Meta live", thapTotHon: true },
     { ten: "SEO sessions /discovers", target: 510, actual: 0, donVi: "ss/tháng", note: "Baseline 0 (blog mới từ 5/2026). Lộ trình tuần: W23=30 → W24=80 → W25=150 → W26=250.", nguon: "SEO PLAN T6" },
     { ten: "Bài SEO live", target: 9, actual: 4, donVi: "bài", note: "4 bài W22 đã publish; còn 5 bài W23–W26 (1 in-progress, 1 scheduled, 3 pending).", nguon: "SEO PLAN T6" },
@@ -128,14 +128,14 @@ window.DASHBOARD_DATA = {
      FB ẩn reach organic sau login → chỉ lấy được tương tác công khai (cảm xúc/bình luận/share). */
   dailyPosts: {
     ky: "Mùa WC · T6/2026 · 30Shine Official (organic)",
-    tongReact: 206, tongCmt: 36, tongShare: 11,
-    note: "Cả 5 bài là ẢNH TĨNH → FB không hiện lượt xem/reach công khai (chỉ video/reel mới có) → reach organic ẩn sau login, cần Page Insights. Số dưới là tương tác công khai THẬT (react/cmt/share).",
+    tongReach: 34276, tongView: 44706, tongReact: 206, tongCmt: 37, tongShare: 11,
+    note: "Reach = 'Người xem' (người tiếp cận) lấy tay từ Business Suite (Chương). View = 'Lượt xem'. 4/5 bài đã có reach; bài 'Trạm tiếp phong độ WC' chưa gửi số → reach để '—'.",
     list: [
-      { ten: "Tour du lịch 45′ — không cần nghỉ phép, không cần đi xa", demand: "Tour", react: 101, cmt: 13, share: 2, url: "https://www.facebook.com/share/p/17njnFn4Cn/" },
-      { ten: "Hào quang nhà vô địch — Hoàng Sao 'The GOAT' (250tr)", demand: "Lan toả WC", react: 67, cmt: 3, share: 4, url: "https://www.facebook.com/share/p/18mW3X2VMm/" },
-      { ten: "Trạm tiếp phong độ WC — 45′ trưa / 30′ chiều / 90′ tối", demand: "Nghỉ trưa", react: 12, cmt: 4, share: 1, url: "https://www.facebook.com/share/1D4GPQubyE/" },
-      { ten: "Thức khuya xem WC — gội/massage hồi sức 45′", demand: "Nghỉ trưa", react: 22, cmt: 16, share: 3, url: "https://www.facebook.com/share/p/14ixGifgi3g/" },
-      { ten: "Stíp Jobs VN gội đầu sau tan làm — xoá hói, tóc bồng", demand: "Tan làm", react: 4, cmt: 0, share: 1, url: "https://www.facebook.com/share/p/1JQmWKnd7v/" },
+      { ten: "Tour du lịch 45′ — không cần nghỉ phép, không cần đi xa", demand: "Tour", reach: 1254, view: 2156, react: 101, cmt: 13, share: 2, url: "https://www.facebook.com/share/p/17njnFn4Cn/" },
+      { ten: "Hào quang nhà vô địch — Hoàng Sao 'The GOAT' (250tr)", demand: "Lan toả WC", reach: 3087, view: 5917, react: 67, cmt: 4, share: 4, url: "https://www.facebook.com/share/p/18mW3X2VMm/" },
+      { ten: "Thức khuya xem WC — gội/massage hồi sức 45′", demand: "Nghỉ trưa", reach: 28974, view: 35068, react: 22, cmt: 16, share: 3, url: "https://www.facebook.com/share/p/14ixGifgi3g/" },
+      { ten: "Stíp Jobs VN gội đầu sau tan làm — xoá hói, tóc bồng", demand: "Tan làm", reach: 961, view: 1565, react: 4, cmt: 0, share: 1, url: "https://www.facebook.com/share/p/1JQmWKnd7v/" },
+      { ten: "Trạm tiếp phong độ WC — 45′ trưa / 30′ chiều / 90′ tối", demand: "Nghỉ trưa", reach: null, view: null, react: 12, cmt: 4, share: 1, url: "https://www.facebook.com/share/1D4GPQubyE/" },
     ],
   },
 
