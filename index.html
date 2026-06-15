@@ -247,8 +247,9 @@ function rContent(){
   let dloCard = "";
   if(dlo){
     const nn = v => v==null?'<span class="text-slate-600">—</span>':fmt(v);
-    const done = dlo.list.filter(p=>p.view!=null).length;
-    const rows = dlo.list.map(p=>`<tr class="border-t border-slate-800 ${p.view==null?'opacity-50':''}">
+    const hasNum = p => p.view!=null||p.like!=null;
+    const done = dlo.list.filter(hasNum).length;
+    const rows = dlo.list.map(p=>`<tr class="border-t border-slate-800 ${hasNum(p)?'':'opacity-50'}">
       <td class="py-2 pr-3">${p.ten}</td>
       <td class="py-2 pr-3 text-slate-400 whitespace-nowrap">${p.kenh}</td>
       <td class="py-2 pr-3 text-right font-medium">${nn(p.view)}</td>
@@ -257,14 +258,14 @@ function rContent(){
       <td class="py-2 pr-3 text-right">${nn(p.share)}</td>
       <td class="py-2 whitespace-nowrap">${p.url?linkCell(p.url,'Xem'):'<span class="text-slate-600">chờ link</span>'}</td></tr>`).join("");
     dloCard = card(`
-      <div class="flex items-center justify-between mb-3"><h3 class="font-semibold">Dư luận organic (Chương) — Threads thật + TikTok</h3><span class="text-[11px] text-slate-400">${dlo.ky}</span></div>
+      <div class="flex items-center justify-between mb-3"><h3 class="font-semibold">Dư luận organic (Chương) — 2 Threads + 4 Facebook</h3><span class="text-[11px] text-slate-400">${dlo.ky}</span></div>
       <div class="grid grid-cols-3 gap-3 text-center mb-3">
         <div><div class="text-xl font-bold ${done===dlo.list.length?'text-emerald-400':'text-amber-400'}">${done}/${dlo.list.length}</div><div class="text-xs text-slate-400">Bài đã có số</div></div>
         <div><div class="text-xl font-bold text-cyan-400">${fmtC(dlo.reachThreads)}</div><div class="text-xs text-slate-400">View Threads (thật)</div></div>
-        <div><div class="text-xl font-bold text-slate-300">6</div><div class="text-xs text-slate-400">Đã lên (2 Threads + 4 TikTok)</div></div>
+        <div><div class="text-xl font-bold text-emerald-400">${fmt(dlo.reactionsFB)}</div><div class="text-xs text-slate-400">Reactions FB (3 page)</div></div>
       </div>
       <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
-        <th class="text-left pb-2 pr-3">Bài</th><th class="text-left pb-2 pr-3">Kênh</th><th class="text-right pb-2 pr-3">View</th><th class="text-right pb-2 pr-3">Like</th><th class="text-right pb-2 pr-3">Cmt</th><th class="text-right pb-2 pr-3">Share</th><th class="text-left pb-2">Link</th></tr></thead><tbody>${rows}</tbody></table></div>
+        <th class="text-left pb-2 pr-3">Bài</th><th class="text-left pb-2 pr-3">Kênh</th><th class="text-right pb-2 pr-3">View</th><th class="text-right pb-2 pr-3">Like/React</th><th class="text-right pb-2 pr-3">Cmt</th><th class="text-right pb-2 pr-3">Share</th><th class="text-left pb-2">Link</th></tr></thead><tbody>${rows}</tbody></table></div>
       <div class="mt-2 text-[11px] text-slate-400">${dlo.note}</div>`,"mb-4");
   }
 

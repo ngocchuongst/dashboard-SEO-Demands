@@ -138,19 +138,21 @@ window.DASHBOARD_DATA = {
     ],
   },
 
-  /* Dư luận organic của Chương — 6 bài đã lên (2 Threads + 4 TikTok) tới 15/6.
-     Threads = số THẬT (view/tương tác công khai). 4 TikTok chờ link để lấy view. */
+  /* Dư luận organic của Chương — 6 bài đã lên (2 Threads + 4 Facebook page) tới 15/6.
+     Threads = view + tương tác thật. FB = reactions/cmt/share công khai thật (reach organic FB ẩn sau login).
+     LƯU Ý: 4 link Chương gọi "TikTok" thực tế là 4 post FB trên 4 page dư luận — đã lấy theo link thật. */
   duLuanOrganic: {
     ky: "Tới 15/6/2026",
     reachThreads: 27971,
-    note: "Threads = view + tương tác công khai thật. 4 bài TikTok dư luận chưa có link → chưa lấy được view (Chương gửi link/tài khoản TikTok seeding để cập nhật nốt).",
+    reactionsFB: 1536,
+    note: "Threads: cột View là số thật. Facebook: cột 'Like' = reactions công khai; FB ẩn reach organic sau login nên cột View để '—' (chỉ phần boost qua ads mới có reach — xem bảng 'Dư luận ads'). Kiến Thức Tinh Hoa chưa hiện số công khai.",
     list: [
       { ten: "Khách quen 8h tối T6 — 'chỗ duy nhất không ai gọi là sếp'", kenh: "Threads @trag.ngyen", view: 27900, like: 623, cmt: 76, share: 19, url: "https://www.threads.com/@trag.ngyen/post/DZjv7M9FCny" },
       { ten: "Kiểm tra độ mệt đàn ông qua 5 phút nằm ghế gội", kenh: "Threads @trag.ngyen", view: 71, like: 1, cmt: 1, share: 1, url: "https://www.threads.com/@trag.ngyen/post/DZjxA-MlHqU" },
-      { ten: "TikTok dư luận #1", kenh: "TikTok", view: null, like: null, cmt: null, share: null, url: null },
-      { ten: "TikTok dư luận #2", kenh: "TikTok", view: null, like: null, cmt: null, share: null, url: null },
-      { ten: "TikTok dư luận #3", kenh: "TikTok", view: null, like: null, cmt: null, share: null, url: null },
-      { ten: "TikTok dư luận #4", kenh: "TikTok", view: null, like: null, cmt: null, share: null, url: null },
+      { ten: "Trụ cột 36t (ngồi trong xe trước cổng nhà)", kenh: "FB · Bản Lĩnh Đàn Ông", view: null, like: 532, cmt: 11, share: 1, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid03kFNJYD1mcnvsoKiy2oMBTE1dHv3oPoK515gAtzRKMRbGQ1LAE2TySfpP4PdnkK4l&id=61563496486162" },
+      { ten: "Burnout 27t (lương ổn mà sáng nào cũng mệt)", kenh: "FB · Kinh Doanh Châu Á", view: null, like: 505, cmt: 11, share: null, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02vJRskkBp8aNhBKrLBtgQvh6YisxbmGDVVVBJMJTdmwu27UDakyEzrPZdSoby2Nbol&id=61563416021934" },
+      { ten: "Coder 29t (7 năm code, trống rỗng)", kenh: "FB · Tạp Chí KD Thời Đại", view: null, like: 499, cmt: 11, share: null, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid0uCeo6qxhEg94FEFzz4xEAogDXpqZ1C6DjcgRbaqabdWeHJYoeLeBwSHvYfhWtvGQl&id=61563276163931" },
+      { ten: "Vai gáy 30t (cơ thể báo động, massage 125k)", kenh: "FB · Kiến Thức Tinh Hoa", view: null, like: null, cmt: null, share: null, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid06YKJPJEZUDxJnSbokHaQPn7ovtTBSHG9R2NaHrcR7fMaCrphmMJTtWQp7PNmrFBXl&id=61563812254323" },
     ],
   },
 
