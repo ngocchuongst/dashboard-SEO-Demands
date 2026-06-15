@@ -322,7 +322,23 @@ function rSeo(){
     <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
       <th class="text-left pb-2 pr-3">Ưu tiên</th><th class="text-left pb-2 pr-3">Việc</th><th class="text-left pb-2 pr-3">Owner</th><th class="text-left pb-2 pr-3">Deadline</th><th class="text-left pb-2">Trạng thái</th></tr></thead><tbody>${techRows}</tbody></table></div>`);
 
-  return top + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">${wTbl}${chartCard}</div>` + hsTbl + aTbl + techTbl;
+  const ra = D.seoRankAudit;
+  let rankCard = "";
+  if(ra){
+    const rankCls = r => /#5|#[1-9]\b/.test(r)?'text-amber-300':'text-rose-400';
+    const rRows = ra.rows.map(x=>`<tr class="border-t border-slate-800 align-top">
+      <td class="py-2 pr-3 font-medium">${x.kw} <span class="text-slate-600">(${x.vol})</span></td>
+      <td class="py-2 pr-3 whitespace-nowrap ${rankCls(x.rank)}">${x.rank}</td>
+      <td class="py-2 pr-3 text-slate-400">${x.doiThu}</td>
+      <td class="py-2 text-slate-500 whitespace-nowrap">${x.bai}</td></tr>`).join("");
+    rankCard = card(`<div class="flex items-center justify-between mb-3"><h3 class="font-semibold">🔎 Rank Google THẬT — keyword vs đối thủ</h3><span class="text-[11px] text-slate-400">${ra.ngay}</span></div>
+      <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
+        <th class="text-left pb-2 pr-3">Keyword (volume)</th><th class="text-left pb-2 pr-3">Rank 30Shine</th><th class="text-left pb-2 pr-3">Đối thủ top</th><th class="text-left pb-2">Bài map</th></tr></thead><tbody>${rRows}</tbody></table></div>
+      <div class="mt-2 text-[11px] text-amber-400/90">${ra.note}</div>
+      <div class="mt-1 text-[11px] text-slate-400">${ra.brand}</div>
+      <div class="mt-1 text-[11px] text-slate-500">Nguồn: ${ra.nguon}</div>`,"mb-4");
+  }
+  return top + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">${wTbl}${chartCard}</div>` + hsTbl + aTbl + rankCard + techTbl;
 }
 
 function rChiSo(){

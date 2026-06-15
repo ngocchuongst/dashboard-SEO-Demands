@@ -185,6 +185,21 @@ window.DASHBOARD_DATA = {
     { n: 8, tuan: "W26", loai: "Supporting", ten: "Tóc mỏng rụng nhiều — phục hồi nang tóc 8 tuần", demand: "Cứu Tóc Mỏng", kw: "tóc mỏng rụng nhiều nam phải làm sao", vol: "1.200", wc: false, status: "pending" },
     { n: 9, tuan: "W26", loai: "Supporting·Local", ten: "Cắt tóc nam gần đây uy tín — top HCM & HN", demand: "Đáng Đồng Tiền", kw: "cắt tóc nam gần đây", vol: "4.000+", wc: false, status: "pending", note: "Gắn Google Maps + schema LocalBusiness" },
   ],
+  /* Rank Google organic THẬT — audit qua WebSearch (seo-audit) 15/6. */
+  seoRankAudit: {
+    ngay: "2026-06-15",
+    nguon: "WebSearch (Google organic, US endpoint) — proxy rank, chưa thay GSC",
+    note: "Blog /discovers/ mới từ 5/2026, chưa authority → CHƯA bài nào vào top 10 cho keyword mục tiêu. Chỉ homepage 30shine.com rank ~#5 cho 'cắt tóc nam gần đây'. Số vị trí chính xác cần Google Search Console.",
+    brand: "Brand SERP 'review 30shine': blog.30shine.com đứng #1 (bài phụ) nhưng review chính do VOZ · 1900 · SevenAM · barber-shop kiểm soát → nên đẩy review own-domain.",
+    rows: [
+      { kw: "kiểu tóc nam đẹp 2026", vol: "3.000+", rank: "Chưa top 10", doiThu: "chiaki · pasgo · cellphones", bai: "Bài 1 Pillar" },
+      { kw: "gội đầu massage thư giãn nam", vol: "1.500", rank: "Chưa top 10", doiThu: "haspa · onsena · luaspa", bai: "Bài 2 Pillar" },
+      { kw: "30shine giá bao nhiêu", vol: "2.000", rank: "Chưa top (bên 3 chiếm)", doiThu: "healthmart · reviewphongtap · blogtranphu", bai: "Bài 3" },
+      { kw: "massage cổ vai gáy dân VP", vol: "800", rank: "Chưa top 10", doiThu: "bookingcare · dovako · anspa", bai: "Bài 4" },
+      { kw: "đau cổ vai gáy dân VP", vol: "2.500", rank: "Chưa top (báo y tế)", doiThu: "suckhoedoisong · vinmec · dantri", bai: "Bài 5 in-progress" },
+      { kw: "cắt tóc nam gần đây", vol: "4.000+", rank: "~#5 (homepage)", doiThu: "bachhoaxanh · classic.vn · instagram", bai: "Bài 9 pending" },
+    ],
+  },
   seoTechnical: [
     { id: "T1", p: "P0", viec: "Submit sitemap blog lên GSC + verify property", owner: "Chương + IT", deadline: "2/6", status: null },
     { id: "T2", p: "P0", viec: "Fix GA4 conversion event ga4_dat_lich_hen", owner: "Chương → IT", deadline: "2/6", status: null },
