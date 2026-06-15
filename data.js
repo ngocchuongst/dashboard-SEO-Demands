@@ -8,10 +8,10 @@ window.DASHBOARD_DATA = {
   meta: {
     ten: "Dashboard Marketing 30Shine",
     ky: "Tháng 6/2026 — Earned Media + Demand",
-    capNhat: "2026-06-11",
+    capNhat: "2026-06-15",
     periodStart: "2026-06-01",
     periodEnd: "2026-06-30",
-    ghiChu: "Mục tiêu & demand lấy từ PLAN EARNED MEDIA THÁNG 6. Ads = Meta API live (1–10/6). Traffic = GA4 live. Ô '—' = chưa có actual.",
+    ghiChu: "Mục tiêu & demand lấy từ PLAN EARNED MEDIA THÁNG 6. Ads = Meta API live (1–15/6, gồm 2 camp Dư Luận trên TK Tỉnh). Daily post organic page 30Shine. Traffic = GA4 live. Ô '—' = chưa có actual.",
   },
 
   /* Link CTA chuẩn 30Shine (từ file plan) — content gắn về đây */
@@ -84,7 +84,7 @@ window.DASHBOARD_DATA = {
   /* Tuyến sản xuất earned media (W2–W4, 8–30/6) */
   tuyenSanXuat: [
     { tuyen: "Kênh Dư Luận", soBai: 18, reach: 425000, concept: "Bridge 4 demand (Tour/Nghỉ trưa/Thera/Tan làm)", nguoiLam: "Chương", note: "TikTok·Threads·FB · 10M ads · seeding 10 cmt/post" },
-    { tuyen: "KOC Hoàng (Không Sao)", soBai: 8, reach: 1200000, concept: "Biến hình tóc trẻ/che khuyết điểm dân VP", nguoiLam: "Hoàng", note: "8 clip · móc nối kiểu tóc cầu thủ viral" },
+    { tuyen: "KOC Hoàng (Không Sao)", soBai: 8, reach: 1200000, concept: "Biến hình tóc trẻ/che khuyết điểm dân VP", nguoiLam: "Hoàng", note: "8 clip · móc nối kiểu tóc cầu thủ viral · THỰC TẾ T6 (TikTok @hoangkhonggsao): 4 clip / 267.823 view — 1 clip nhuộm tóc 2/6 = 266.900 (99,6%), 3 clip mới chỉ vài trăm view. (view công khai yt-dlp = proxy, không phải reach Analytics)" },
     { tuyen: "Lan Toả (World Cup)", soBai: 5, reach: 400000, concept: "Concept World Cup — dự đoán tỷ số", nguoiLam: "Vân Hà", note: "Free 02 gói SC tiếp phong độ WC · móc JTBD ngủ trưa/hồi sức" },
     { tuyen: "Content Always-on", soBai: 18, reach: 400000, concept: "Xoay 4 demand theo lịch", nguoiLam: "Vân Hà/Hoàng/Thanh Hà/Chương", note: "Facebook organic mỗi ngày" },
   ],
@@ -102,6 +102,41 @@ window.DASHBOARD_DATA = {
     { ngay: "25/6", postGoc: "Đàn ông tự thưởng cho bản thân thế nào tháng này?", demand: "Tour", kenh: "Threads", trangThai: "Cần làm" },
     { ngay: "26/6", postGoc: "Tan tầm tắc đường: về thẳng nhà hay 'trốn' 1 tiếng? Vợ nghĩ gì?", demand: "Tan làm", kenh: "FB", trangThai: "Cần làm" },
   ],
+
+  /* Dư luận — SỐ THẬT từ 2 campaign ads chạy trên TK Tỉnh (Meta API, 1–15/6).
+     3 creative đang chạy: P01 Trụ cột · P02 Coder · P03 Burnout (đều demand Tour/D01). */
+  duLuanAds: {
+    ky: "1–15/6/2026",
+    nguon: "Meta Ads API · Adsplus 5 (Tỉnh)",
+    tongChi: 155765, reachGop: 17387, tongTuongTac: 218,
+    campaigns: [
+      { ten: "ALL · Tương tác · Dư Luận", loai: "Engagement", spend: 107109, reach: 8271, impr: 9132, ctr: 0.70, cpm: 11729, freq: 1.10, eng: 44 },
+      { ten: "ALL · Reach · Dư Luận", loai: "Awareness", spend: 48656, reach: 9116, impr: 9396, ctr: 0.24, cpm: 5178, freq: 1.03, eng: 174 },
+    ],
+    posts: [
+      { post: "P01 · Trụ cột (ngồi trong xe)", camp: "Reach", page: "Gộp seeding", reach: 9116, impr: 9396, spend: 48656, ctr: 0.24, cpm: 5178, clicks: 23, react: 2, eng: 174 },
+      { post: "P01 · Trụ cột (ngồi trong xe)", camp: "Tương tác", page: "Gộp seeding", reach: 4223, impr: 4922, spend: 87227, ctr: 1.08, cpm: 17722, clicks: 53, react: 29, eng: 36 },
+      { post: "P01 · Trụ cột (ngồi trong xe)", camp: "Tương tác", page: "Bản Lĩnh Đàn Ông", reach: 152, impr: 161, spend: 2189, ctr: 1.24, cpm: 13596, clicks: 2, react: 1, eng: 1 },
+      { post: "P03 · Burnout thức khuya", camp: "Tương tác", page: "Kinh Doanh Châu Á", reach: 2151, impr: 2185, spend: 9639, ctr: 0.14, cpm: 4411, clicks: 3, react: 4, eng: 4 },
+      { post: "P03 · Burnout thức khuya", camp: "Tương tác", page: "Kinh Doanh Châu Á", reach: 1811, impr: 1811, spend: 7503, ctr: 0.28, cpm: 4143, clicks: 5, react: 2, eng: 2 },
+      { post: "P02 · Coder 'Năm 29 tuổi'", camp: "Tương tác", page: "Tạp Chí KD Thời Đại", reach: 48, impr: 53, spend: 551, ctr: 1.89, cpm: 10396, clicks: 1, react: 1, eng: 1 },
+    ],
+    note: "Reach (17.387) là CỘNG 2 camp, chưa khử trùng người. CPM Reach 5.178đ rẻ; camp Tương tác đem 44 engagement/107K chi. P01 Trụ cột mạnh nhất (reach + tương tác). P02 Coder gần như chưa được phân phối (48 reach).",
+  },
+
+  /* Daily post organic trên page 30Shine Official (5 link Chương gửi) — KHÔNG phải earned media.
+     FB ẩn reach organic sau login → chỉ lấy được tương tác công khai (cảm xúc/bình luận/share). */
+  dailyPosts: {
+    ky: "Mùa WC · T6/2026 · 30Shine Official (organic)",
+    note: "Reach organic FB không lấy được qua API (ẩn sau login) — số dưới là tương tác công khai đếm trên bài. Bài 1–2 FB chưa render được count → để '—', cập nhật tay nếu cần.",
+    list: [
+      { ten: "Tour du lịch 45′ — không cần nghỉ phép, không cần đi xa", demand: "Tour", react: null, cmt: null, share: null, url: "https://www.facebook.com/share/p/17njnFn4Cn/" },
+      { ten: "Hào quang nhà vô địch — Hoàng Sao 'The GOAT' (250tr)", demand: "Lan toả WC", react: null, cmt: null, share: null, url: "https://www.facebook.com/share/p/18mW3X2VMm/" },
+      { ten: "Trạm tiếp phong độ WC — 45′ trưa / 30′ chiều / 90′ tối", demand: "Nghỉ trưa", react: 12, cmt: 4, share: 1, url: "https://www.facebook.com/share/1D4GPQubyE/" },
+      { ten: "Thức khuya xem WC — gội/massage hồi sức 45′", demand: "Nghỉ trưa", react: 22, cmt: 16, share: 3, url: "https://www.facebook.com/share/p/14ixGifgi3g/" },
+      { ten: "Stíp Jobs VN gội đầu sau tan làm — xoá hói, tóc bồng", demand: "Tan làm", react: 4, cmt: null, share: 1, url: "https://www.facebook.com/share/p/1JQmWKnd7v/" },
+    ],
+  },
 
   /* ---------- 3. SEO (SEO PLAN T6/2026) ---------- */
   seoTargets: {
