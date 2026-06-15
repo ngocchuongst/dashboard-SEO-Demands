@@ -444,6 +444,15 @@ function rDaily(){
       <div><div class="text-2xl font-bold text-sky-300">${fmtC(dp.tongView)}</div><div class="text-xs text-slate-400">Lượt xem</div></div>
       <div><div class="text-2xl font-bold text-emerald-400">${fmt(dp.tongReact+dp.tongCmt+dp.tongShare)}</div><div class="text-xs text-slate-400">Tương tác (react+cmt+share)</div></div>
     </div>`,"mb-4");
+  const mt = dp.mucTieu;
+  const bar = (a,t)=>{ const p=pct(a,t); return `<div class="flex items-center gap-3 py-1.5">
+      <div class="w-28 text-sm text-slate-300 shrink-0">${a==null?'—':fmtC(a)} / ${fmtC(t)}</div>
+      <div class="flex-1 h-2.5 rounded-full bg-slate-800 overflow-hidden"><div class="h-full ${barColor(p)}" style="width:${Math.min(100,p||0)}%"></div></div>
+      <div class="w-12 text-right text-sm font-semibold ${p>=90?'text-emerald-400':p>=50?'text-amber-400':'text-rose-400'}">${p==null?'—':p+'%'}</div></div>`; };
+  const mtCard = mt ? card(`<div class="flex items-center justify-between mb-2"><h3 class="font-semibold">Mục tiêu Daily (tuyến Always-on)</h3><span class="text-[11px] text-slate-400">T6/2026</span></div>
+      <div class="text-xs text-slate-400 mb-1">Reach</div>${bar(dp.tongReach, mt.reach)}
+      <div class="text-xs text-slate-400 mb-1 mt-2">Số bài</div>${bar(dp.list.length, mt.soBai)}
+      <div class="mt-2 text-[11px] text-slate-500">${mt.note||''}</div>`,"mb-4") : "";
   const rows = dp.list.map(p=>`<tr class="border-t border-slate-800 ${p.reach==null?'opacity-60':''}">
     <td class="py-2 pr-3">${p.ten}</td>
     <td class="py-2 pr-3"><span class="text-[11px] px-2 py-0.5 rounded-full font-medium" style="background:${demandColor(p.demand)}22;color:${demandColor(p.demand)}">${p.demand}</span></td>
@@ -460,7 +469,7 @@ function rDaily(){
       <tr class="border-t border-slate-700 font-semibold"><td class="py-2 pr-3">Tổng (${dp.list.length} bài)</td><td></td><td class="py-2 pr-3 text-right text-cyan-300">${fmt(dp.tongReach)}</td><td class="py-2 pr-3 text-right">${fmt(dp.tongView)}</td><td class="py-2 pr-3 text-right text-emerald-300">${fmt(dp.tongReact)}</td><td class="py-2 pr-3 text-right">${fmt(dp.tongCmt)}</td><td class="py-2 pr-3 text-right">${fmt(dp.tongShare)}</td><td></td></tr>
     </tbody></table></div>
     <div class="mt-2 text-[11px] text-amber-400/90">${dp.note}</div>`);
-  return head + tbl;
+  return head + mtCard + tbl;
 }
 
 const RENDER = {tongquan:rTongQuan, trang:rTrang, content:rContent, daily:rDaily, seo:rSeo, chiso:rChiSo, danhgia:rDanhGia};

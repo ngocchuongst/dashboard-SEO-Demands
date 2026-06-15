@@ -128,6 +128,7 @@ window.DASHBOARD_DATA = {
      FB ẩn reach organic sau login → chỉ lấy được tương tác công khai (cảm xúc/bình luận/share). */
   dailyPosts: {
     ky: "Mùa WC · T6/2026 · 30Shine Official (organic)",
+    mucTieu: { soBai: 18, reach: 400000, note: "Theo tuyến Content Always-on (PLAN EARNED MEDIA T6): 18 bài organic / 400K reach." },
     tongReach: 34276, tongView: 44706, tongReact: 206, tongCmt: 37, tongShare: 11,
     note: "Reach = 'Người xem' (người tiếp cận) lấy tay từ Business Suite (Chương). View = 'Lượt xem'. 4/5 bài đã có reach; bài 'Trạm tiếp phong độ WC' chưa gửi số → reach để '—'.",
     list: [
