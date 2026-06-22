@@ -352,7 +352,7 @@ function rChiSo(){
       <div><div class="text-xl font-bold">${fmtC(la.tongReach)}</div><div class="text-xs text-slate-400">Reach</div></div>
     </div>
     <table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr><th class="text-left pb-2 pr-3">Tài khoản</th><th class="text-right pb-2 pr-3">Chi</th><th class="text-right pb-2 pr-3">CPM</th><th class="text-right pb-2">CTR</th></tr></thead><tbody>
-    ${la.accounts.map(a=>`<tr class="border-t border-slate-800"><td class="py-2 pr-3">${a.ten}</td><td class="py-2 pr-3 text-right">${a.chi}tr</td><td class="py-2 pr-3 text-right ${a.cpm<=9000?'text-emerald-400':a.cpm<=15000?'text-teal-400':a.cpm<=18000?'text-amber-400':'text-rose-400'}">${fmt(a.cpm)}đ</td><td class="py-2 text-right">${a.ctr}%</td></tr>`).join("")}
+    ${la.accounts.map(a=>`<tr class="border-t border-slate-800"><td class="py-2 pr-3">${a.ten}</td><td class="py-2 pr-3 text-right">${a.chi}tr</td><td class="py-2 pr-3 text-right ${a.cpm<=9000?'text-emerald-400':a.cpm<=15000?'text-teal-400':a.cpm<=18000?'text-amber-400':'text-rose-400'}">${fmt(a.cpm)}đ</td><td class="py-2 text-right">${fmt(a.ctr)}%</td></tr>`).join("")}
     </tbody></table>
     <div class="mt-2 text-[11px] text-slate-400">${la.note}</div>`,"mb-4") : "";
 
@@ -387,7 +387,34 @@ function rChiSo(){
   const cpmChartCard = (la.campaigns&&la.campaigns.length)
     ? card(`<h3 class="font-semibold mb-3">CPM campaign vs ngưỡng tier (xanh tốt → đỏ CUT)</h3><div class="relative h-48"><canvas id="cpmChart"></canvas></div>`,"mb-4") : "";
 
-  return liveRow + campTbl + cpmChartCard
+  const di = D.duLuanImpact;
+  const arrow = (t,s,unit,lowerBetter)=>{const d=(s-t)/t*100;const better=lowerBetter?d<0:d>0;const cls=Math.abs(d)<5?'text-slate-400':better?'text-emerald-400':'text-rose-400';return `<span class="whitespace-nowrap">${t}${unit}→<b>${s}${unit}</b></span> <span class="${cls} text-[11px] font-semibold">(${d>0?'+':''}${Math.round(d)}%)</span>`;};
+  const diCard = di ? card(`
+    <div class="flex items-center justify-between mb-1"><h3 class="font-semibold">🔬 Bước đệm: từng camp purchase — TRƯỚC vs SAU khi dư luận mở phễu</h3><span class="text-[11px] text-slate-400">mốc ${di.catMoc}</span></div>
+    <div class="text-[11px] text-slate-500 mb-3">${di.catMocLyDo}</div>
+    <div class="mb-3 rounded-lg border border-slate-600 bg-slate-800/40 p-2.5 text-[12px]">
+      <div class="font-semibold text-slate-200 mb-1">⚓ ${di.control.ten}</div>
+      <div class="flex flex-wrap gap-x-5 gap-y-1 mb-1">
+        <span class="text-slate-400">CPM: ${arrow(di.control.cpmT,di.control.cpmS,'đ',true)}</span>
+        <span class="text-slate-400">CTR: ${arrow(di.control.ctrT,di.control.ctrS,'%',false)}</span>
+        <span class="text-slate-400">CPA: ${arrow(di.control.cpaT,di.control.cpaS,'K',true)}</span>
+      </div>
+      <div class="text-slate-400">${di.control.nhanDinh}</div>
+    </div>
+    <div class="overflow-x-auto"><table class="w-full text-sm"><thead class="text-slate-400 text-xs uppercase"><tr>
+      <th class="text-left pb-2 pr-3">Camp demand</th><th class="text-left pb-2 pr-3">CPM (t→s)</th><th class="text-left pb-2 pr-3">CTR (t→s)</th><th class="text-left pb-2 pr-3">CPA (t→s)</th><th class="text-left pb-2">Đơn/ngày (t→s)</th></tr></thead><tbody>
+    ${di.perCamp.map(c=>`<tr class="border-t border-slate-800 align-top">
+      <td class="py-2 pr-3 font-medium whitespace-nowrap">${c.ten}</td>
+      <td class="py-2 pr-3 text-[12px] text-slate-300">${arrow(c.cpmT,c.cpmS,'đ',true)}</td>
+      <td class="py-2 pr-3 text-[12px] text-slate-300">${arrow(c.ctrT,c.ctrS,'%',false)}</td>
+      <td class="py-2 pr-3 text-[12px] text-slate-300">${arrow(c.cpaT,c.cpaS,'K',true)}</td>
+      <td class="py-2 text-[12px] text-slate-300">${arrow(c.dnT,c.dnS,'',false)}</td></tr>`).join("")}
+    </tbody></table></div>
+    <div class="text-[11px] text-slate-500 mt-1">Màu xanh = tốt hơn sau dư luận, đỏ = xấu hơn. CPM/CPA thấp tốt; CTR/đơn cao tốt.</div>
+    <div class="mt-3 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-[12px]"><span class="font-semibold text-amber-300">Kết luận: </span>${di.ketLuan}</div>
+    <div class="mt-2 rounded-lg border border-cyan-500/30 bg-cyan-500/10 p-3 text-[12px]"><span class="font-semibold text-cyan-300">Cách đo đúng tác động mở phễu: </span>${di.caoDuoc}</div>`,"mb-4") : "";
+
+  return liveRow + campTbl + cpmChartCard + diCard
     + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">${tierTbl("Tier Facebook",D.adsTiers.facebook)}${tierTbl("Tier TikTok",D.adsTiers.tiktok)}</div>`
     + dxCard;
 }

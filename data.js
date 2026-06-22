@@ -8,10 +8,10 @@ window.DASHBOARD_DATA = {
   meta: {
     ten: "Dashboard Marketing 30Shine",
     ky: "Tháng 6/2026 — Earned Media + Demand",
-    capNhat: "2026-06-15",
+    capNhat: "2026-06-22",
     periodStart: "2026-06-01",
     periodEnd: "2026-06-30",
-    ghiChu: "Mục tiêu & demand lấy từ PLAN EARNED MEDIA THÁNG 6. Ads = Meta API live (1–15/6, gồm 2 camp Dư Luận trên TK Tỉnh). Daily post organic page 30Shine. Traffic = GA4 live. Ô '—' = chưa có actual.",
+    ghiChu: "Mục tiêu & demand lấy từ PLAN EARNED MEDIA THÁNG 6. Ads = Meta API live (1–22/6). MỚI: Adsplus 5 đã tách campaign PURCHASE theo từng demand (Tour/Tóc đẹp đi làm/Thera/Nghỉ trưa/Tan làm) — đúng trục demand. Campaign 'Clip tốt nhất T4' đã PAUSED. Dư Luận giờ chạy trên Adsplus 5 (TK Chương). Daily post organic + Traffic GA4 = số tay tới 15/6 (chưa pull lại). Ô '—' = chưa có actual.",
   },
 
   /* Link CTA chuẩn 30Shine (từ file plan) — content gắn về đây */
@@ -56,17 +56,20 @@ window.DASHBOARD_DATA = {
     { date: "2026-06-11", note: "khởi tạo", metrics: {
       "Tổng số earned media": 0, "Post kênh dư luận": 0,
       "SEO sessions /discovers": 0, "Bài SEO live": 4, "CPA (post gắn ads)": 18.8 } },
+    { date: "2026-06-22", note: "live ads tách theo demand; clip T4 paused; +3 bài dư luận + 2 bài SEO Local cổ vai gáy", metrics: {
+      "Tổng số earned media": 13, "Post kênh dư luận": 9,
+      "SEO sessions /discovers": 0, "Bài SEO live": 6, "CPA (post gắn ads)": 64 } },
   ],
 
   /* ---------- 1. TỔNG QUAN — MỤC TIÊU & % ĐẠT ---------- */
   tongQuan: [
-    { ten: "Tổng số earned media", target: 23, actual: 10, donVi: "bài", note: "Cộng tổng: Dư luận 6 (2 Threads + 4 FB page) + KOC Hoàng Không Sao 4 clip TikTok T6 = 10/23. (Daily 30Shine tách theo dõi riêng ở tab Daily, không tính vào đây).", nguon: "Live đa kênh" },
-    { ten: "Tổng reach thu về", target: 1625000, actual: 347457, donVi: "reach", note: "Tạm tính: Daily 30Shine 34.276 (reach Business Suite, 4/5 bài) + Dư luận Threads 27.971 (view) + Ads dư luận 17.387 (reach) + KOC Hoàng TikTok 267.823 (view). Chưa gồm: bài daily 'Trạm tiếp phong độ', reach organic 4 FB dư luận (ẩn), UGC. Lưu ý: TikTok/Threads = view (proxy).", nguon: "Live đa kênh" },
-    { ten: "Post kênh dư luận", target: 18, actual: 6, donVi: "bài", note: "Đã lên 6/18 (tới 15/6): Threads 2 + TikTok 4. Người làm: Chương. (4 link TikTok cần Chương gửi để lấy view).", nguon: "Mục tiêu" },
+    { ten: "Tổng số earned media", target: 23, actual: 13, donVi: "bài", note: "Cộng tổng: Dư luận 9 (4 Threads + 5 FB page) + KOC Hoàng Không Sao 4 clip TikTok T6 = 13/23. (Daily 30Shine tách theo dõi riêng ở tab Daily, không tính vào đây).", nguon: "Live đa kênh" },
+    { ten: "Tổng reach thu về", target: 1625000, actual: 592573, donVi: "reach", note: "Cập nhật 22/6 (chỉ ORGANIC): Daily 30Shine 39.115 (gồm Anh tôi 1.357 + Thera 982 + WC Argen organic 2.500) + Dư luận Threads 77.157 (view) + FB dư luận boost 181.674 (Trụ cột 137.700 + Burnout 43.000 + Coder 974) + KOC Hoàng TikTok T6 294.627 (view). ⚠️ Bài Daily WC 'Anh em Argen' organic chỉ 2,5K — phần 2,6M là do ADS → KHÔNG tính. KHÔNG cộng riêng bảng 'Dư luận ads' (đã trong reach FB boost). Chưa gồm: Đàn Ông Bụi, Kiến Thức Tinh Hoa, 'Trạm tiếp phong độ', UGC.", nguon: "Live đa kênh" },
+    { ten: "Post kênh dư luận", target: 18, actual: 9, donVi: "bài", note: "Đã lên 9/18 (tới 22/6): Threads 4 (2 @trag.ngyen + 2 @hanoihiddenvibes) + FB page 5. Người làm: Chương. 3 bài mới 22/6 (cổ vai gáy/gội) số cần verify.", nguon: "Mục tiêu" },
     { ten: "Engagement rate", target: 1, actual: 4.1, donVi: "%", note: "Daily 30Shine (4 bài có số): Lượt tương tác FB 1.405 / reach 34.276 = 4,1% (FB tính cả lượt click). Nếu chỉ react+cmt+share = 237/34.276 = 0,69%. Nguồn: Business Suite.", nguon: "Business Suite" },
-    { ten: "CPA (post gắn ads)", target: 21, actual: 18.8, donVi: "K (đạt khi ≤)", note: "Mục tiêu <21K. Campaign purchase chính đang chạy CPA 18.8K (8.212 đơn) → ĐẠT.", nguon: "Mục tiêu + Meta live", thapTotHon: true },
+    { ten: "CPA (post gắn ads)", target: 21, actual: 64, donVi: "K (đạt khi ≤)", note: "Mục tiêu <21K. CẢNH BÁO: camp 'Clip tốt nhất T4' đạt 19.3K (11.870 đơn) nhưng đã PAUSED. 5 camp purchase tách theo demand đang chạy: CPA gộp ~64K (Tour 76.6K, Nghỉ trưa 66K, Thera 62K, Tóc đẹp đi làm 59K, Tan làm 52K) — đang ramp, CPM 12–14K đẹp nhưng CPA chưa về ngưỡng. Theo dõi sát tuần tới.", nguon: "Meta live 1–22/6", thapTotHon: true },
     { ten: "SEO sessions /discovers", target: 510, actual: 0, donVi: "ss/tháng", note: "Baseline 0 (blog mới từ 5/2026). Lộ trình tuần: W23=30 → W24=80 → W25=150 → W26=250.", nguon: "SEO PLAN T6" },
-    { ten: "Bài SEO live", target: 9, actual: 4, donVi: "bài", note: "4 bài W22 đã publish; còn 5 bài W23–W26 (1 in-progress, 1 scheduled, 3 pending).", nguon: "SEO PLAN T6" },
+    { ten: "Bài SEO live", target: 9, actual: 6, donVi: "bài", note: "6 bài đã publish: 4 bài W22 + 2 bài Local cổ vai gáy HN & HCM (đăng 22/6). Còn bài #10 Thera timeline (in-progress) + #5–9 plan. Đã VƯỢT tiến độ về số bài, lệch chủ đề so plan gốc (đẩy mạnh cụm cổ vai gáy/Thera).", nguon: "SEO PLAN T6" },
     { ten: "SEO Engagement Rate", target: 65, actual: null, donVi: "%", note: "Đo trong GA4. Lộ trình ER tuần: 60 → 62 → 65 → 65%.", nguon: "SEO PLAN T6" },
   ],
 
@@ -84,7 +87,7 @@ window.DASHBOARD_DATA = {
   /* Tuyến sản xuất earned media (W2–W4, 8–30/6) */
   tuyenSanXuat: [
     { tuyen: "Kênh Dư Luận", soBai: 18, reach: 425000, concept: "Bridge 4 demand (Tour/Nghỉ trưa/Thera/Tan làm)", nguoiLam: "Chương", note: "TikTok·Threads·FB · 10M ads · seeding 10 cmt/post" },
-    { tuyen: "KOC Hoàng (Không Sao)", soBai: 8, reach: 1200000, concept: "Biến hình tóc trẻ/che khuyết điểm dân VP", nguoiLam: "Hoàng", note: "8 clip · móc nối kiểu tóc cầu thủ viral · THỰC TẾ T6 (TikTok @hoangkhonggsao): 4 clip / 267.823 view — 1 clip nhuộm tóc 2/6 = 266.900 (99,6%), 3 clip mới chỉ vài trăm view. (view công khai yt-dlp = proxy, không phải reach Analytics)" },
+    { tuyen: "KOC Hoàng (Không Sao)", soBai: 8, reach: 1200000, concept: "Biến hình tóc trẻ/che khuyết điểm dân VP", nguoiLam: "Hoàng", note: "Quét yt-dlp 22/6 (@hoangkhonggsao) — CHỈ T6/2026: 4 clip / 294.627 view. 1 clip gánh toàn bộ: nhuộm Ombre sếp Tùng 2/6 = 293.000 (99,5%); 3 clip 12-13/6 flop (Skincare 357 · WC đi làm 530 · Dự đoán MV Tùng 740). ⚠️ Mới 4/8 clip & lệ thuộc 1 hit. (view = proxy công khai, không phải reach Analytics)" },
     { tuyen: "Lan Toả (World Cup)", soBai: 5, reach: 400000, concept: "Concept World Cup — dự đoán tỷ số", nguoiLam: "Vân Hà", note: "Free 02 gói SC tiếp phong độ WC · móc JTBD ngủ trưa/hồi sức" },
     { tuyen: "Content Always-on", soBai: 18, reach: 400000, concept: "Xoay 4 demand theo lịch", nguoiLam: "Vân Hà/Hoàng/Thanh Hà/Chương", note: "Facebook organic mỗi ngày" },
   ],
@@ -98,7 +101,7 @@ window.DASHBOARD_DATA = {
     { ngay: "15/6", postGoc: "Lần cuối anh em làm gì đó chỉ để thư giãn cho riêng mình?", demand: "Tour", kenh: "FB group", trangThai: "Cần làm" },
     { ngay: "17/6", postGoc: "Công ty có nên bố trí chỗ nghỉ trưa tử tế?", demand: "Nghỉ trưa", kenh: "FB", trangThai: "Cần làm" },
     { ngay: "19/6", postGoc: "45 phút 'đi trốn' giữa tuần — xài kiểu gì cho lại sức?", demand: "Tour", kenh: "Threads", trangThai: "Cần làm" },
-    { ngay: "23/6", postGoc: "Người trẻ 28-35 đã đau cổ vai gáy như U60 — do việc hay lười?", demand: "Thera", kenh: "FB", trangThai: "Cần làm" },
+    { ngay: "23/6", postGoc: "Người trẻ 28-35 đã đau cổ vai gáy như U60 — do việc hay lười?", demand: "Thera", kenh: "FB + Threads", trangThai: "Done (lên sớm 22/6: FB Đàn Ông Bụi + 2 Threads @hanoihiddenvibes)" },
     { ngay: "25/6", postGoc: "Đàn ông tự thưởng cho bản thân thế nào tháng này?", demand: "Tour", kenh: "Threads", trangThai: "Cần làm" },
     { ngay: "26/6", postGoc: "Tan tầm tắc đường: về thẳng nhà hay 'trốn' 1 tiếng? Vợ nghĩ gì?", demand: "Tan làm", kenh: "FB", trangThai: "Cần làm" },
   ],
@@ -106,12 +109,12 @@ window.DASHBOARD_DATA = {
   /* Dư luận — SỐ THẬT từ 2 campaign ads chạy trên TK Tỉnh (Meta API, 1–15/6).
      3 creative đang chạy: P01 Trụ cột · P02 Coder · P03 Burnout (đều demand Tour/D01). */
   duLuanAds: {
-    ky: "1–15/6/2026",
-    nguon: "Meta Ads API · Adsplus 5 (Tỉnh)",
-    tongChi: 155765, reachGop: 17387, tongTuongTac: 218,
+    ky: "1–22/6/2026",
+    nguon: "Meta Ads API · Adsplus 5 (Tỉnh) · TK Chương",
+    tongChi: 2107936, reachGop: 208039, tongTuongTac: null,
     campaigns: [
-      { ten: "ALL · Tương tác · Dư Luận", loai: "Engagement", spend: 107109, reach: 8271, impr: 9132, ctr: 0.70, cpm: 11729, freq: 1.10, eng: 44 },
-      { ten: "ALL · Reach · Dư Luận", loai: "Awareness", spend: 48656, reach: 9116, impr: 9396, ctr: 0.24, cpm: 5178, freq: 1.03, eng: 174 },
+      { ten: "ALL · Tương tác · Dư Luận · Chương", loai: "Engagement", spend: 1429876, reach: 79556, impr: 101464, ctr: 1.87, cpm: 14092, freq: 1.28, eng: null },
+      { ten: "ALL · Reach · Dư Luận · Chương", loai: "Awareness", spend: 678060, reach: 128483, impr: 135079, ctr: 1.10, cpm: 5020, freq: 1.05, eng: null },
     ],
     posts: [
       { post: "P01 · Trụ cột (ngồi trong xe)", camp: "Reach", page: "Gộp seeding", reach: 9116, impr: 9396, spend: 48656, ctr: 0.24, cpm: 5178, clicks: 23, react: 2, eng: 174 },
@@ -121,7 +124,7 @@ window.DASHBOARD_DATA = {
       { post: "P03 · Burnout thức khuya", camp: "Tương tác", page: "Kinh Doanh Châu Á", reach: 1811, impr: 1811, spend: 7503, ctr: 0.28, cpm: 4143, clicks: 5, react: 2, eng: 2 },
       { post: "P02 · Coder 'Năm 29 tuổi'", camp: "Tương tác", page: "Tạp Chí KD Thời Đại", reach: 48, impr: 53, spend: 551, ctr: 1.89, cpm: 10396, clicks: 1, react: 1, eng: 1 },
     ],
-    note: "Reach (17.387) là CỘNG 2 camp, chưa khử trùng người. CPM Reach 5.178đ rẻ; camp Tương tác đem 44 engagement/107K chi. P01 Trụ cột mạnh nhất (reach + tương tác). P02 Coder gần như chưa được phân phối (48 reach).",
+    note: "Tới 22/6: 2 camp Dư Luận đã scale mạnh — reach gộp 208K (×12 so với 17K ngày 15/6), chi 2.1M. CTR Tương tác lên 1.87% (tốt). CPM Reach 5.020đ vẫn rất rẻ. Bảng 'posts' bên dưới là breakdown CŨ kỳ 1–15/6 (chưa pull lại ad-level kỳ 1–22). 5–9 đơn purchase là phụ (mục tiêu là reach/tương tác seeding).",
   },
 
   /* Daily post organic trên page 30Shine Official (5 link Chương gửi) — KHÔNG phải earned media.
@@ -129,14 +132,17 @@ window.DASHBOARD_DATA = {
   dailyPosts: {
     ky: "Mùa WC · T6/2026 · 30Shine Official (organic)",
     mucTieu: { soBai: 18, reach: 400000, note: "Theo tuyến Content Always-on (PLAN EARNED MEDIA T6): 18 bài organic / 400K reach." },
-    tongReach: 34276, tongView: 44706, tongReact: 206, tongCmt: 37, tongShare: 11,
-    note: "Reach = 'Người xem' (người tiếp cận) lấy tay từ Business Suite (Chương). View = 'Lượt xem'. 4/5 bài đã có reach; bài 'Trạm tiếp phong độ WC' chưa gửi số → reach để '—'.",
+    tongReach: 39115, tongView: 50488, tongReact: 366, tongCmt: 41, tongShare: 16,
+    note: "Quy ước: View ('Lượt xem') = reach proxy (bài nào chưa có 'Người xem' thì lấy view). Chỉ tính ORGANIC. 8 bài. Bài WC 'Anh em Argen': organic chỉ 2,5K, phần 2,6M là do ads → KHÔNG tính vào tổng. Bài 'Trạm tiếp phong độ' chưa có số.",
     list: [
       { ten: "Tour du lịch 45′ — không cần nghỉ phép, không cần đi xa", demand: "Tour", reach: 1254, view: 2156, react: 101, cmt: 13, share: 2, url: "https://www.facebook.com/share/p/17njnFn4Cn/" },
       { ten: "Hào quang nhà vô địch — Hoàng Sao 'The GOAT' (250tr)", demand: "Lan toả WC", reach: 3087, view: 5917, react: 67, cmt: 4, share: 4, url: "https://www.facebook.com/share/p/18mW3X2VMm/" },
       { ten: "Thức khuya xem WC — gội/massage hồi sức 45′", demand: "Nghỉ trưa", reach: 28974, view: 35068, react: 22, cmt: 16, share: 3, url: "https://www.facebook.com/share/p/14ixGifgi3g/" },
       { ten: "Stíp Jobs VN gội đầu sau tan làm — xoá hói, tóc bồng", demand: "Tan làm", reach: 961, view: 1565, react: 4, cmt: 0, share: 1, url: "https://www.facebook.com/share/p/1JQmWKnd7v/" },
       { ten: "Trạm tiếp phong độ WC — 45′ trưa / 30′ chiều / 90′ tối", demand: "Nghỉ trưa", reach: null, view: null, react: 12, cmt: 4, share: 1, url: "https://www.facebook.com/share/1D4GPQubyE/" },
+      { ten: "Anh em Argen ăn mừng Hattrick WC — căn hộ 45′ 🏆 (organic 2,5K; 2,6M do ads — KHÔNG tính)", demand: "Lan toả WC", reach: 2500, view: 2500, react: 134, cmt: 3, share: 2, click: 1039, url: "https://web.facebook.com/share/p/1bCemYE4Nz/" },
+      { ten: "Anh tôi tr… (16/6)", demand: "—", reach: 1357, view: 2300, react: 24, cmt: 1, share: 1, url: "https://web.facebook.com/share/p/1HUQSfwvTC/" },
+      { ten: "Thera Studio 1 Ngủ — 'Căn hộ phục hồi' gỡ rối cổ vai gáy (20/6)", demand: "Thera", reach: 982, view: 982, react: 2, cmt: 0, share: 2, url: "https://web.facebook.com/share/p/1828U1zVGY/" },
     ],
   },
 
@@ -144,17 +150,20 @@ window.DASHBOARD_DATA = {
      Threads = view + tương tác thật. FB = reactions/cmt/share công khai thật (reach organic FB ẩn sau login).
      LƯU Ý: 4 link Chương gọi "TikTok" thực tế là 4 post FB trên 4 page dư luận — đã lấy theo link thật. */
   duLuanOrganic: {
-    ky: "Tới 15/6/2026",
-    reachThreads: 27971,
-    reactionsFB: 1536,
-    note: "Threads: cột View là số thật. Facebook: cột 'Like' = reactions công khai; FB ẩn reach organic sau login nên cột View để '—' (chỉ phần boost qua ads mới có reach — xem bảng 'Dư luận ads'). Kiến Thức Tinh Hoa chưa hiện số công khai.",
+    ky: "Tới 22/6/2026",
+    reachThreads: 77157,
+    reactionsFB: 2487,
+    note: "Số THẬT từ Business Suite + Threads (22/6). Bài Threads 'Khách quen 8h tối' bùng: 76.600 view / 1.400 like / 139 cmt / 13 repost / 23 share. 3 bài FB Trụ cột·Burnout·Coder = bài ĐƯỢC BOOST → cột View = 'Người xem' (reach tổng organic+ads): Trụ cột 137.700, Burnout 43.000, Coder 974 (Coder gần như chưa được đẩy). Còn thiếu số: Đàn Ông Bụi (cổ vai gáy 22/6), Kiến Thức Tinh Hoa (Vai gáy 30t), 2 Threads @hanoihiddenvibes mới (cổ vai gáy 478 view / gội màu mè 8 view — mới đăng).",
     list: [
-      { ten: "Khách quen 8h tối T6 — 'chỗ duy nhất không ai gọi là sếp'", kenh: "Threads @trag.ngyen", view: 27900, like: 623, cmt: 76, share: 19, url: "https://www.threads.com/@trag.ngyen/post/DZjv7M9FCny" },
+      { ten: "Khách quen 8h tối T6 — 'chỗ duy nhất không ai gọi là sếp'", kenh: "Threads @trag.ngyen", view: 76600, like: 1400, cmt: 139, share: 23, url: "https://www.threads.com/@trag.ngyen/post/DZjv7M9FCny" },
       { ten: "Kiểm tra độ mệt đàn ông qua 5 phút nằm ghế gội", kenh: "Threads @trag.ngyen", view: 71, like: 1, cmt: 1, share: 1, url: "https://www.threads.com/@trag.ngyen/post/DZjxA-MlHqU" },
-      { ten: "Trụ cột 36t (ngồi trong xe trước cổng nhà)", kenh: "FB · Bản Lĩnh Đàn Ông", view: null, like: 532, cmt: 11, share: 1, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid03kFNJYD1mcnvsoKiy2oMBTE1dHv3oPoK515gAtzRKMRbGQ1LAE2TySfpP4PdnkK4l&id=61563496486162" },
-      { ten: "Burnout 27t (lương ổn mà sáng nào cũng mệt)", kenh: "FB · Kinh Doanh Châu Á", view: null, like: 505, cmt: 11, share: null, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02vJRskkBp8aNhBKrLBtgQvh6YisxbmGDVVVBJMJTdmwu27UDakyEzrPZdSoby2Nbol&id=61563416021934" },
-      { ten: "Coder 29t (7 năm code, trống rỗng)", kenh: "FB · Tạp Chí KD Thời Đại", view: null, like: 499, cmt: 11, share: null, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid0uCeo6qxhEg94FEFzz4xEAogDXpqZ1C6DjcgRbaqabdWeHJYoeLeBwSHvYfhWtvGQl&id=61563276163931" },
+      { ten: "Trụ cột 36t (ngồi trong xe trước cổng nhà) · BOOST", kenh: "FB · Bản Lĩnh Đàn Ông", view: 137700, like: 855, cmt: 17, share: 5, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid03kFNJYD1mcnvsoKiy2oMBTE1dHv3oPoK515gAtzRKMRbGQ1LAE2TySfpP4PdnkK4l&id=61563496486162" },
+      { ten: "Burnout 27t (lương ổn mà sáng nào cũng mệt) · BOOST", kenh: "FB · Kinh Doanh Châu Á", view: 43000, like: 1200, cmt: 15, share: 10, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02vJRskkBp8aNhBKrLBtgQvh6YisxbmGDVVVBJMJTdmwu27UDakyEzrPZdSoby2Nbol&id=61563416021934" },
+      { ten: "Coder 29t (7 năm code, trống rỗng) · BOOST", kenh: "FB · Tạp Chí KD Thời Đại", view: 974, like: 432, cmt: 11, share: 0, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid0uCeo6qxhEg94FEFzz4xEAogDXpqZ1C6DjcgRbaqabdWeHJYoeLeBwSHvYfhWtvGQl&id=61563276163931" },
       { ten: "Vai gáy 30t (cơ thể báo động, massage 125k)", kenh: "FB · Kiến Thức Tinh Hoa", view: null, like: null, cmt: null, share: null, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid06YKJPJEZUDxJnSbokHaQPn7ovtTBSHG9R2NaHrcR7fMaCrphmMJTtWQp7PNmrFBXl&id=61563812254323" },
+      { ten: "28t cổ vai gáy đau như chú u60 — bị phán 'tại lười' (22/6)", kenh: "FB · Đàn Ông Bụi", view: null, like: null, cmt: null, share: null, url: "https://www.facebook.com/share/p/1BXnfHiDNf/" },
+      { ten: "29t cổ vai gáy đau như chú u60 — do việc hay lười? (22/6)", kenh: "Threads @hanoihiddenvibes", view: 478, like: 2, cmt: 2, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DZ3ooYkmWUS" },
+      { ten: "Đàn ông gội đầu ngoài hàng là màu mè? (22/6)", kenh: "Threads @hanoihiddenvibes", view: 8, like: null, cmt: 2, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DZ3p57nGaK6" },
     ],
   },
 
@@ -184,6 +193,9 @@ window.DASHBOARD_DATA = {
     { n: 7, tuan: "W25", loai: "Supporting WC", ten: "Thức đêm xem WC mệt — cách lấy lại phong độ", demand: "Trạm Sạc", kw: "mệt mỏi sau thức đêm xem bóng đá", vol: "1.000+", wc: true, status: "pending" },
     { n: 8, tuan: "W26", loai: "Supporting", ten: "Tóc mỏng rụng nhiều — phục hồi nang tóc 8 tuần", demand: "Cứu Tóc Mỏng", kw: "tóc mỏng rụng nhiều nam phải làm sao", vol: "1.200", wc: false, status: "pending" },
     { n: 9, tuan: "W26", loai: "Supporting·Local", ten: "Cắt tóc nam gần đây uy tín — top HCM & HN", demand: "Đáng Đồng Tiền", kw: "cắt tóc nam gần đây", vol: "4.000+", wc: false, status: "pending", note: "Gắn Google Maps + schema LocalBusiness" },
+    { n: 10, tuan: "W25", loai: "Pillar·GEO", ten: "Thera Studio – Du Lịch 45 Phút: gội dưỡng sinh + massage CVG, kể theo từng phút", demand: "Trạm Phục Hồi / Tour", kw: "thera studio 30shine / combo gội massage nam", vol: "—", wc: false, status: "in_progress", note: "Draft HTML sẵn (22/6, ~1.700 từ, cấu trúc timeline, local HN+HCM). CHỜ paste Strapi Discover. [CẦN DATA]: giá/bước combo chính xác + số salon HN/HCM + JSON-LD nhờ dev." },
+    { n: 11, tuan: "W25", loai: "Supporting·Local", ten: "Gội đầu massage cổ vai gáy cho nam ở Hà Nội: đi đâu cho đáng?", demand: "Trạm Phục Hồi", kw: "gội đầu massage cổ vai gáy nam hà nội", vol: "—", wc: false, status: "published", note: "Đăng 22/6. Local HN. slug: goi-dau-massage-co-vai-gay-cho-nam-ha-noi. [CẦN link live + GSC]." },
+    { n: 12, tuan: "W25", loai: "Supporting·Local", ten: "Gội đầu massage cổ vai gáy cho nam ở TP.HCM: chọn sao cho chuẩn?", demand: "Trạm Phục Hồi", kw: "gội đầu massage cổ vai gáy nam tphcm", vol: "—", wc: false, status: "published", note: "Đăng 22/6. Local HCM. slug: goi-dau-massage-co-vai-gay-cho-nam-tphcm. [CẦN link live + GSC]." },
   ],
   /* Rank Google organic THẬT — audit qua WebSearch (seo-audit) 15/6. */
   seoRankAudit: {
@@ -226,19 +238,44 @@ window.DASHBOARD_DATA = {
     ],
   },
 
-  /* LIVE — Meta API, 1–10/6/2026 */
+  /* LIVE — Meta API, 1–22/6/2026 (Adsplus 5 "Tỉnh"). Campaign PURCHASE đã tách theo demand. */
   liveAds: {
-    ky: "1–10/6/2026",
+    ky: "1–22/6/2026",
     accounts: [
-      { ten: "Adsplus 5 (Tỉnh)", chi: 164.1, cpm: 21713, ctr: 1.20, reach: 1471290 },
-      { ten: "Adsplus 5.2 (NSM Tôn Cương)", chi: 22.4, cpm: 25709, ctr: 0.89, reach: 508088 },
+      { ten: "Adsplus 5 (Tỉnh)", chi: 534.3, cpm: 16205, ctr: 0.92, reach: 5748174, note: "Account chính đang chạy — gồm 6 camp purchase + 2 camp Dư Luận." },
+      { ten: "Adsplus 5.2 (NSM Tôn Cương)", chi: 22.4, cpm: 25709, ctr: null, reach: 547307, note: "Toàn bộ camp salon-location đã PAUSED (CPM 55–125K, CPA 119–799K). reach = cộng thô chưa khử trùng." },
     ],
     campaigns: [
-      { ten: "Purchase · Clip tốt nhất hệ thống (T4)", chi: 154.0, cpm: 20655, ctr: 1.16, donHang: 8212, cpa: 18.8 },
-      { ten: "Salon · Location Purchase · Mess (T5)", chi: 10.7, cpm: 84403, ctr: 3.56, donHang: 77, cpa: null },
+      { ten: "Purchase · Clip tốt nhất hệ thống (T4) — ĐÃ PAUSED", chi: 229.3, cpm: 20762, ctr: 1.17, donHang: 11870, cpa: 19.3, status: "PAUSED" },
+      { ten: "Demand · Tour du lịch 45′", chi: 86.3, cpm: 12775, ctr: 1.04, donHang: 1126, cpa: 76.6, status: "ACTIVE" },
+      { ten: "Demand · Tóc đẹp đi làm", chi: 67.5, cpm: 14445, ctr: 0.84, donHang: 1140, cpa: 59.2, status: "ACTIVE" },
+      { ten: "Demand · Thera Studio", chi: 51.2, cpm: 12739, ctr: 0.35, donHang: 827, cpa: 61.9, status: "ACTIVE" },
+      { ten: "Demand · Nghỉ trưa", chi: 40.5, cpm: 12631, ctr: 0.76, donHang: 613, cpa: 66.1, status: "ACTIVE" },
+      { ten: "Demand · Tan làm", chi: 30.4, cpm: 12001, ctr: 0.38, donHang: 582, cpa: 52.2, status: "ACTIVE" },
+      { ten: "Salon · Location Purchase · Mess (T5)", chi: 26.8, cpm: 55243, ctr: 2.71, donHang: 740, cpa: 36.2, status: "ACTIVE" },
     ],
-    tongChi: 186.5, cpmTong: 22126, tongReach: 1979378,
-    note: "Campaign purchase chính: 8.212 đơn, CPA 18.8K (ĐẠT ≤21K). Campaign Salon CPM 84K = bất thường. HN/HCM/Bluefocus chưa bật MCP.",
+    tongChi: 556.7, cpmTong: 16205, tongReach: 5748174,
+    note: "BƯỚC NGOẶT: camp 'Clip tốt nhất T4' (CPA 19.3K, 11.870 đơn) đã PAUSED; spend dồn sang 5 camp tách theo demand. 5 camp demand: 275.9M chi / 4.288 đơn → CPA gộp ~64K (cao hơn 19K vì mới ramp + tách nhỏ). CPM demand thấp đẹp (12–14K) nhưng CPA chưa về ngưỡng. Tour chi nhiều nhất (86M) nhưng CPA cao nhất (76.6K). HN queryable nhưng chưa bật MCP; HCM disabled; Bluefocus bật nhưng 0 chi T6.",
+  },
+
+  /* ---------- BƯỚC ĐỆM: TỪNG CAMPAIGN PURCHASE — TRƯỚC vs SAU KHI DƯ LUẬN MỞ PHỄU ----------
+     5 camp demand purchase START 11/6; camp dư luận (Tương tác+Reach) START 14/6 20:18.
+     → mỗi camp: TRƯỚC dư luận = 11–13/6 (3 ngày) vs SAU = 14–22/6 (9 ngày). Meta API live. */
+  duLuanImpact: {
+    catMoc: "14/6/2026 (camp dư luận lên sóng)",
+    catMocLyDo: "5 camp demand purchase đều START 11/6; 2 camp dư luận (mở phễu) START 14/6 20:18. So mỗi camp: TRƯỚC = 11–13/6 (3 ngày đầu) vs SAU = 14–22/6 (9 ngày). ⚠️ CONFOUNDER: 'Trước' = 3 ngày launch (Meta honeymoon, freq ~1.6, CPA tự nhiên đẹp); 'Sau' đã scale chi 4–8× (freq 1.9–2.6) → CPA tăng phần lớn là SCALING DECAY, không phải do dư luận.",
+    /* Control sạch nhất: clip T4 — CÙNG 1 creative chạy xuyên cả 2 kỳ */
+    control: { ten: "Clip tốt nhất T4 (CÙNG creative cả 2 kỳ = control sạch)", cpmT: 23426, cpmS: 18387, ctrT: 1.39, ctrS: 0.98, cpaT: 27.3, cpaS: 24.4,
+      nhanDinh: "Cùng 1 clip trước→sau: CPM −21%, CPA −11% (nhỉnh lên nhẹ), CTR −30%. Đây là tín hiệu DUY NHẤT có thể nhất quán với 'halo' dư luận (impression rẻ hơn + chuyển đổi nhỉnh trên cùng creative) — NHƯNG vẫn trong biên dao động tuần + trùng mùa World Cup, KHÔNG đủ chứng minh nhân quả." },
+    perCamp: [
+      { ten: "Tour du lịch 45′", cpmT: 18991, cpmS: 11780, ctrT: 1.96, ctrS: 0.89, cpaT: 39.6, cpaS: 101.9, dnT: 148, dnS: 76 },
+      { ten: "Tóc đẹp đi làm",  cpmT: 21455, cpmS: 13353, ctrT: 1.11, ctrS: 0.80, cpaT: 30.5, cpaS: 77.9,  dnT: 148, dnS: 77 },
+      { ten: "Thera Studio",    cpmT: 17261, cpmS: 12094, ctrT: 0.47, ctrS: 0.33, cpaT: 27.4, cpaS: 83.2,  dnT: 105, dnS: 57 },
+      { ten: "Nghỉ trưa",       cpmT: 18992, cpmS: 11720, ctrT: 1.66, ctrS: 0.63, cpaT: 28.7, cpaS: 95.0,  dnT: 88,  dnS: 39 },
+      { ten: "Tan làm",         cpmT: 15220, cpmS: 11190, ctrT: 0.65, ctrS: 0.31, cpaT: 23.5, cpaS: 89.3,  dnT: 108, dnS: 29 },
+    ],
+    ketLuan: "MỌI camp demand: SAU dư luận CPM giảm đều (−26→−38%) NHƯNG CTR giảm và CPA tăng 2.5–3.8× — KHÔNG thấy lift chuyển đổi như kỳ vọng 'mở phễu'. Tuy nhiên KHÔNG quy được cho dư luận: 'trước' là 3 ngày launch honeymoon, 'sau' đã scale 4–8× nên CPA tăng là scaling decay tự nhiên. Riêng control sạch (clip T4 cùng creative) lại nhỉnh lên nhẹ (CPA −11%). ⇒ Bằng chứng HIỆN TẠI KHÔNG đủ để kết luận dư luận giúp hay hại tín hiệu purchase: dư luận mới 0,4% spend + 9 ngày, quá sớm & quá nhỏ; còn bị scaling decay che mất.",
+    caoDuoc: "Muốn đo THẬT 'mở phễu', đừng nhìn CPA camp đang scale mà nhìn: (1) branded search '30shine' trên GSC trước/sau 14/6, (2) traffic Direct/Branded trên GA4, (3) CTR/CVR của riêng tệp retarget người ĐÃ xem dư luận vs cold, (4) lý tưởng = geo holdout (tỉnh có seeding vs không). [CẦN DATA GA4/GSC].",
   },
 
   /* LIVE — GA4 30shine.com, 1–10/6/2026 */
@@ -258,11 +295,11 @@ window.DASHBOARD_DATA = {
   },
 
   deXuat: [
-    { uuTien: "Cao", noiDung: "✅ Campaign purchase chính đang TỐT: CPA 18.8K (≤21K), 8.212 đơn/10 ngày. Nhưng CPM 20.655đ sát ngưỡng CUT → tối ưu creative để hạ CPM, giữ CPA.", canCu: "Meta live campaign" },
-    { uuTien: "Cao", noiDung: "🔴 Campaign 'Salon Location Mess' CPM 84.403đ (gấp 4 lần ngưỡng CUT) chỉ 77 đơn — soát lại targeting/creative hoặc tắt.", canCu: "Meta live campaign" },
-    { uuTien: "Cao", noiDung: "🔴 GA4 Unassigned = 33.6% traffic → tag UTM hỏng, attribution sai. Fix trước khi tin số traffic→đơn.", canCu: "GA4 live" },
-    { uuTien: "TB", noiDung: "Earned media 0/23 & post dư luận 0/18 — mới đầu kỳ, cần vào guồng seeding W2 ngay (Chương đã có 10 task seeding sẵn).", canCu: "Mục tiêu + POST DƯ LUẬN" },
-    { uuTien: "TB", noiDung: "Tour du lịch ưu tiên 50% sx — đảm bảo concept 'Tour 45′' có đủ creative + bridge seeding (đang là demand seed nhiều nhất: 5/10 post).", canCu: "Tuyến demand + dư luận" },
+    { uuTien: "Cao", noiDung: "🔴 Engine chính 'Clip tốt nhất T4' (CPA 19.3K, 11.870 đơn) đã PAUSED → 5 camp purchase tách theo demand đang gánh, CPA gộp ~64K (gấp 3 ngưỡng 21K). Quyết định gấp: cho demand camp thêm ~1 tuần ramp + cắt camp CPA cao nhất, hay bật lại clip làm baseline đối chứng?", canCu: "Meta live 1–22/6" },
+    { uuTien: "Cao", noiDung: "⚠️ Tour du lịch ngốn chi nhiều nhất (86M) nhưng CPA cao nhất (76.6K). Thera & Tan làm CTR rất thấp (0.35% / 0.38%) → soát lại hook/creative 3 camp này; CPM toàn bộ đẹp (12–14K) nên vấn đề nằm ở chuyển đổi, không phải phân phối.", canCu: "Meta live campaign" },
+    { uuTien: "Cao", noiDung: "🔴 Camp 'Salon Location Mess' CPM 55K (đã giảm từ 84K) nhưng CPA 36K vẫn cao — soát targeting hoặc tắt. Toàn bộ camp salon trên Adsplus 5.2 đã paused (CPA 119–799K).", canCu: "Meta live campaign" },
+    { uuTien: "TB", noiDung: "✅ Dư Luận seeding scale tốt: reach gộp 208K (×12 so 15/6), CPM Reach 5.020đ rất rẻ, CTR Tương tác 1.87%. Có thể tăng ngân sách camp Reach để đẩy phủ.", canCu: "Meta live · TK Chương" },
+    { uuTien: "TB", noiDung: "🔴 GA4 Unassigned 33.6% (số 1–10/6, chưa pull lại) → tag UTM hỏng. Vẫn là blocker attribution; cần pull lại GA4 + fix tag.", canCu: "GA4 (chưa refresh)" },
   ],
 
   /* ---------- 5. ĐÁNH GIÁ TỪNG NỘI DUNG ---------- */
