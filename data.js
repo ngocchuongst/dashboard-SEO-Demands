@@ -64,7 +64,7 @@ window.DASHBOARD_DATA = {
   /* ---------- 1. TỔNG QUAN — MỤC TIÊU & % ĐẠT ---------- */
   tongQuan: [
     { ten: "Tổng số earned media", target: 23, actual: 13, donVi: "bài", note: "Cộng tổng: Dư luận 9 (4 Threads + 5 FB page) + KOC Hoàng Không Sao 4 clip TikTok T6 = 13/23. (Daily 30Shine tách theo dõi riêng ở tab Daily, không tính vào đây).", nguon: "Live đa kênh" },
-    { ten: "Tổng reach thu về", target: 1625000, actual: 592573, donVi: "reach", note: "Cập nhật 22/6 (chỉ ORGANIC): Daily 30Shine 39.115 (gồm Anh tôi 1.357 + Thera 982 + WC Argen organic 2.500) + Dư luận Threads 77.157 (view) + FB dư luận boost 181.674 (Trụ cột 137.700 + Burnout 43.000 + Coder 974) + KOC Hoàng TikTok T6 294.627 (view). ⚠️ Bài Daily WC 'Anh em Argen' organic chỉ 2,5K — phần 2,6M là do ADS → KHÔNG tính. KHÔNG cộng riêng bảng 'Dư luận ads' (đã trong reach FB boost). Chưa gồm: Đàn Ông Bụi, Kiến Thức Tinh Hoa, 'Trạm tiếp phong độ', UGC.", nguon: "Live đa kênh" },
+    { ten: "Tổng reach thu về", target: 1625000, actual: 592597, donVi: "reach", note: "Cập nhật 22/6 (chỉ ORGANIC): Daily 30Shine 39.139 (gồm Anh tôi 1.357 + Thera 982 + WC Argen organic 2.524) + Dư luận Threads 77.157 (view) + FB dư luận boost 181.674 (Trụ cột 137.700 + Burnout 43.000 + Coder 974) + KOC Hoàng TikTok T6 294.627 (view). ⚠️ Bài Daily WC 'Anh em Argen' organic 2.524 — phần 2,6M là do ADS → KHÔNG tính. KHÔNG cộng riêng bảng 'Dư luận ads' (đã trong reach FB boost). Chưa gồm: Đàn Ông Bụi, Kiến Thức Tinh Hoa, UGC.", nguon: "Live đa kênh" },
     { ten: "Post kênh dư luận", target: 18, actual: 9, donVi: "bài", note: "Đã lên 9/18 (tới 22/6): Threads 4 (2 @trag.ngyen + 2 @hanoihiddenvibes) + FB page 5. Người làm: Chương. 3 bài mới 22/6 (cổ vai gáy/gội) số cần verify.", nguon: "Mục tiêu" },
     { ten: "Engagement rate", target: 1, actual: 4.1, donVi: "%", note: "Daily 30Shine (4 bài có số): Lượt tương tác FB 1.405 / reach 34.276 = 4,1% (FB tính cả lượt click). Nếu chỉ react+cmt+share = 237/34.276 = 0,69%. Nguồn: Business Suite.", nguon: "Business Suite" },
     { ten: "CPA (post gắn ads)", target: 21, actual: 64, donVi: "K (đạt khi ≤)", note: "Mục tiêu <21K. CẢNH BÁO: camp 'Clip tốt nhất T4' đạt 19.3K (11.870 đơn) nhưng đã PAUSED. 5 camp purchase tách theo demand đang chạy: CPA gộp ~64K (Tour 76.6K, Nghỉ trưa 66K, Thera 62K, Tóc đẹp đi làm 59K, Tan làm 52K) — đang ramp, CPM 12–14K đẹp nhưng CPA chưa về ngưỡng. Theo dõi sát tuần tới.", nguon: "Meta live 1–22/6", thapTotHon: true },
@@ -132,15 +132,14 @@ window.DASHBOARD_DATA = {
   dailyPosts: {
     ky: "Mùa WC · T6/2026 · 30Shine Official (organic)",
     mucTieu: { soBai: 18, reach: 400000, note: "Theo tuyến Content Always-on (PLAN EARNED MEDIA T6): 18 bài organic / 400K reach." },
-    tongReach: 39115, tongView: 50488, tongReact: 366, tongCmt: 41, tongShare: 16,
-    note: "Quy ước: View ('Lượt xem') = reach proxy (bài nào chưa có 'Người xem' thì lấy view). Chỉ tính ORGANIC. 8 bài. Bài WC 'Anh em Argen': organic chỉ 2,5K, phần 2,6M là do ads → KHÔNG tính vào tổng. Bài 'Trạm tiếp phong độ' chưa có số.",
+    tongReach: 39139, tongView: 50512, tongReact: 354, tongCmt: 37, tongShare: 15,
+    note: "Quy ước: View ('Lượt xem') = reach proxy (bài nào chưa có 'Người xem' thì lấy view). Chỉ tính ORGANIC. 7 bài. Bài WC 'Anh em Argen': organic 2.524, phần 2,6M là do ads → KHÔNG tính vào tổng.",
     list: [
       { ten: "Tour du lịch 45′ — không cần nghỉ phép, không cần đi xa", demand: "Tour", reach: 1254, view: 2156, react: 101, cmt: 13, share: 2, url: "https://www.facebook.com/share/p/17njnFn4Cn/" },
       { ten: "Hào quang nhà vô địch — Hoàng Sao 'The GOAT' (250tr)", demand: "Lan toả WC", reach: 3087, view: 5917, react: 67, cmt: 4, share: 4, url: "https://www.facebook.com/share/p/18mW3X2VMm/" },
       { ten: "Thức khuya xem WC — gội/massage hồi sức 45′", demand: "Nghỉ trưa", reach: 28974, view: 35068, react: 22, cmt: 16, share: 3, url: "https://www.facebook.com/share/p/14ixGifgi3g/" },
       { ten: "Stíp Jobs VN gội đầu sau tan làm — xoá hói, tóc bồng", demand: "Tan làm", reach: 961, view: 1565, react: 4, cmt: 0, share: 1, url: "https://www.facebook.com/share/p/1JQmWKnd7v/" },
-      { ten: "Trạm tiếp phong độ WC — 45′ trưa / 30′ chiều / 90′ tối", demand: "Nghỉ trưa", reach: null, view: null, react: 12, cmt: 4, share: 1, url: "https://www.facebook.com/share/1D4GPQubyE/" },
-      { ten: "Anh em Argen ăn mừng Hattrick WC — căn hộ 45′ 🏆 (organic 2,5K; 2,6M do ads — KHÔNG tính)", demand: "Lan toả WC", reach: 2500, view: 2500, react: 134, cmt: 3, share: 2, click: 1039, url: "https://web.facebook.com/share/p/1bCemYE4Nz/" },
+      { ten: "Anh em Argen ăn mừng Hattrick WC — căn hộ 45′ 🏆 (organic 2.524; 2,6M do ads — KHÔNG tính)", demand: "Lan toả WC", reach: 2524, view: 2524, react: 134, cmt: 3, share: 2, click: 1039, url: "https://web.facebook.com/share/p/1bCemYE4Nz/" },
       { ten: "Anh tôi tr… (16/6)", demand: "—", reach: 1357, view: 2300, react: 24, cmt: 1, share: 1, url: "https://web.facebook.com/share/p/1HUQSfwvTC/" },
       { ten: "Thera Studio 1 Ngủ — 'Căn hộ phục hồi' gỡ rối cổ vai gáy (20/6)", demand: "Thera", reach: 982, view: 982, react: 2, cmt: 0, share: 2, url: "https://web.facebook.com/share/p/1828U1zVGY/" },
     ],
