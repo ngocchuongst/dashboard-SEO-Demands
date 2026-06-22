@@ -253,15 +253,20 @@ function rContent(){
 
   // --- Dư luận: TỔNG HỢP organic vs ads (tách bạch) ---
   const dlt = D.duLuanTongHop;
-  const dltCard = dlt ? card(`
+  const dltCard = dlt ? (()=>{ const p=pct(dlt.tongReach, dlt.target); return card(`
     <div class="flex items-center justify-between mb-3"><h3 class="font-semibold">📊 Dư luận — tách bạch ORGANIC vs ADS</h3><span class="text-[11px] text-slate-400">${dlt.ky}</span></div>
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center mb-3">
       <div class="rounded-lg bg-slate-800/50 p-2"><div class="text-xl font-bold text-cyan-400">${fmtC(dlt.organicReach)}</div><div class="text-xs text-slate-400">Reach organic (earned)</div></div>
       <div class="rounded-lg bg-slate-800/50 p-2"><div class="text-xl font-bold text-fuchsia-400">${fmtC(dlt.adsReach)}</div><div class="text-xs text-slate-400">Reach ads (boost)</div></div>
-      <div class="rounded-lg bg-slate-800/50 p-2"><div class="text-xl font-bold text-sky-300">${fmtC(dlt.tongReach)}</div><div class="text-xs text-slate-400">Tổng phơi nhiễm</div></div>
+      <div class="rounded-lg bg-slate-800/50 p-2"><div class="text-xl font-bold text-sky-300">${fmtC(dlt.tongReach)}</div><div class="text-xs text-slate-400">Tổng reach dư luận</div></div>
       <div class="rounded-lg bg-slate-800/50 p-2"><div class="text-xl font-bold text-amber-300">${fmt(dlt.chiAds)}đ</div><div class="text-xs text-slate-400">Chi ads dư luận</div></div>
     </div>
-    <div class="text-[11px] text-slate-400">${dlt.note}</div>`,"mb-4") : "";
+    <div class="text-xs text-slate-400 mb-1">Tổng reach dư luận (organic + ads) vs mục tiêu tuyến Dư Luận</div>
+    <div class="flex items-center gap-3 py-1.5 mb-2">
+      <div class="w-28 text-sm text-slate-300 shrink-0">${fmtC(dlt.tongReach)} / ${fmtC(dlt.target)}</div>
+      <div class="flex-1 h-2.5 rounded-full bg-slate-800 overflow-hidden"><div class="h-full ${barColor(p)}" style="width:${Math.min(100,p||0)}%"></div></div>
+      <div class="w-12 text-right text-sm font-semibold ${p>=90?'text-emerald-400':p>=50?'text-amber-400':'text-rose-400'}">${p==null?'—':p+'%'}</div></div>
+    <div class="text-[11px] text-slate-400">${dlt.note}</div>`,"mb-4"); })() : "";
 
   const L=D.ctaLinks||{};
   const ctaCard = card(`<h3 class="font-semibold mb-2">Link CTA chuẩn (gắn vào content)</h3>

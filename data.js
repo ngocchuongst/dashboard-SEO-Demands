@@ -149,10 +149,11 @@ window.DASHBOARD_DATA = {
   duLuanTongHop: {
     ky: "Tới 22/6/2026",
     organicReach: 77157,
-    adsReach: 208039,
-    tongReach: 285196,
+    adsReach: 181674,
+    tongReach: 258831,
+    target: 425000,
     chiAds: 2107936,
-    note: "TÁCH BẠCH theo yêu cầu: ORGANIC = view Threads thật (77.157; phần tự nhiên của bài FB chỉ ~vài trăm/bài nên bỏ qua). ADS = reach 2 campaign dư luận trên TK Tỉnh (208.039 reach, chi 2,1M VND). 3 bài FB Trụ cột/Burnout/Coder reach lớn (137.7K/43K/974) là DO BOOST = nằm trong phần ADS này → KHÔNG tính vào earned. 'Tổng reach thu về' (Tổng quan) giờ chỉ cộng phần ORGANIC 77.157.",
+    note: "TÁCH BẠCH: ORGANIC = view Threads thật 77.157 (Khách quen 76.6K + lẻ). ADS (boost) = reach 'Người xem' 3 bài FB được đẩy: Trụ cột 137.700 + Burnout 43.000 + Coder 974 = 181.674 (chi 2,1M). TỔNG reach dư luận 258.831 đem so target tuyến Dư Luận 425.000 = ~61%. (Lưu ý: 2 campaign dư luận Meta báo reach gộp 208K — lệch nhẹ do cách đo campaign vs per-post; ở đây dùng 181.674 theo số Business Suite per-post). Earned organic ở Tổng quan vẫn chỉ tính 77.157.",
   },
 
   /* Dư luận organic của Chương — 6 bài đã lên (2 Threads + 4 Facebook page) tới 15/6.
