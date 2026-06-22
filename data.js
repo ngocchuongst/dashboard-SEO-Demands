@@ -64,7 +64,7 @@ window.DASHBOARD_DATA = {
   /* ---------- 1. TỔNG QUAN — MỤC TIÊU & % ĐẠT ---------- */
   tongQuan: [
     { ten: "Tổng số earned media", target: 23, actual: 13, donVi: "bài", note: "Cộng tổng: Dư luận 9 (4 Threads + 5 FB page) + KOC Hoàng Không Sao 4 clip TikTok T6 = 13/23. (Daily 30Shine tách theo dõi riêng ở tab Daily, không tính vào đây).", nguon: "Live đa kênh" },
-    { ten: "Tổng reach thu về", target: 1625000, actual: 592597, donVi: "reach", note: "Cập nhật 22/6 (chỉ ORGANIC): Daily 30Shine 39.139 (gồm Anh tôi 1.357 + Thera 982 + WC Argen organic 2.524) + Dư luận Threads 77.157 (view) + FB dư luận boost 181.674 (Trụ cột 137.700 + Burnout 43.000 + Coder 974) + KOC Hoàng TikTok T6 294.627 (view). ⚠️ Bài Daily WC 'Anh em Argen' organic 2.524 — phần 2,6M là do ADS → KHÔNG tính. KHÔNG cộng riêng bảng 'Dư luận ads' (đã trong reach FB boost). Chưa gồm: Đàn Ông Bụi, Kiến Thức Tinh Hoa, UGC.", nguon: "Live đa kênh" },
+    { ten: "Tổng reach thu về (EARNED · organic)", target: 1625000, actual: 410923, donVi: "reach", note: "Cập nhật 22/6 — CHỈ EARNED/ORGANIC: Daily 30Shine 39.139 + Dư luận ORGANIC 77.157 (Threads) + KOC Hoàng TikTok 294.627. ⚠️ ĐÃ TÁCH phần ADS ra khỏi earned: dư luận ads 208K (boost 3 bài FB Trụ cột/Burnout/Coder) + Daily WC Argen ads ~2,6M → xem card 'Dư luận: organic vs ads' và cột 'Reach ads' tab Daily. Chưa gồm: Đàn Ông Bụi, Kiến Thức Tinh Hoa, UGC.", nguon: "Live đa kênh" },
     { ten: "Post kênh dư luận", target: 18, actual: 9, donVi: "bài", note: "Đã lên 9/18 (tới 22/6): Threads 4 (2 @trag.ngyen + 2 @hanoihiddenvibes) + FB page 5. Người làm: Chương. 3 bài mới 22/6 (cổ vai gáy/gội) số cần verify.", nguon: "Mục tiêu" },
     { ten: "Engagement rate", target: 1, actual: 4.1, donVi: "%", note: "Daily 30Shine (4 bài có số): Lượt tương tác FB 1.405 / reach 34.276 = 4,1% (FB tính cả lượt click). Nếu chỉ react+cmt+share = 237/34.276 = 0,69%. Nguồn: Business Suite.", nguon: "Business Suite" },
     { ten: "CPA (post gắn ads)", target: 21, actual: 64, donVi: "K (đạt khi ≤)", note: "Mục tiêu <21K. CẢNH BÁO: camp 'Clip tốt nhất T4' đạt 19.3K (11.870 đơn) nhưng đã PAUSED. 5 camp purchase tách theo demand đang chạy: CPA gộp ~64K (Tour 76.6K, Nghỉ trưa 66K, Thera 62K, Tóc đẹp đi làm 59K, Tan làm 52K) — đang ramp, CPM 12–14K đẹp nhưng CPA chưa về ngưỡng. Theo dõi sát tuần tới.", nguon: "Meta live 1–22/6", thapTotHon: true },
@@ -143,6 +143,16 @@ window.DASHBOARD_DATA = {
       { ten: "Anh tôi tr… (16/6)", demand: "—", rOrg: 1357, rAds: 0, react: 24, cmt: 1, share: 1, url: "https://web.facebook.com/share/p/1HUQSfwvTC/" },
       { ten: "Thera Studio 1 Ngủ — 'Căn hộ phục hồi' gỡ rối cổ vai gáy (20/6)", demand: "Thera", rOrg: 982, rAds: 0, react: 2, cmt: 0, share: 2, url: "https://web.facebook.com/share/p/1828U1zVGY/" },
     ],
+  },
+
+  /* Dư luận — TỔNG HỢP tách bạch ORGANIC vs ADS (earned chỉ tính organic) */
+  duLuanTongHop: {
+    ky: "Tới 22/6/2026",
+    organicReach: 77157,
+    adsReach: 208039,
+    tongReach: 285196,
+    chiAds: 2107936,
+    note: "TÁCH BẠCH theo yêu cầu: ORGANIC = view Threads thật (77.157; phần tự nhiên của bài FB chỉ ~vài trăm/bài nên bỏ qua). ADS = reach 2 campaign dư luận trên TK Tỉnh (208.039 reach, chi 2,1M VND). 3 bài FB Trụ cột/Burnout/Coder reach lớn (137.7K/43K/974) là DO BOOST = nằm trong phần ADS này → KHÔNG tính vào earned. 'Tổng reach thu về' (Tổng quan) giờ chỉ cộng phần ORGANIC 77.157.",
   },
 
   /* Dư luận organic của Chương — 6 bài đã lên (2 Threads + 4 Facebook page) tới 15/6.

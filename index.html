@@ -251,6 +251,18 @@ function rContent(){
       <div class="mt-2 text-[11px] text-slate-400">${dlo.note}</div>`,"mb-4");
   }
 
+  // --- Dư luận: TỔNG HỢP organic vs ads (tách bạch) ---
+  const dlt = D.duLuanTongHop;
+  const dltCard = dlt ? card(`
+    <div class="flex items-center justify-between mb-3"><h3 class="font-semibold">📊 Dư luận — tách bạch ORGANIC vs ADS</h3><span class="text-[11px] text-slate-400">${dlt.ky}</span></div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center mb-3">
+      <div class="rounded-lg bg-slate-800/50 p-2"><div class="text-xl font-bold text-cyan-400">${fmtC(dlt.organicReach)}</div><div class="text-xs text-slate-400">Reach organic (earned)</div></div>
+      <div class="rounded-lg bg-slate-800/50 p-2"><div class="text-xl font-bold text-fuchsia-400">${fmtC(dlt.adsReach)}</div><div class="text-xs text-slate-400">Reach ads (boost)</div></div>
+      <div class="rounded-lg bg-slate-800/50 p-2"><div class="text-xl font-bold text-sky-300">${fmtC(dlt.tongReach)}</div><div class="text-xs text-slate-400">Tổng phơi nhiễm</div></div>
+      <div class="rounded-lg bg-slate-800/50 p-2"><div class="text-xl font-bold text-amber-300">${fmt(dlt.chiAds)}đ</div><div class="text-xs text-slate-400">Chi ads dư luận</div></div>
+    </div>
+    <div class="text-[11px] text-slate-400">${dlt.note}</div>`,"mb-4") : "";
+
   const L=D.ctaLinks||{};
   const ctaCard = card(`<h3 class="font-semibold mb-2">Link CTA chuẩn (gắn vào content)</h3>
     <div class="flex flex-wrap gap-2 text-xs">
@@ -263,7 +275,7 @@ function rContent(){
       `<th class="text-left pb-2 pr-3">Tuyến</th><th class="pb-2 pr-3">Số bài</th><th class="text-right pb-2 pr-3">Reach dự kiến</th><th class="text-left pb-2 pr-3">Concept</th><th class="text-left pb-2 pr-3">Người làm</th><th class="text-left pb-2 pr-3">Ghi chú</th><th class="text-left pb-2">Link bài</th>`, sxRows)
     + tbl("Dư luận seeding (Chương) — bridge cho demand nào",
       `<th class="text-left pb-2 pr-3">Ngày</th><th class="text-left pb-2 pr-3">Post gốc</th><th class="text-left pb-2 pr-3">Demand</th><th class="text-left pb-2 pr-3">Kênh</th><th class="text-left pb-2 pr-3">Trạng thái</th><th class="text-left pb-2">Link bài</th>`, dlRows)
-    + dloCard + dlaCard
+    + dltCard + dloCard + dlaCard
     + `<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         ${card(`<h3 class="font-semibold mb-3">Reach dự kiến theo tuyến</h3><div class="relative h-56"><canvas id="reachChart"></canvas></div>`)}
         ${card(`<h3 class="font-semibold mb-3">Dư luận seeding theo demand (số post)</h3><div class="relative h-56"><canvas id="dlChart"></canvas></div>`)}
