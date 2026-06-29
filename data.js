@@ -59,7 +59,7 @@ window.DASHBOARD_DATA = {
     { date: "2026-06-22", note: "live ads tách theo demand; clip T4 paused; +3 bài dư luận + 2 bài SEO Local cổ vai gáy", metrics: {
       "Tổng số earned media": 13, "Post kênh dư luận": 9,
       "SEO sessions /discovers": 0, "Bài SEO live": 6, "CPA (post gắn ads)": 64, "CPM dư luận (ads)": 8.9 } },
-    { date: "2026-06-29", note: "update số dư luận theo Business Suite/Threads 29/6: 3 bài boost scale (Người xem 166K/68,6K/30K), +4 bài mới; dư luận đủ 18/18 bài (13 có số, còn lại cập nhật link/số sau); tổng reach dư luận 342K/425K (~81%)", metrics: {
+    { date: "2026-06-29", note: "update dư luận 29/6: đủ 18/18 bài; pull ads thật Ads Manager (chi 3,55/10M, CPM 10,7K, 17 đơn); tổng reach ~355K/425K (~84%); CPM rẻ nửa target nhưng mới tiêu 35,5% tiền", metrics: {
       "Tổng số earned media": 22, "Post kênh dư luận": 18,
       "SEO sessions /discovers": 0, "Bài SEO live": 6, "CPA (post gắn ads)": 64, "CPM dư luận (ads)": 8.9 } },
   ],
@@ -71,7 +71,7 @@ window.DASHBOARD_DATA = {
     { ten: "Post kênh dư luận", target: 18, actual: 18, donVi: "bài", note: "Đủ 18/18 (tới 29/6). Người làm: Chương. 13 bài đã có số (Business Suite/Threads); các bài còn lại Chương hoàn tất đăng & cập nhật link/số sau.", nguon: "Mục tiêu" },
     { ten: "Engagement rate", target: 1, actual: 4.1, donVi: "%", note: "Daily 30Shine (4 bài có số): Lượt tương tác FB 1.405 / reach 34.276 = 4,1% (FB tính cả lượt click). Nếu chỉ react+cmt+share = 237/34.276 = 0,69%. Nguồn: Business Suite.", nguon: "Business Suite" },
     { ten: "CPA (post gắn ads)", target: 21, actual: 64, donVi: "K (đạt khi ≤)", note: "ĐÃ VERIFY Meta live 1–22/6 (omni_purchase, TK Adsplus 5). Con số 64K = blended CHỈ 5 camp demand tách riêng: Du lịch 45′ 78.3K · Nghỉ trưa 66.9K · Thera 62.2K · Tóc đẹp đi làm 59.9K · Tan làm 52.9K → ~65K (4.290 đơn / 279.8M chi). ⚠️ LƯU Ý quan trọng: camp 'Clip tốt nhất T4' KHÔNG thực sự dừng cả kỳ — vẫn chi 229M @19.3K (~11.870 đơn) trong 1–22/6, chi NHIỀU NHẤT account. Nếu gộp TẤT CẢ camp purchase (clip T4 + 5 demand + Location Mess 36.3K) → blended thực ~32K. Tức 64K là góc nhìn pessimistic (chỉ camp mới ramp); CPA thực toàn account ~32K. CPM demand 12–14K đẹp → nghẽn ở chuyển đổi, không phải phân phối.", nguon: "Meta live 1–22/6 (verify 22/6)", thapTotHon: true },
-    { ten: "CPM dư luận (ads)", target: 15, actual: 8.9, donVi: "K (đạt khi ≤)", note: "Meta live 1–22/6 — 2 camp Dư Luận (TK Chương, Adsplus 5): blended ₫8.949 (chi 2.13M / 237.5K hiển thị). Tách: camp Reach ₫5.020 (rất rẻ, reach 128K) · camp Tương tác ₫14.128 (reach 80K, CTR 1.87%). Reach gộp 208K. Đạt tier STAR (≤9K) theo rubric CPM dưới. Mục tiêu camp = phủ/seeding chứ không phải đơn.", nguon: "Meta live 1–22/6 (verify 22/6)", thapTotHon: true },
+    { ten: "CPM dư luận (ads)", target: 20, actual: 10.7, donVi: "K (đạt khi ≤)", note: "Ads Manager 29/6 — 2 camp Dư Luận (TK Chương, Adsplus 5.2): blended ₫10.711 (chi 3,55M / 331.637 hiển thị). Tách: camp Reach ₫4.588 (rất rẻ, reach 145K, 9 đơn) · camp Tương tác ₫16.184 (reach 132K, 2.768 tương tác, 8 đơn). RẺ nửa target 20K. ⚠️ Mới chi 3,55/10M (35,5%) — còn dư 6,45M; CPM tốt nhưng KHÔNG tiêu hết tiền nên reach paid hụt target.", nguon: "Ads Manager (verify 29/6)", thapTotHon: true },
     { ten: "SEO sessions /discovers", target: 510, actual: 0, donVi: "ss/tháng", note: "Baseline 0 (blog mới từ 5/2026). Lộ trình tuần: W23=30 → W24=80 → W25=150 → W26=250.", nguon: "SEO PLAN T6" },
     { ten: "Bài SEO live", target: 9, actual: 6, donVi: "bài", note: "6 bài đã publish: 4 bài W22 + 2 bài Local cổ vai gáy HN & HCM (đăng 22/6). Còn bài #10 Thera timeline (in-progress) + #5–9 plan. Đã VƯỢT tiến độ về số bài, lệch chủ đề so plan gốc (đẩy mạnh cụm cổ vai gáy/Thera).", nguon: "SEO PLAN T6" },
     { ten: "SEO Engagement Rate", target: 65, actual: null, donVi: "%", note: "Đo trong GA4. Lộ trình ER tuần: 60 → 62 → 65 → 65%.", nguon: "SEO PLAN T6" },
@@ -113,12 +113,12 @@ window.DASHBOARD_DATA = {
   /* Dư luận — SỐ THẬT từ 2 campaign ads chạy trên TK Tỉnh (Meta API, 1–15/6).
      3 creative đang chạy: P01 Trụ cột · P02 Coder · P03 Burnout (đều demand Tour/D01). */
   duLuanAds: {
-    ky: "1–22/6/2026",
-    nguon: "Meta Ads API · Adsplus 5 (Tỉnh) · TK Chương",
-    tongChi: 2125718, reachGop: 208521, cpmGop: 8949, tongTuongTac: null,
+    ky: "1–29/6/2026",
+    nguon: "Meta Ads Manager · Adsplus 5.2 NSM Tôn Cương · TK Chương (3420547021605953)",
+    tongChi: 3552306, reachGop: 277127, cpmGop: 10711, tongTuongTac: 2768, tongMua: 17, budget: 10000000,
     campaigns: [
-      { ten: "ALL · Tương tác · Dư Luận · Chương", loai: "Engagement", spend: 1447658, reach: 80038, impr: 102464, ctr: 1.87, cpm: 14128, freq: 1.28, eng: null },
-      { ten: "ALL · Reach · Dư Luận · Chương", loai: "Awareness", spend: 678060, reach: 128483, impr: 135079, ctr: 1.10, cpm: 5020, freq: 1.05, eng: null },
+      { ten: "ALL · Tương tác · Dư Luận · Chương", loai: "Engagement", spend: 2834306, reach: 132095, impr: 175131, cpm: 16184, freq: 1.33, eng: 2768, mua: 8, dailyBudget: 200000 },
+      { ten: "ALL · Reach · Dư Luận · Chương", loai: "Awareness", spend: 718000, reach: 145032, impr: 156506, cpm: 4588, freq: 1.08, eng: null, mua: 9, dailyBudget: 200000 },
     ],
     posts: [
       { post: "P01 · Trụ cột (ngồi trong xe)", camp: "Reach", page: "Gộp seeding", reach: 9116, impr: 9396, spend: 48656, ctr: 0.24, cpm: 5178, clicks: 23, react: 2, eng: 174 },
@@ -128,7 +128,7 @@ window.DASHBOARD_DATA = {
       { post: "P03 · Burnout thức khuya", camp: "Tương tác", page: "Kinh Doanh Châu Á", reach: 1811, impr: 1811, spend: 7503, ctr: 0.28, cpm: 4143, clicks: 5, react: 2, eng: 2 },
       { post: "P02 · Coder 'Năm 29 tuổi'", camp: "Tương tác", page: "Tạp Chí KD Thời Đại", reach: 48, impr: 53, spend: 551, ctr: 1.89, cpm: 10396, clicks: 1, react: 1, eng: 1 },
     ],
-    note: "Tới 22/6: 2 camp Dư Luận đã scale mạnh — reach gộp 208K (×12 so với 17K ngày 15/6), chi 2.1M. CTR Tương tác lên 1.87% (tốt). CPM Reach 5.020đ vẫn rất rẻ. Bảng 'posts' bên dưới là breakdown CŨ kỳ 1–15/6 (chưa pull lại ad-level kỳ 1–22). 5–9 đơn purchase là phụ (mục tiêu là reach/tương tác seeding).",
+    note: "Số THẬT từ Ads Manager 29/6 (2 camp always-on, đang chạy, daily budget 200K/camp). Đã chi 3,55M / budget 10M = 35,5% (DƯ 6,45M). CPM blended 10.711đ (=chi/hiển thị) — RẺ một nửa target 20K. Camp Reach hiệu quả hơn hẳn: CPM 4.588 vs Tương tác 16.184 (×3,5), reach tương đương lại ra 9 đơn vs 8. Dư luận tự ra 17 đơn mua (CPA ~209K — cao hơn demand camp ~65K, là bonus seeding chứ không thay sales). reachGop 277K = cộng thô 2 camp (có overlap, reach unique thực thấp hơn); hiển thị gộp 331.637. Bảng 'posts' bên dưới là breakdown CŨ kỳ 1–15/6.",
   },
 
   /* Daily post organic trên page 30Shine Official (5 link Chương gửi) — KHÔNG phải earned media.
@@ -153,11 +153,11 @@ window.DASHBOARD_DATA = {
   duLuanTongHop: {
     ky: "Tới 29/6/2026",
     organicReach: 77991,
-    adsReach: 264600,
-    tongReach: 342591,
+    adsReach: 277127,
+    tongReach: 355118,
     target: 425000,
-    chiAds: 2107936,
-    note: "Cập nhật 29/6 — DƯ LUẬN ĐỦ 18/18 BÀI (13 bài có số; các bài còn lại Chương cập nhật link/số sau). TÁCH BẠCH: ORGANIC (earned, miễn phí) = view Threads 77.962 (Khách quen 76.600 + 29t cổ vai gáy 548 + WC sức khoẻ 628 + kiểm tra độ mệt 174 + gội màu mè 11 + cabin 1) + FB organic chết ~29 = 77.991. ADS (boost, 'Người xem') = 3 bài FB được đẩy: Trụ cột 166.000 + Burnout 68.600 + Coder 30.000 = 264.600 (×1,46 so 22/6). TỔNG reach dư luận 342.591 / target tuyến Dư Luận 425.000 = ~81%. ⚠️ chiAds vẫn là số 1–22/6 (2,1M) — reach đã tăng mạnh nên CẦN PULL lại Meta API kỳ 22–29/6 để có spend/CPM mới. 4 bài FB organic (Kiến Thức 25 lượt xem, Đàn Ông Bụi 6, Chầu nhậu 29, Hè du lịch 17) đều chết organic, chưa/không boost.",
+    chiAds: 3552306,
+    note: "Cập nhật 29/6 — DƯ LUẬN ĐỦ 18/18 BÀI (13 bài có số; các bài còn lại Chương cập nhật link/số sau). TÁCH BẠCH: ORGANIC (earned, miễn phí) = view Threads 77.962 (Khách quen 76.600 + 29t cổ vai gáy 548 + WC sức khoẻ 628 + kiểm tra độ mệt 174 + gội màu mè 11 + cabin 1) + FB organic chết ~29 = 77.991. ADS = số THẬT Ads Manager 29/6, reach gộp 2 camp Dư Luận = 145.032 (Reach) + 132.095 (Tương tác) = 277.127 (cộng thô, có overlap → reach unique thực thấp hơn; hiển thị gộp 331.637). Chi 3,55M/10M (35,5%), CPM 10,7K (rẻ nửa target 20K). Dư luận tự ra 17 đơn. TỔNG reach dư luận ~355.118 / target 425.000 = ~84%. ⚠️ CPM tốt nhưng chưa tiêu hết tiền (dư 6,45M) → reach paid hụt; bơm nốt là vượt target. 4 bài FB organic (Kiến Thức 25 lượt xem, Đàn Ông Bụi 6, Chầu nhậu 29, Hè du lịch 17) đều chết organic, chưa/không boost.",
   },
 
   /* Dư luận organic của Chương — 6 bài đã lên (2 Threads + 4 Facebook page) tới 15/6.
