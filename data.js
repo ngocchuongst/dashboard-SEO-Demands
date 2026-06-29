@@ -8,10 +8,10 @@ window.DASHBOARD_DATA = {
   meta: {
     ten: "Dashboard Marketing 30Shine",
     ky: "Tháng 6/2026 — Earned Media + Demand",
-    capNhat: "2026-06-22",
+    capNhat: "2026-06-29",
     periodStart: "2026-06-01",
     periodEnd: "2026-06-30",
-    ghiChu: "Mục tiêu & demand lấy từ PLAN EARNED MEDIA THÁNG 6. Ads = Meta API live (1–22/6). MỚI: Adsplus 5 đã tách campaign PURCHASE theo từng demand (Tour/Tóc đẹp đi làm/Thera/Nghỉ trưa/Tan làm) — đúng trục demand. Campaign 'Clip tốt nhất T4' đã PAUSED. Dư Luận giờ chạy trên Adsplus 5 (TK Chương). Daily post organic + Traffic GA4 = số tay tới 15/6 (chưa pull lại). Ô '—' = chưa có actual.",
+    ghiChu: "Mục tiêu & demand lấy từ PLAN EARNED MEDIA THÁNG 6. Ads = Meta API live (1–22/6, CHƯA pull lại kỳ 22–29). MỚI 29/6: cập nhật số DƯ LUẬN theo Business Suite per-post — 3 bài FB boost (Trụ cột/Burnout/Coder) tiếp tục scale (Người xem 166K/68,6K/30K), +4 bài mới (Hè du lịch, Chầu nhậu 500k, 2 Threads WC/cabin). Dư luận lên 13 bài. Campaign 'Clip tốt nhất T4' đã PAUSED. Daily post organic + Traffic GA4 = số tay tới 15/6 (chưa pull lại). Ô '—' = chưa có actual.",
   },
 
   /* Link CTA chuẩn 30Shine (từ file plan) — content gắn về đây */
@@ -58,16 +58,20 @@ window.DASHBOARD_DATA = {
       "SEO sessions /discovers": 0, "Bài SEO live": 4, "CPA (post gắn ads)": 18.8 } },
     { date: "2026-06-22", note: "live ads tách theo demand; clip T4 paused; +3 bài dư luận + 2 bài SEO Local cổ vai gáy", metrics: {
       "Tổng số earned media": 13, "Post kênh dư luận": 9,
-      "SEO sessions /discovers": 0, "Bài SEO live": 6, "CPA (post gắn ads)": 64 } },
+      "SEO sessions /discovers": 0, "Bài SEO live": 6, "CPA (post gắn ads)": 64, "CPM dư luận (ads)": 8.9 } },
+    { date: "2026-06-29", note: "update số dư luận theo Business Suite/Threads 29/6: 3 bài boost scale (Người xem 166K/68,6K/30K), +4 bài mới; dư luận lên 13 bài; tổng reach dư luận 342K/425K (~81%)", metrics: {
+      "Tổng số earned media": 17, "Post kênh dư luận": 13,
+      "SEO sessions /discovers": 0, "Bài SEO live": 6, "CPA (post gắn ads)": 64, "CPM dư luận (ads)": 8.9 } },
   ],
 
   /* ---------- 1. TỔNG QUAN — MỤC TIÊU & % ĐẠT ---------- */
   tongQuan: [
-    { ten: "Tổng số earned media", target: 23, actual: 13, donVi: "bài", note: "Cộng tổng: Dư luận 9 (4 Threads + 5 FB page) + KOC Hoàng Không Sao 4 clip TikTok T6 = 13/23. (Daily 30Shine tách theo dõi riêng ở tab Daily, không tính vào đây).", nguon: "Live đa kênh" },
-    { ten: "Tổng reach thu về (EARNED · organic)", target: 1625000, actual: 410923, donVi: "reach", note: "Cập nhật 22/6 — CHỈ EARNED/ORGANIC: Daily 30Shine 39.139 + Dư luận ORGANIC 77.157 (Threads) + KOC Hoàng TikTok 294.627. ⚠️ ĐÃ TÁCH phần ADS ra khỏi earned: dư luận ads 208K (boost 3 bài FB Trụ cột/Burnout/Coder) + Daily WC Argen ads ~2,6M → xem card 'Dư luận: organic vs ads' và cột 'Reach ads' tab Daily. Chưa gồm: Đàn Ông Bụi, Kiến Thức Tinh Hoa, UGC.", nguon: "Live đa kênh" },
-    { ten: "Post kênh dư luận", target: 18, actual: 9, donVi: "bài", note: "Đã lên 9/18 (tới 22/6): Threads 4 (2 @trag.ngyen + 2 @hanoihiddenvibes) + FB page 5. Người làm: Chương. 3 bài mới 22/6 (cổ vai gáy/gội) số cần verify.", nguon: "Mục tiêu" },
+    { ten: "Tổng số earned media", target: 23, actual: 17, donVi: "bài", note: "Cập nhật 29/6 — Cộng tổng: Dư luận 13 (6 Threads + 7 FB page) + KOC Hoàng Không Sao 4 clip TikTok T6 = 17/23. (Daily 30Shine tách theo dõi riêng ở tab Daily, không tính vào đây).", nguon: "Live đa kênh" },
+    { ten: "Tổng reach thu về (EARNED · organic)", target: 1625000, actual: 411757, donVi: "reach", note: "Cập nhật 29/6 — CHỈ EARNED/ORGANIC: Daily 30Shine 39.139 + Dư luận ORGANIC 77.991 (Threads 77.962 + FB organic chết ~29) + KOC Hoàng TikTok 294.627. ⚠️ ĐÃ TÁCH phần ADS ra khỏi earned: dư luận ads (Người xem 3 bài boost Trụ cột 166K/Burnout 68,6K/Coder 30K = 264,6K) + Daily WC Argen ads ~2,6M → xem card 'Dư luận: organic vs ads'. Daily & KOC giữ số 22/6 (chưa pull lại).", nguon: "Live đa kênh" },
+    { ten: "Post kênh dư luận", target: 18, actual: 13, donVi: "bài", note: "Đã lên 13/18 (tới 29/6): Threads 6 (2 @trag.ngyen + 3 @hanoihiddenvibes + 1 @saigon.afterdark) + FB page 7 (Bản Lĩnh, Tạp Chí, Đàn Ông Bụi, Kiến Thức, KDCA×3). Người làm: Chương. 4 bài mới 28/6 (Hè du lịch, Chầu nhậu, WC sức khoẻ, cabin) — số đã verify Business Suite/Threads.", nguon: "Mục tiêu" },
     { ten: "Engagement rate", target: 1, actual: 4.1, donVi: "%", note: "Daily 30Shine (4 bài có số): Lượt tương tác FB 1.405 / reach 34.276 = 4,1% (FB tính cả lượt click). Nếu chỉ react+cmt+share = 237/34.276 = 0,69%. Nguồn: Business Suite.", nguon: "Business Suite" },
-    { ten: "CPA (post gắn ads)", target: 21, actual: 64, donVi: "K (đạt khi ≤)", note: "Mục tiêu <21K. CẢNH BÁO: camp 'Clip tốt nhất T4' đạt 19.3K (11.870 đơn) nhưng đã PAUSED. 5 camp purchase tách theo demand đang chạy: CPA gộp ~64K (Tour 76.6K, Nghỉ trưa 66K, Thera 62K, Tóc đẹp đi làm 59K, Tan làm 52K) — đang ramp, CPM 12–14K đẹp nhưng CPA chưa về ngưỡng. Theo dõi sát tuần tới.", nguon: "Meta live 1–22/6", thapTotHon: true },
+    { ten: "CPA (post gắn ads)", target: 21, actual: 64, donVi: "K (đạt khi ≤)", note: "ĐÃ VERIFY Meta live 1–22/6 (omni_purchase, TK Adsplus 5). Con số 64K = blended CHỈ 5 camp demand tách riêng: Du lịch 45′ 78.3K · Nghỉ trưa 66.9K · Thera 62.2K · Tóc đẹp đi làm 59.9K · Tan làm 52.9K → ~65K (4.290 đơn / 279.8M chi). ⚠️ LƯU Ý quan trọng: camp 'Clip tốt nhất T4' KHÔNG thực sự dừng cả kỳ — vẫn chi 229M @19.3K (~11.870 đơn) trong 1–22/6, chi NHIỀU NHẤT account. Nếu gộp TẤT CẢ camp purchase (clip T4 + 5 demand + Location Mess 36.3K) → blended thực ~32K. Tức 64K là góc nhìn pessimistic (chỉ camp mới ramp); CPA thực toàn account ~32K. CPM demand 12–14K đẹp → nghẽn ở chuyển đổi, không phải phân phối.", nguon: "Meta live 1–22/6 (verify 22/6)", thapTotHon: true },
+    { ten: "CPM dư luận (ads)", target: 15, actual: 8.9, donVi: "K (đạt khi ≤)", note: "Meta live 1–22/6 — 2 camp Dư Luận (TK Chương, Adsplus 5): blended ₫8.949 (chi 2.13M / 237.5K hiển thị). Tách: camp Reach ₫5.020 (rất rẻ, reach 128K) · camp Tương tác ₫14.128 (reach 80K, CTR 1.87%). Reach gộp 208K. Đạt tier STAR (≤9K) theo rubric CPM dưới. Mục tiêu camp = phủ/seeding chứ không phải đơn.", nguon: "Meta live 1–22/6 (verify 22/6)", thapTotHon: true },
     { ten: "SEO sessions /discovers", target: 510, actual: 0, donVi: "ss/tháng", note: "Baseline 0 (blog mới từ 5/2026). Lộ trình tuần: W23=30 → W24=80 → W25=150 → W26=250.", nguon: "SEO PLAN T6" },
     { ten: "Bài SEO live", target: 9, actual: 6, donVi: "bài", note: "6 bài đã publish: 4 bài W22 + 2 bài Local cổ vai gáy HN & HCM (đăng 22/6). Còn bài #10 Thera timeline (in-progress) + #5–9 plan. Đã VƯỢT tiến độ về số bài, lệch chủ đề so plan gốc (đẩy mạnh cụm cổ vai gáy/Thera).", nguon: "SEO PLAN T6" },
     { ten: "SEO Engagement Rate", target: 65, actual: null, donVi: "%", note: "Đo trong GA4. Lộ trình ER tuần: 60 → 62 → 65 → 65%.", nguon: "SEO PLAN T6" },
@@ -111,9 +115,9 @@ window.DASHBOARD_DATA = {
   duLuanAds: {
     ky: "1–22/6/2026",
     nguon: "Meta Ads API · Adsplus 5 (Tỉnh) · TK Chương",
-    tongChi: 2107936, reachGop: 208039, tongTuongTac: null,
+    tongChi: 2125718, reachGop: 208521, cpmGop: 8949, tongTuongTac: null,
     campaigns: [
-      { ten: "ALL · Tương tác · Dư Luận · Chương", loai: "Engagement", spend: 1429876, reach: 79556, impr: 101464, ctr: 1.87, cpm: 14092, freq: 1.28, eng: null },
+      { ten: "ALL · Tương tác · Dư Luận · Chương", loai: "Engagement", spend: 1447658, reach: 80038, impr: 102464, ctr: 1.87, cpm: 14128, freq: 1.28, eng: null },
       { ten: "ALL · Reach · Dư Luận · Chương", loai: "Awareness", spend: 678060, reach: 128483, impr: 135079, ctr: 1.10, cpm: 5020, freq: 1.05, eng: null },
     ],
     posts: [
@@ -147,33 +151,37 @@ window.DASHBOARD_DATA = {
 
   /* Dư luận — TỔNG HỢP tách bạch ORGANIC vs ADS (earned chỉ tính organic) */
   duLuanTongHop: {
-    ky: "Tới 22/6/2026",
-    organicReach: 77157,
-    adsReach: 181674,
-    tongReach: 258831,
+    ky: "Tới 29/6/2026",
+    organicReach: 77991,
+    adsReach: 264600,
+    tongReach: 342591,
     target: 425000,
     chiAds: 2107936,
-    note: "TÁCH BẠCH: ORGANIC = view Threads thật 77.157 (Khách quen 76.6K + lẻ). ADS (boost) = reach 'Người xem' 3 bài FB được đẩy: Trụ cột 137.700 + Burnout 43.000 + Coder 974 = 181.674 (chi 2,1M). TỔNG reach dư luận 258.831 đem so target tuyến Dư Luận 425.000 = ~61%. (Lưu ý: 2 campaign dư luận Meta báo reach gộp 208K — lệch nhẹ do cách đo campaign vs per-post; ở đây dùng 181.674 theo số Business Suite per-post). Earned organic ở Tổng quan vẫn chỉ tính 77.157.",
+    note: "Cập nhật 29/6. TÁCH BẠCH: ORGANIC (earned, miễn phí) = view Threads 77.962 (Khách quen 76.600 + 29t cổ vai gáy 548 + WC sức khoẻ 628 + kiểm tra độ mệt 174 + gội màu mè 11 + cabin 1) + FB organic chết ~29 = 77.991. ADS (boost, 'Người xem') = 3 bài FB được đẩy: Trụ cột 166.000 + Burnout 68.600 + Coder 30.000 = 264.600 (×1,46 so 22/6). TỔNG reach dư luận 342.591 / target tuyến Dư Luận 425.000 = ~81%. ⚠️ chiAds vẫn là số 1–22/6 (2,1M) — reach đã tăng mạnh nên CẦN PULL lại Meta API kỳ 22–29/6 để có spend/CPM mới. 4 bài FB organic (Kiến Thức 25 lượt xem, Đàn Ông Bụi 6, Chầu nhậu 29, Hè du lịch 17) đều chết organic, chưa/không boost.",
   },
 
   /* Dư luận organic của Chương — 6 bài đã lên (2 Threads + 4 Facebook page) tới 15/6.
      Threads = view + tương tác thật. FB = reactions/cmt/share công khai thật (reach organic FB ẩn sau login).
      LƯU Ý: 4 link Chương gọi "TikTok" thực tế là 4 post FB trên 4 page dư luận — đã lấy theo link thật. */
   duLuanOrganic: {
-    ky: "Tới 22/6/2026",
-    reachThreads: 77157,
-    reactionsFB: 2487,
-    note: "Số THẬT từ Business Suite + Threads (22/6). Bài Threads 'Khách quen 8h tối' bùng: 76.600 view / 1.400 like / 139 cmt / 13 repost / 23 share. 3 bài FB Trụ cột·Burnout·Coder = bài ĐƯỢC BOOST → cột View = 'Người xem' (reach tổng organic+ads): Trụ cột 137.700, Burnout 43.000, Coder 974 (Coder gần như chưa được đẩy). Còn thiếu số: Đàn Ông Bụi (cổ vai gáy 22/6), Kiến Thức Tinh Hoa (Vai gáy 30t), 2 Threads @hanoihiddenvibes mới (cổ vai gáy 478 view / gội màu mè 8 view — mới đăng).",
+    ky: "Tới 29/6/2026",
+    reachThreads: 77962,
+    reactionsFB: 3891,
+    note: "Số THẬT từ Business Suite + Threads (29/6). WIN organic: Threads 'Khách quen 8h tối' bùng 76.600 view / 1.400 like / 140 cmt / 13 repost / 24 share (earned thật, 0đ). 3 bài FB Trụ cột·Burnout·Coder = ĐƯỢC BOOST → View = 'Người xem' (reach organic+ads, ~all ads): Trụ cột 166.000 (Lượt xem 187,3K, organic 380), Burnout 68.600 (Lượt xem 82,8K, organic 462), Coder 30.000 (Lượt xem 32,7K, organic 330). FAIL — mọi bài FB chỉ-organic angle 'tại lười/so giá nhậu' chết sạch: Kiến Thức 25 lượt xem · Đàn Ông Bụi 6 · Chầu nhậu 29 · Hè du lịch 17 (mới đăng, chưa boost được). 'view' của bài boost = Người xem (reach); bài organic = Người xem.",
     list: [
-      { ten: "Khách quen 8h tối T6 — 'chỗ duy nhất không ai gọi là sếp'", kenh: "Threads @trag.ngyen", view: 76600, like: 1400, cmt: 139, share: 23, url: "https://www.threads.com/@trag.ngyen/post/DZjv7M9FCny" },
-      { ten: "Kiểm tra độ mệt đàn ông qua 5 phút nằm ghế gội", kenh: "Threads @trag.ngyen", view: 71, like: 1, cmt: 1, share: 1, url: "https://www.threads.com/@trag.ngyen/post/DZjxA-MlHqU" },
-      { ten: "Trụ cột 36t (ngồi trong xe trước cổng nhà) · BOOST", kenh: "FB · Bản Lĩnh Đàn Ông", view: 137700, like: 855, cmt: 17, share: 5, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid03kFNJYD1mcnvsoKiy2oMBTE1dHv3oPoK515gAtzRKMRbGQ1LAE2TySfpP4PdnkK4l&id=61563496486162" },
-      { ten: "Burnout 27t (lương ổn mà sáng nào cũng mệt) · BOOST", kenh: "FB · Kinh Doanh Châu Á", view: 43000, like: 1200, cmt: 15, share: 10, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02vJRskkBp8aNhBKrLBtgQvh6YisxbmGDVVVBJMJTdmwu27UDakyEzrPZdSoby2Nbol&id=61563416021934" },
-      { ten: "Coder 29t (7 năm code, trống rỗng) · BOOST", kenh: "FB · Tạp Chí KD Thời Đại", view: 974, like: 432, cmt: 11, share: 0, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid0uCeo6qxhEg94FEFzz4xEAogDXpqZ1C6DjcgRbaqabdWeHJYoeLeBwSHvYfhWtvGQl&id=61563276163931" },
-      { ten: "Vai gáy 30t (cơ thể báo động, massage 125k)", kenh: "FB · Kiến Thức Tinh Hoa", view: null, like: null, cmt: null, share: null, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid06YKJPJEZUDxJnSbokHaQPn7ovtTBSHG9R2NaHrcR7fMaCrphmMJTtWQp7PNmrFBXl&id=61563812254323" },
-      { ten: "28t cổ vai gáy đau như chú u60 — bị phán 'tại lười' (22/6)", kenh: "FB · Đàn Ông Bụi", view: null, like: null, cmt: null, share: null, url: "https://www.facebook.com/share/p/1BXnfHiDNf/" },
-      { ten: "29t cổ vai gáy đau như chú u60 — do việc hay lười? (22/6)", kenh: "Threads @hanoihiddenvibes", view: 478, like: 2, cmt: 2, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DZ3ooYkmWUS" },
-      { ten: "Đàn ông gội đầu ngoài hàng là màu mè? (22/6)", kenh: "Threads @hanoihiddenvibes", view: 8, like: null, cmt: 2, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DZ3p57nGaK6" },
+      { ten: "Khách quen 8h tối T6 — 'chỗ duy nhất không ai gọi là sếp' ⭐ WIN organic", kenh: "Threads @trag.ngyen", view: 76600, like: 1400, cmt: 140, share: 24, url: "https://www.threads.com/@trag.ngyen/post/DZjv7M9FCny" },
+      { ten: "Kiểm tra độ mệt đàn ông qua 5 phút nằm ghế gội", kenh: "Threads @trag.ngyen", view: 174, like: 1, cmt: 1, share: 3, url: "https://www.threads.com/@trag.ngyen/post/DZjxA-MlHqU" },
+      { ten: "Trụ cột 36t (ngồi trong xe trước cổng nhà) · BOOST ⭐ reach cao nhất", kenh: "FB · Bản Lĩnh Đàn Ông", view: 166000, like: 1100, cmt: 21, share: 7, click: 224, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid03kFNJYD1mcnvsoKiy2oMBTE1dHv3oPoK515gAtzRKMRbGQ1LAE2TySfpP4PdnkK4l&id=61563496486162" },
+      { ten: "Burnout 27t (lương ổn mà sáng nào cũng mệt) · BOOST", kenh: "FB · Kinh Doanh Châu Á", view: 68600, like: 1800, cmt: 16, share: 14, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02vJRskkBp8aNhBKrLBtgQvh6YisxbmGDVVVBJMJTdmwu27UDakyEzrPZdSoby2Nbol&id=61563416021934" },
+      { ten: "Coder 29t (điều đáng sợ nhất không phải thất nghiệp) · BOOST", kenh: "FB · Tạp Chí KD Thời Đại", view: 30000, like: 991, cmt: 15, share: 13, click: 10, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid0uCeo6qxhEg94FEFzz4xEAogDXpqZ1C6DjcgRbaqabdWeHJYoeLeBwSHvYfhWtvGQl&id=61563276163931" },
+      { ten: "Vai gáy 30t (cơ thể báo động, massage 125k) · organic chết", kenh: "FB · Kiến Thức Tinh Hoa", view: 6, like: 0, cmt: 0, share: 0, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid06YKJPJEZUDxJnSbokHaQPn7ovtTBSHG9R2NaHrcR7fMaCrphmMJTtWQp7PNmrFBXl&id=61563812254323" },
+      { ten: "28t cổ vai gáy đau như chú u60 — bị phán 'tại lười' (22/6) · organic chết", kenh: "FB · Đàn Ông Bụi", view: 3, like: 0, cmt: 0, share: 0, url: "https://www.facebook.com/share/p/1BXnfHiDNf/" },
+      { ten: "Chầu nhậu 500k không tiếc nhưng 125k cổ đau thì phí (12/6) · organic chết", kenh: "FB · Kinh Doanh Châu Á", view: 9, like: 0, cmt: 0, share: 0, url: "https://www.facebook.com/share/p/1CzW57YLx9/" },
+      { ten: "Hè này anh em không cần xin nghỉ phép vẫn đi du lịch (28/6) · mới, chưa boost", kenh: "FB · Kinh Doanh Châu Á", view: 11, like: 0, cmt: 1, share: 0, url: "https://www.facebook.com/share/p/1E7ydQs7co/" },
+      { ten: "29t cổ vai gáy đau như chú u60 — do việc hay lười? (22/6) + ghim 30shine.com", kenh: "Threads @hanoihiddenvibes", view: 548, like: 2, cmt: 2, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DZ3ooYkmWUS" },
+      { ten: "Đàn ông gội đầu ngoài hàng là màu mè? → thử Thera 45'/125k (22/6)", kenh: "Threads @hanoihiddenvibes", view: 11, like: null, cmt: 2, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DZ3p57nGaK6" },
+      { ten: "Sức khoẻ xuống cấp mùa WC — ngủ quên ở 30Shine (28/6)", kenh: "Threads @hanoihiddenvibes", view: 628, like: 1, cmt: 0, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DaFgDCZGSEr" },
+      { ten: "Gội cho tỉnh mà cabin nào cũng có tiếng ngáy (28/6)", kenh: "Threads @saigon.afterdark", view: 1, like: 1, cmt: 0, share: null, url: "https://www.threads.com/@saigon.afterdark/post/DaFgPGuFK06" },
     ],
   },
 
