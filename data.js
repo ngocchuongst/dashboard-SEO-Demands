@@ -152,9 +152,9 @@ window.DASHBOARD_DATA = {
   /* Dư luận — TỔNG HỢP tách bạch ORGANIC vs ADS (earned chỉ tính organic) */
   duLuanTongHop: {
     ky: "Tới 29/6/2026",
-    organicReach: 77991,
+    organicReach: 78097,
     adsReach: 333322,
-    tongReach: 411313,
+    tongReach: 411419,
     target: 425000,
     chiAds: 3934340,
     note: "Cập nhật 29/6 — DƯ LUẬN ĐỦ 18/18 BÀI (13 bài có số; các bài còn lại Chương cập nhật link/số sau). TÁCH BẠCH: ORGANIC (earned, miễn phí) = view Threads 77.962 (Khách quen 76.600 + 29t cổ vai gáy 548 + WC sức khoẻ 628 + kiểm tra độ mệt 174 + gội màu mè 11 + cabin 1) + FB organic chết ~29 = 77.991. ADS = số THẬT Ads Manager 29/6, reach gộp 2 camp Dư Luận = 145.032 (Reach) + 132.095 (Tương tác) = 277.127 (cộng thô, có overlap → reach unique thực thấp hơn; hiển thị gộp 331.637). Chi 3,55M/10M (35,5%), CPM 10,7K (rẻ nửa target 20K). Dư luận tự ra 17 đơn. TỔNG reach dư luận ~355.118 / target 425.000 = ~84%. ⚠️ CPM tốt nhưng chưa tiêu hết tiền (dư 6,45M) → reach paid hụt; bơm nốt là vượt target. 4 bài FB organic (Kiến Thức 25 lượt xem, Đàn Ông Bụi 6, Chầu nhậu 29, Hè du lịch 17) đều chết organic, chưa/không boost.",
@@ -164,13 +164,13 @@ window.DASHBOARD_DATA = {
      Threads = view + tương tác thật. FB = reactions/cmt/share công khai thật (reach organic FB ẩn sau login).
      LƯU Ý: 4 link Chương gọi "TikTok" thực tế là 4 post FB trên 4 page dư luận — đã lấy theo link thật. */
   duLuanOrganic: {
-    ky: "Tới 29/6/2026",
-    reachThreads: 77962,
+    ky: "Tới 1/7/2026 (chốt)",
+    reachThreads: 78068,
     reactionsFB: 3891,
     note: "Số THẬT từ Business Suite + Threads (29/6). WIN organic: Threads 'Khách quen 8h tối' bùng 76.600 view / 1.400 like / 140 cmt / 13 repost / 24 share (earned thật, 0đ). 3 bài FB Trụ cột·Burnout·Coder = ĐƯỢC BOOST → View = 'Người xem' (reach organic+ads, ~all ads): Trụ cột 166.000 (Lượt xem 187,3K, organic 380), Burnout 68.600 (Lượt xem 82,8K, organic 462), Coder 30.000 (Lượt xem 32,7K, organic 330). FAIL — mọi bài FB chỉ-organic angle 'tại lười/so giá nhậu' chết sạch: Kiến Thức 25 lượt xem · Đàn Ông Bụi 6 · Chầu nhậu 29 · Hè du lịch 17 (mới đăng, chưa boost được). 'view' của bài boost = Người xem (reach); bài organic = Người xem.",
     list: [
-      { ten: "Khách quen 8h tối T6 — 'chỗ duy nhất không ai gọi là sếp' ⭐ WIN organic", kenh: "Threads @trag.ngyen", view: 76600, like: 1400, cmt: 140, share: 24, url: "https://www.threads.com/@trag.ngyen/post/DZjv7M9FCny" },
-      { ten: "Kiểm tra độ mệt đàn ông qua 5 phút nằm ghế gội", kenh: "Threads @trag.ngyen", view: 174, like: 1, cmt: 1, share: 3, url: "https://www.threads.com/@trag.ngyen/post/DZjxA-MlHqU" },
+      { ten: "Khách quen 8h tối T6 — 'chỗ duy nhất không ai gọi là sếp' ⭐ WIN organic", kenh: "Threads @trag.ngyen", view: 76700, like: 1400, cmt: 140, share: 24, url: "https://www.threads.com/@trag.ngyen/post/DZjv7M9FCny" },
+      { ten: "Kiểm tra độ mệt đàn ông qua 5 phút nằm ghế gội", kenh: "Threads @trag.ngyen", view: 175, like: 1, cmt: 1, share: 3, url: "https://www.threads.com/@trag.ngyen/post/DZjxA-MlHqU" },
       { ten: "Trụ cột 36t (ngồi trong xe trước cổng nhà) · BOOST ⭐ reach cao nhất", kenh: "FB · Bản Lĩnh Đàn Ông", view: 166000, like: 1100, cmt: 21, share: 7, click: 224, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid03kFNJYD1mcnvsoKiy2oMBTE1dHv3oPoK515gAtzRKMRbGQ1LAE2TySfpP4PdnkK4l&id=61563496486162" },
       { ten: "Burnout 27t (lương ổn mà sáng nào cũng mệt) · BOOST", kenh: "FB · Kinh Doanh Châu Á", view: 68600, like: 1800, cmt: 16, share: 14, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02vJRskkBp8aNhBKrLBtgQvh6YisxbmGDVVVBJMJTdmwu27UDakyEzrPZdSoby2Nbol&id=61563416021934" },
       { ten: "Coder 29t (điều đáng sợ nhất không phải thất nghiệp) · BOOST", kenh: "FB · Tạp Chí KD Thời Đại", view: 30000, like: 991, cmt: 15, share: 13, click: 10, url: "https://www.facebook.com/permalink.php?story_fbid=pfbid0uCeo6qxhEg94FEFzz4xEAogDXpqZ1C6DjcgRbaqabdWeHJYoeLeBwSHvYfhWtvGQl&id=61563276163931" },
@@ -178,10 +178,10 @@ window.DASHBOARD_DATA = {
       { ten: "28t cổ vai gáy đau như chú u60 — bị phán 'tại lười' (22/6) · organic chết", kenh: "FB · Đàn Ông Bụi", view: 3, like: 0, cmt: 0, share: 0, url: "https://www.facebook.com/share/p/1BXnfHiDNf/" },
       { ten: "Chầu nhậu 500k không tiếc nhưng 125k cổ đau thì phí (12/6) · organic chết", kenh: "FB · Kinh Doanh Châu Á", view: 9, like: 0, cmt: 0, share: 0, url: "https://www.facebook.com/share/p/1CzW57YLx9/" },
       { ten: "Hè này anh em không cần xin nghỉ phép vẫn đi du lịch (28/6) · mới, chưa boost", kenh: "FB · Kinh Doanh Châu Á", view: 11, like: 0, cmt: 1, share: 0, url: "https://www.facebook.com/share/p/1E7ydQs7co/" },
-      { ten: "29t cổ vai gáy đau như chú u60 — do việc hay lười? (22/6) + ghim 30shine.com", kenh: "Threads @hanoihiddenvibes", view: 548, like: 2, cmt: 2, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DZ3ooYkmWUS" },
-      { ten: "Đàn ông gội đầu ngoài hàng là màu mè? → thử Thera 45'/125k (22/6)", kenh: "Threads @hanoihiddenvibes", view: 11, like: null, cmt: 2, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DZ3p57nGaK6" },
-      { ten: "Sức khoẻ xuống cấp mùa WC — ngủ quên ở 30Shine (28/6)", kenh: "Threads @hanoihiddenvibes", view: 628, like: 1, cmt: 0, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DaFgDCZGSEr" },
-      { ten: "Gội cho tỉnh mà cabin nào cũng có tiếng ngáy (28/6)", kenh: "Threads @saigon.afterdark", view: 1, like: 1, cmt: 0, share: null, url: "https://www.threads.com/@saigon.afterdark/post/DaFgPGuFK06" },
+      { ten: "29t cổ vai gáy đau như chú u60 — do việc hay lười? (22/6) + ghim 30shine.com", kenh: "Threads @hanoihiddenvibes", view: 549, like: 2, cmt: 2, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DZ3ooYkmWUS" },
+      { ten: "Đàn ông gội đầu ngoài hàng là màu mè? → thử Thera 45'/125k (22/6)", kenh: "Threads @hanoihiddenvibes", view: 12, like: null, cmt: 2, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DZ3p57nGaK6" },
+      { ten: "Sức khoẻ xuống cấp mùa WC — ngủ quên ở 30Shine (28/6)", kenh: "Threads @hanoihiddenvibes", view: 629, like: 1, cmt: 0, share: null, url: "https://www.threads.com/@hanoihiddenvibes/post/DaFgDCZGSEr" },
+      { ten: "Gội cho tỉnh mà cabin nào cũng có tiếng ngáy (28/6)", kenh: "Threads @saigon.afterdark", view: 3, like: 1, cmt: 0, share: null, url: "https://www.threads.com/@saigon.afterdark/post/DaFgPGuFK06" },
     ],
   },
 
