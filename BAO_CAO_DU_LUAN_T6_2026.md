@@ -1,8 +1,8 @@
 # BÁO CÁO TUYẾN DƯ LUẬN — T6/2026 (CHỐT THÁNG, cập nhật 1/7)
 
-**Tiến độ: 18/18 post — ~411K/425K reach (đạt ~97%)**
-Ngân sách đã chi **3,93/10M (39,3%)** — CPM **9,7/20K (đẹp, rẻ nửa target)**
-*Nguồn ads: Meta API · 2 camp "Dư Luận · Chương" · TK 671545627449956 · verify 1/7*
+**Tiến độ: 18/18 post — ~467K/425K reach (đạt ~110% — VƯỢT target)**
+Ngân sách đã chi **4,17/10M (41,7%)** — CPM **9,0/20K (đẹp, rẻ nửa target)**
+*Nguồn ads: Meta API · 2 camp "Dư Luận · Chương" · TK 671545627449956 · tới hôm nay 1/7*
 
 **Kênh dư luận** *(đã đi 29/30 ngày)*
 + Bài: plan ~17,4 → thực tế **18** ✅
@@ -15,11 +15,11 @@ Ngân sách đã chi **3,93/10M (39,3%)** — CPM **9,7/20K (đẹp, rẻ nửa 
 | Mục tiêu | Target | Thực tế 29/6 | Đạt |
 |---|---|---|---|
 | Số post | 18 | 18 | ✅ |
-| **Reach tổng** | 425K | ~411K | **97%** ✅ |
+| **Reach tổng** | 425K | ~467K | **~110%** ✅ VƯỢT |
 | — Earned (Threads) | 5 post / 5K | 6 post / **78K** | ✅ vượt 15× |
-| — Paid (ads) | 13 post / 420K | reach gộp **333K** · hiển thị 405K | 79–96% |
-| **CPM** | ≤20K | **9,7K** | ✅ rẻ nửa |
-| **Ngân sách** | 10M | **3,93M (39,3%)** | còn dư 6,07M |
+| — Paid (ads) | 13 post / 420K | reach gộp **389K** · hiển thị 463K | ~93–110% |
+| **CPM** | ≤20K | **9,0K** | ✅ rẻ nửa |
+| **Ngân sách** | 10M | **4,17M (41,7%)** | còn dư 5,83M |
 | Tác động CPM demand | — | **−41% kỳ dư luận scale** (dư luận ~5%) | ✅ tín hiệu |
 | Tác động CPA | giảm 15–25% | chưa tách được (cần holdout) | ⚠️ |
 
