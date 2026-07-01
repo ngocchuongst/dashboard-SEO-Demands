@@ -1,8 +1,8 @@
-# BÁO CÁO TUYẾN DƯ LUẬN — T6/2026 (chốt 29/6)
+# BÁO CÁO TUYẾN DƯ LUẬN — T6/2026 (CHỐT THÁNG, cập nhật 1/7)
 
-**Tiến độ: 18/18 post — ~355K/425K reach (RR 86%)**
-Ngân sách đã chi **3,55/10M** — CPM **10,7/20K (đẹp, rẻ nửa target)**
-*Nguồn ads: Ads Manager · 2 camp "Dư Luận · Chương" · Adsplus 5.2*
+**Tiến độ: 18/18 post — ~411K/425K reach (đạt ~97%)**
+Ngân sách đã chi **3,93/10M (39,3%)** — CPM **9,7/20K (đẹp, rẻ nửa target)**
+*Nguồn ads: Meta API · 2 camp "Dư Luận · Chương" · TK 671545627449956 · verify 1/7*
 
 **Kênh dư luận** *(đã đi 29/30 ngày)*
 + Bài: plan ~17,4 → thực tế **18** ✅
@@ -15,12 +15,13 @@ Ngân sách đã chi **3,55/10M** — CPM **10,7/20K (đẹp, rẻ nửa target)
 | Mục tiêu | Target | Thực tế 29/6 | Đạt |
 |---|---|---|---|
 | Số post | 18 | 18 | ✅ |
-| **Reach tổng** | 425K | ~355K | 84% ⚠️ |
+| **Reach tổng** | 425K | ~411K | **97%** ✅ |
 | — Earned (Threads) | 5 post / 5K | 6 post / **78K** | ✅ vượt 15× |
-| — Paid (FB pages) | 13 post / 420K | ~12 post / reach ~277K · hiển thị 331K | 66–79% ⚠️ |
-| **CPM** | ≤20K | **10,7K** | ✅ rẻ nửa |
-| **Ngân sách** | 10M | **3,55M (35,5%)** | còn dư 6,45M |
-| Tác động CPA | giảm 15–25% | **chưa đo được lift** | ⚠️ |
+| — Paid (ads) | 13 post / 420K | reach gộp **333K** · hiển thị 405K | 79–96% |
+| **CPM** | ≤20K | **9,7K** | ✅ rẻ nửa |
+| **Ngân sách** | 10M | **3,93M (39,3%)** | còn dư 6,07M |
+| Tác động CPM demand | — | **−41% kỳ dư luận scale** (dư luận ~5%) | ✅ tín hiệu |
+| Tác động CPA | giảm 15–25% | chưa tách được (cần holdout) | ⚠️ |
 
 **Đọc:** Đủ bài, CPM quá tốt, NHƯNG mới tiêu 35,5% tiền → reach paid hụt. Earned vượt 15× nhưng nhờ **1 bài viral**, không phải mặt bằng.
 
@@ -28,9 +29,11 @@ Ngân sách đã chi **3,55/10M** — CPM **10,7/20K (đẹp, rẻ nửa target)
 
 ## 2. TÁC ĐỘNG — LƯỢT MUA
 
-Dư luận **không phải camp bán hàng**, nhưng 2 camp seeding tự attribute **17 đơn mua**:
-+ Camp Reach: **9 đơn** (chi 718K, CPM 4.588)
-+ Camp Tương tác: **8 đơn** (chi 2,83M, 2.768 tương tác)
+Dư luận **không phải camp bán hàng**, nhưng 2 camp seeding tự attribute **18 đơn mua**:
++ Camp Reach: **9 đơn** (chi 1,10M, CPM 4.783)
++ Camp Tương tác: **9 đơn** (chi 2,83M, 2.768 tương tác)
+
+**⭐ Tín hiệu HALO rõ nhất — CPM tuyến demand giảm khi dư luận scale:** CPM 5 tuyến demand giảm **18,1K → 10,6K (−41%)** đúng kỳ dư luận chạy (W3–W4). NHƯNG phần lớn do **World Cup kết thúc + scale audience**; phần **quy cho dư luận ước ~5%** (còn ~35% là mùa vụ). Đây là chỗ "5%" thực sự nằm — ở **CPM (mở phễu rẻ hơn)**, không phải CPA. CVR tầng chốt giảm nên CPA tổng vẫn tăng — đó là vấn đề creative demand, không phải dư luận.
 → CPA dư luận ~209K/đơn — **cao gấp 3 demand camp (~65K)**. Tức: dư luận CÓ ra đơn phụ, nhưng đừng kỳ vọng thay sales camp.
 
 **Về mục tiêu "CPA giảm 15–25%":** chưa khẳng định được bằng data hiện có — cần **before/after** (so CPA demand T5 vs T6) hoặc **holdout test**. Halo của seeding lên demand camp không tách được từ bảng này. → Đề xuất tôi pull CPA demand T5 vs T6 để đối chiếu.
